@@ -1,5 +1,6 @@
 /* Global Variables */
 var bullets = 30;
+var isReadyToFire = true;
 
 /* Functions */
 
@@ -33,25 +34,35 @@ function findCol(bullet, enemy){
     if(bulletPos.left > innerWidth || bulletPos.top > innerHeight){
         console.log("Out of bounds");
         bullet.remove();
+        isReadyToFire = true;
         clearInterval(checkCol);
     };
 
     /* Check if we hit enemy */
     if(isHit(bullet, enemy)){
         let health = $(".stormtrooper#" + enemy.attr("id") + " .health .num").text(); 
-        $(".bullet").remove();
 
         /* Check for headshot */
         if(isHit(bullet, $(".stormtrooper#" + enemy.attr("id") + " .head"))){
             $(".stormtrooper#" + enemy.attr("id") + " .health .num").text(health - 50);
             $(".stormtrooper#" + enemy.attr("id") + " .health").css("width", (health / 4) + "%");
             health -= 50;
+
+            console.log("head");
         }else{
 
             $(".stormtrooper#" + enemy.attr("id") + " .health .num").text(health - 10);
             $(".stormtrooper#" + enemy.attr("id") + " .health").css("width", (health / 2) + "%");
             health -= 10;
         }
+
+        /* Remove stormtrooper when health depleted */
+        if(health <= 0){
+            $(enemy).remove();
+        }
+
+        $(".bullet").remove();
+        isReadyToFire = true;
     }
 };
 
@@ -73,17 +84,23 @@ $(document).keypress(function(event){
 
         /* Fire, Reload and Crouch with space, R and C keys */
         else if(event.which == 32){
-            $("div.cblasterBarrel").append('<div class="bullet" id="' + bullets + '"></div>');
-            $(".bullet").addClass("moveBullet");
+            if(isReadyToFire){
+                if(bullets > 0){
+                    isReadyToFire = false;
 
-            /* Deplete ammo count */
-            bullets -= 1;
-            $(".bulletCount").text(bullets);
+                    $("div.cblasterBarrel").append('<div class="bullet" id="' + bullets + '"></div>');
+                    $(".bullet").addClass("moveBullet");
 
-            /* Check for collision */
-            $(".stormtrooper").each(function(){
-                var checkCol = setInterval(findCol, 10, $("#" + (bullets+1)), $(this));
-            });
+                    /* Deplete ammo count */
+                    bullets -= 1;
+                    $(".bulletCount").text(bullets);
+
+                    /* Check for collision */
+                    $(".stormtrooper").each(function(){
+                        var checkCol = setInterval(findCol, 10, $("#" + (bullets+1)), $(this));
+                    });
+                }
+            }
         }
         else if(event.which == 114){
             if(bullets < 30){
