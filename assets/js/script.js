@@ -1,3 +1,7 @@
+/* Global Variables */
+var bullets = 30;
+
+/* Key Presses */
 $(document).keypress(function(event){
         /* Move left or right with A/D keys  */
         if(event.which == 100){
@@ -15,11 +19,19 @@ $(document).keypress(function(event){
 
         /* Fire, Reload and Crouch with space, R and C keys */
         else if(event.which == 32){
-            $("div.cblasterBarrel").append('<div class="bullet" id="1"></div>');
+            $("div.cblasterBarrel").append('<div class="bullet" id="' + bullets + '"></div>');
             $(".bullet").addClass("moveBullet");
+
+            /* Deplete ammo count */
+            bullets -= 1;
+            $(".bulletCount").text(bullets);
         }
         else if(event.which == 114){
-            /* Reload */
+            if(bullets < 30){
+                bullets = 30;
+                $(".bulletCount").text(bullets);
+                $(".bullet").remove();
+            }
         }
         else if(event.which == 99){
             $("div.chewie").addClass("crouch");
