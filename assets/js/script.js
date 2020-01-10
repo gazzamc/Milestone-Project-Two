@@ -1,6 +1,27 @@
 /* Global Variables */
 var bullets = 30;
 
+/* Functions */
+function findCol(bullet, enemy){
+    let bulletPos = bullet.offset();
+
+    /* Get enemy position */
+    enemyTop = $(enemy).offset().top;
+    enemyBottom = $(enemy).offset().top + $(enemy).outerHeight();
+    enemyLeft = $(enemy).offset().left;
+    enemyRight = $(enemy).offset().left + $(enemy).outerWidth();
+
+/*     https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection */
+    /* Check if we hit enemy */
+    if(bulletPos.left > enemyLeft && 
+    bulletPos.top > enemyTop &&
+    bulletPos.left < enemyRight &&
+    bulletPos.top < enemyBottom ){
+        console.log("hit");
+        $(".bullet").remove();
+    }
+};
+
 /* Key Presses */
 $(document).keypress(function(event){
         /* Move left or right with A/D keys  */
@@ -25,6 +46,11 @@ $(document).keypress(function(event){
             /* Deplete ammo count */
             bullets -= 1;
             $(".bulletCount").text(bullets);
+
+            /* Check for collision */
+            $(".stormtrooper").each(function(){
+                var checkCol = setInterval(findCol, 10, $("#" + (bullets+1)), $(this));
+            });
         }
         else if(event.which == 114){
             if(bullets < 30){
