@@ -19,6 +19,20 @@ body{
     }
 }
 
+.moveEnemy {
+    animation-name: moveEn;
+    animation-duration: 40s;
+}
+
+@keyframes moveEn {
+    from{
+        left: 100vw; 
+    }
+    to {
+        left: 0vw;
+    }
+}
+
 /* Bullet Class and animation */
 
 .bullet {
