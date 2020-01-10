@@ -24,3 +24,12 @@ $(document).keypress(function(event){
             /* Crouch */
         };   
     });
+
+/* Move players arm when mouse is moved */
+/* https://stackoverflow.com/questions/22977862/calculating-angle-in-degrees-of-mouse-movement */
+$(document).mousemove(function(event){
+    var radian = Math.atan2(180, event.pageY);       
+    var grade = radian/(Math.PI/90);    
+
+    $('.cbody.carms.crightArm').css("transform", "rotate(-" + (grade - 10) + "deg)"); 
+});
