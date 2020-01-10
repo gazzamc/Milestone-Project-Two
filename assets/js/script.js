@@ -2,6 +2,8 @@
 var bullets = 30;
 
 /* Functions */
+
+/* https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection */
 function isHit(target, target2){
     let targetPos = target.offset();
     let target2Top;
@@ -34,11 +36,22 @@ function findCol(bullet, enemy){
         clearInterval(checkCol);
     };
 
-/*     https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection */
     /* Check if we hit enemy */
     if(isHit(bullet, enemy)){
-        console.log("hit");
+        let health = $(".stormtrooper#" + enemy.attr("id") + " .health .num").text(); 
         $(".bullet").remove();
+
+        /* Check for headshot */
+        if(isHit(bullet, $(".stormtrooper#" + enemy.attr("id") + " .head"))){
+            $(".stormtrooper#" + enemy.attr("id") + " .health .num").text(health - 50);
+            $(".stormtrooper#" + enemy.attr("id") + " .health").css("width", (health / 4) + "%");
+            health -= 50;
+        }else{
+
+            $(".stormtrooper#" + enemy.attr("id") + " .health .num").text(health - 10);
+            $(".stormtrooper#" + enemy.attr("id") + " .health").css("width", (health / 2) + "%");
+            health -= 10;
+        }
     }
 };
 
