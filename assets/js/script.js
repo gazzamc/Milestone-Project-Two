@@ -32,10 +32,14 @@ function findCol(bullet, enemy){
 
     /* This removes the bullet if it missed and goes out of view */
     if(bulletPos.left > innerWidth || bulletPos.top > innerHeight){
-        console.log("Out of bounds");
-        bullet.remove();
-        isReadyToFire = true;
-        clearInterval(checkCol);
+        try{
+            console.log("Out of bounds");
+            bullet.remove();
+            isReadyToFire = true;
+            clearInterval(checkCol);
+        } catch (error){
+
+        }
     };
 
     /* Check if we hit enemy */
