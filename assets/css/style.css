@@ -18,3 +18,29 @@ body{
         bottom: 5vh;
     }
 }
+
+/* Bullet Class and animation */
+
+.bullet {
+    position: relative;
+    border-radius: 25%;
+    height: 4px;
+    width: 15px;
+    background-color: red;
+    z-index: -1;
+}
+
+.moveBullet {
+    animation-name: moveBullet;
+    animation-duration: 3s;
+    animation-timing-function: ease;
+}
+
+@keyframes moveBullet {
+    from{
+        left: 0;
+    }
+    to {
+        left: 120vw;
+    }
+}

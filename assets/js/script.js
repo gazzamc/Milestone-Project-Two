@@ -15,7 +15,8 @@ $(document).keypress(function(event){
 
         /* Fire, Reload and Crouch with space, R and C keys */
         else if(event.which == 32){
-            /* Fire Weapon */
+            $("div.cblasterBarrel").append('<div class="bullet" id="1"></div>');
+            $(".bullet").addClass("moveBullet");
         }
         else if(event.which == 114){
             /* Reload */
