@@ -21,7 +21,12 @@ $(document).keypress(function(event){
             /* Reload */
         }
         else if(event.which == 99){
-            /* Crouch */
+            $("div.chewie").addClass("crouch");
+
+            $(document).keyup(function(event){
+                $("div.chewie").removeClass("crouch");
+
+            });
         };   
     });
 

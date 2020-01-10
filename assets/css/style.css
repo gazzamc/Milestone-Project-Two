@@ -2,3 +2,19 @@ body{
     margin:0;
     padding:0;
 }
+
+/* Animated Movements for Player/AI */
+
+.crouch {
+    animation-name: crouch;
+    animation-duration: 1s;
+}
+
+@keyframes crouch {
+    from{
+        bottom: 20vh; 
+    }
+    to {
+        bottom: 5vh;
+    }
+}
