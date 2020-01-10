@@ -11,6 +11,14 @@ function findCol(bullet, enemy){
     enemyLeft = $(enemy).offset().left;
     enemyRight = $(enemy).offset().left + $(enemy).outerWidth();
 
+
+    /* This removes the bullet if it missed and goes out of view */
+    if(bulletPos.left > innerWidth || bulletPos.top > innerHeight){
+        console.log("Out of bounds");
+        bullet.remove();
+        clearInterval(checkCol);
+    };
+
 /*     https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection */
     /* Check if we hit enemy */
     if(bulletPos.left > enemyLeft && 
