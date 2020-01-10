@@ -2,15 +2,30 @@
 var bullets = 30;
 
 /* Functions */
+function isHit(target, target2){
+    let targetPos = target.offset();
+    let target2Top;
+    let target2Bottom;
+    let target2Left;
+    let target2Right;
+
+    target2Top = $(target2).offset().top;
+    target2Bottom = $(target2).offset().top + $(target2).outerHeight();
+    target2Left = $(target2).offset().left;
+    target2Right = $(target2).offset().left + $(target2).outerWidth();
+
+    if(targetPos.left > target2Left && 
+    targetPos.top > target2Top &&
+    targetPos.left < target2Right &&
+    targetPos.top < target2Bottom ){
+        return true;
+    }else{
+        return false;
+    }
+}
+
 function findCol(bullet, enemy){
     let bulletPos = bullet.offset();
-
-    /* Get enemy position */
-    enemyTop = $(enemy).offset().top;
-    enemyBottom = $(enemy).offset().top + $(enemy).outerHeight();
-    enemyLeft = $(enemy).offset().left;
-    enemyRight = $(enemy).offset().left + $(enemy).outerWidth();
-
 
     /* This removes the bullet if it missed and goes out of view */
     if(bulletPos.left > innerWidth || bulletPos.top > innerHeight){
@@ -21,10 +36,7 @@ function findCol(bullet, enemy){
 
 /*     https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection */
     /* Check if we hit enemy */
-    if(bulletPos.left > enemyLeft && 
-    bulletPos.top > enemyTop &&
-    bulletPos.left < enemyRight &&
-    bulletPos.top < enemyBottom ){
+    if(isHit(bullet, enemy)){
         console.log("hit");
         $(".bullet").remove();
     }
