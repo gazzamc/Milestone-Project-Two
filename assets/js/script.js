@@ -1,8 +1,36 @@
 /* Global Variables */
 var bullets = 30;
 var isReadyToFire = true;
+var time = setInterval(timer, 1000);
 
 /* Functions */
+
+function timer(){
+    let curTime = $(".timer h2").text();
+    let splitTime = curTime.split(":");
+    let mins = splitTime[0];
+    let seconds = splitTime[1];
+    
+    if(seconds == 00){
+        seconds = 59;
+        if(mins > 0){
+            mins--;
+        };
+    } else{
+        seconds--;
+        if(seconds < 10){
+            seconds = "0" + seconds;
+        };
+    };
+
+    if(mins == 0 && seconds == 0){
+        $(".timer h2").text("Game Over!");
+        clearInterval(time);
+
+    } else {
+        $(".timer h2").text(mins + ":" + seconds);
+    };
+};
 
 /* https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection */
 function isHit(target, target2){
@@ -25,7 +53,7 @@ function isHit(target, target2){
     }else{
         return false;
     }
-}
+};
 
 function findCol(bullet, enemy){
     let bulletPos = bullet.offset();

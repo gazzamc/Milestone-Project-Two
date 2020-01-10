@@ -58,3 +58,11 @@ body{
         left: 120vw;
     }
 }
+
+/* Timer */
+
+.timer{
+    position: absolute;
+    text-align: center;
+    left: 48vw;
+}
