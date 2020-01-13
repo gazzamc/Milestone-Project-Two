@@ -8,6 +8,15 @@ var spawnRate = 3;
 
 /* Functions */
 
+function currEnemies(){
+    let enemiesAlive = 0;
+    $(".stormtrooper").each(function(){
+            enemiesAlive++;
+        });
+
+    return enemiesAlive;
+}
+
 function friendlyFire(){
     let friendly = $(".chewie");
 
@@ -186,18 +195,17 @@ $(document).keypress(function(event){
 
         /* Fire, Reload and Crouch with space, R and C keys */
         else if(event.which == 32){
-            if(isReadyToFire){
+            /* Check if ready to fire and that there are enemies on screen */
+            if(isReadyToFire && (currEnemies() > 0)){
                 if(bullets > 0){
                     isReadyToFire = false;
-
+                    /* $("body").append('<div class="bullet" id="' + bullets + '" style="top:'+ (Math.round(left) - 41) +'px; left:'+ Math.round(top) +'px;"></div>'); */
                     $("div.cblasterBarrel").append('<div class="bullet" id="' + bullets + '"></div>');
                     $(".bullet").addClass("moveBullet");
 
-                    /* Deplete ammo count */
                     bullets -= 1;
                     $(".bulletCount").text(bullets);
 
-                    /* Check for collision */
                     $(".stormtrooper").each(function(){
                         var checkCol = setInterval(findCol, 10, $("#" + (bullets+1)), $(this));
                     });
