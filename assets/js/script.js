@@ -164,6 +164,19 @@ function findCol(bullet, enemy){
         }
     };
 
+    /* This removes the bullet if it finishes the animation 
+        before hitting and enemy or going out of view */
+    $(bullet).on('animationend webkitAnimationEnd', function() { 
+        try{
+            console.log("bullet removed");
+            bullet.remove();
+            isReadyToFire = true;
+            clearInterval(checkCol);
+        } catch (error){
+
+        }
+    });
+
     /* Check if we hit enemy */
     if(isHit(bullet, enemy)){
         let health = $(".stormtrooper#" + enemy.attr("id") + " .health .num").text(); 
