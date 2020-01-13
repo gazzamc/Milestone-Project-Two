@@ -13,9 +13,8 @@
 </head>
 
 <body>
-	<div class="bulletCount">30</div>
     <div class="timer">
-        <h2>0:10</h2>
+        <h2>3:00</h2>
     </div>
 	<div class="chewie">
 		<div class="chead">
@@ -64,40 +63,44 @@
 		<div class="cbody carms cleftArm">
 		</div>
 	</div>
-	<div class="stormtrooper moveEnemy"  id="1">
-        <div class="health">
-            <span class="num">100</span>
+<!--     https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template -->
+    <template id="trooperTemp">
+        <div class="stormtrooper moveEnemy">
+            <div class="health">
+                <span class="num">100</span>
+            </div>
+            <div class="head">
+                <div class="brow"></div>
+                <div class="visor">
+                    <div class="visDiv"></div>
+                </div>
+                <div class="mouth">
+                    <div class="mouthLeft"></div>
+                    <div class="mouthRight"></div>
+                    <div class="mouthCenter"></div>
+                    <div class="mouthVent ventLeft"></div>
+                    <div class="mouthVent ventRight"></div>
+                </div>
+            </div>
+            <div class="body">
+                <div class="blaster">
+                    <div class="blasterCol blasterScope"></div>
+                    <div class="blasterCol blasterBarrel"></div>
+                    <div class="blasterCol blasterStock"></div>
+                    <div class="blasterCol blasterStockButt"></div>
+                    <div class="blasterCol blasterBody"></div>
+                    <div class="blasterCol blasterMag"></div>
+                </div>
+            </div>
+            <div id="arms">
+                <div class="arms leftArm">
+                </div>
+                <div class="arms rightArm">
+                </div>
+            </div>
         </div>
-		<div class="head">
-			<div class="brow"></div>
-			<div class="visor">
-				<div class="visDiv"></div>
-			</div>
-			<div class="mouth">
-				<div class="mouthLeft"></div>
-				<div class="mouthRight"></div>
-				<div class="mouthCenter"></div>
-				<div class="mouthVent ventLeft"></div>
-				<div class="mouthVent ventRight"></div>
-			</div>
-		</div>
-		<div class="body">
-			<div class="blaster">
-				<div class="blasterCol blasterScope"></div>
-				<div class="blasterCol blasterBarrel"></div>
-				<div class="blasterCol blasterStock"></div>
-				<div class="blasterCol blasterStockButt"></div>
-				<div class="blasterCol blasterBody"></div>
-				<div class="blasterCol blasterMag"></div>
-			</div>
-		</div>
-		<div id="arms">
-			<div class="arms leftArm">
-			</div>
-			<div class="arms rightArm">
-			</div>
-		</div>
-	</div>
+    </template>
+    <div class="bulletCount">30</div>
 	<script src="assets/js/script.js"></script>
 </body>
 

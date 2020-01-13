@@ -2,8 +2,31 @@
 var bullets = 30;
 var isReadyToFire = true;
 var time = setInterval(timer, 1000);
+var enemies = 0;
+var spawnRate = 3;
 
 /* Functions */
+
+function spawnEnemies(){
+    let stormtrooper = $("template#trooperTemp #document-fragment");
+    let curTime = $(".timer h2").text();
+
+    /* https://stackoverflow.com/questions/15930706/html-template-tag-and-jquery */
+    /* Grabbing template of trooper fropm document fragment and cloning/copying 
+        it to a seperate variable in order to put it into the DOM */
+    let template = $("#trooperTemp").html();
+    let clone = template;
+
+    $("body").append(clone);
+
+    /* Giving trooper a unique ID based on enemies spawned count */
+    $(".stormtrooper").each(function(){
+        if($(this).attr("id") == null){
+            $(this).attr("id", enemies+1);
+            enemies++;
+        }
+    });
+}
 
 function timer(){
     let curTime = $(".timer h2").text();
@@ -12,25 +35,33 @@ function timer(){
     let seconds = splitTime[1];
     
     if(seconds == 00){
+
         seconds = 59;
+        spawnEnemies();
+
         if(mins > 0){
             mins--;
-        };
+        }
+        
     } else{
         seconds--;
+
         if(seconds < 10){
-            seconds = "0" + seconds;
-        };
-    };
+
+            seconds = "0" + seconds
+        } else if(seconds % spawnRate == 0){
+
+            spawnEnemies();
+        }
+    }
 
     if(mins == 0 && seconds == 0){
-        $(".timer h2").text("Game Over!");
-        clearInterval(time);
-
+        
+        gameOver();
     } else {
         $(".timer h2").text(mins + ":" + seconds);
-    };
-};
+    }
+}
 
 /* https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection */
 function isHit(target, target2){
