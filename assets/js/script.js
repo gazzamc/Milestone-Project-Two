@@ -8,6 +8,21 @@ var spawnRate = 3;
 
 /* Functions */
 
+function reload(){
+    $(".cleftArm").addClass("reloadAnimation");
+
+/*     https://stackoverflow.com/questions/49580666/check-if-an-css-animation-is-completed-with-jquery-or-js */
+    $('.cleftArm').on('animationend webkitAnimationEnd', function() { 
+        for(var i = 0; i <= 30; i++){
+            $(".bullet#"+i).remove();
+        }
+
+        bullets = 30;
+        $(".bulletCount").text(bullets);
+        $(".cleftArm").removeClass("reloadAnimation");
+    });
+}
+
 function currEnemies(){
     let enemiesAlive = 0;
     $(".stormtrooper").each(function(){
@@ -215,9 +230,8 @@ $(document).keypress(function(event){
         }
         else if(event.which == 114){
             if(bullets < 30){
-                bullets = 30;
-                $(".bulletCount").text(bullets);
-                $(".bullet").remove();
+                isReadyToFire = false;
+                reload(); 
             }
         }
         else if(event.which == 99){
