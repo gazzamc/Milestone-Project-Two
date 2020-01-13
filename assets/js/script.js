@@ -12,7 +12,7 @@ function spawnEnemies(){
     let curTime = $(".timer h2").text();
 
     /* https://stackoverflow.com/questions/15930706/html-template-tag-and-jquery */
-    /* Grabbing template of trooper fropm document fragment and cloning/copying 
+    /* Grabbing template of trooper from document fragment and cloning/copying 
         it to a seperate variable in order to put it into the DOM */
     let template = $("#trooperTemp").html();
     let clone = template;
