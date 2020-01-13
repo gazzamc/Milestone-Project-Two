@@ -2,10 +2,36 @@
 var bullets = 30;
 var isReadyToFire = true;
 var time = setInterval(timer, 1000);
+var checkFriendlyFire = setInterval(friendlyFire, 100);
 var enemies = 0;
 var spawnRate = 3;
 
 /* Functions */
+
+function friendlyFire(){
+    let friendly = $(".chewie");
+
+    $(".stormtrooper").each(function(){
+        if(isHit($(this), friendly)){
+            $(this).remove();
+            damage(10, friendly);
+        }
+    });
+}
+
+function damage(damageAmount, target){
+    let currHealth = $(target).find(".health span.num").text();
+    let currWidth = parseInt($(target).find(".health").css("width"));
+
+    /* https://stackoverflow.com/questions/25740616/unrecognized-expression-object-object-when-using */
+    $(target).find(".health").css("width", (currWidth - damageAmount) + "px");
+    $(target).find(".health span.num").text(currHealth - damageAmount);
+
+    if((currHealth - damageAmount) <= 0 && target.find(".chewie")){
+        target.remove();
+        gameOver();
+    }
+}
 
 function gameOver(){
     $(".timer h2").text("Game Over!");
