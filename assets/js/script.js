@@ -59,7 +59,10 @@ function timer(){
         if(seconds < 10){
 
             seconds = "0" + seconds
-        } else if(seconds % spawnRate == 0){
+        }
+        
+        /* Spawn enemies based on spawn rate */
+        if(seconds % spawnRate == 0){
 
             spawnEnemies();
         }
