@@ -7,6 +7,16 @@ var spawnRate = 3;
 
 /* Functions */
 
+function gameOver(){
+    $(".timer h2").text("Game Over!");
+
+    $(".stormtrooper").each(function(){
+            $(this).remove();
+    })
+
+    clearInterval(time);
+}
+
 function spawnEnemies(){
     let stormtrooper = $("template#trooperTemp #document-fragment");
     let curTime = $(".timer h2").text();
