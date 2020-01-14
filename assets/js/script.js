@@ -5,8 +5,30 @@ var time = setInterval(timer, 1000);
 var checkFriendlyFire = setInterval(friendlyFire, 500);
 var enemies = 0;
 var spawnRate = 3;
+var score = 0;
+var combo = 0;
 
 /* Functions */
+
+function updateScore(behaviour = "update"){
+
+    if(behaviour == "clear"){
+   
+        /* Remove Combo and add to score */
+        score += combo;
+        combo = 0;
+        $(".combo").text("Combo: x" + combo);
+        $(".score").text("Score: " + score);
+    } else{
+
+        /* Increase combo first */
+        combo += 1;
+        $(".combo").text("Combo: x" + combo);
+
+        /* Update Score */
+        $(".score").text("Score: " + score);
+    }
+}
 
 function reload(){
     $(".cleftArm").addClass("reloadAnimation");
@@ -39,6 +61,8 @@ function friendlyFire(){
     $(".stormtrooper").each(function(){
         if(isHit($(this), friendly)){
             $(this).remove();
+
+            updateScore("clear");
             damage(10, friendly);
         }
     });
@@ -57,6 +81,8 @@ function damage(damageAmount, target){
 
         if(findEnemyType(target) == "chewie"){
             gameOver();
+        } else{
+            score += 50;
         }
     }
 };
@@ -67,6 +93,8 @@ function gameOver(){
     $(".stormtrooper").each(function(){
             $(this).remove();
     })
+
+    updateScore("clear");
 
     clearInterval(time);
 }
@@ -190,10 +218,15 @@ function findCol(bullet, enemy){
         /* Check for headshot */
         if(isHit(bullet, $("." + enemyType + "#" + enemy.attr("id") + " .head"))){
             damage(50, enemy);
+            score += 20;
 
         }else{
             damage(10, enemy); 
+            score += 10;
         }
+
+        /* Update score total */
+        updateScore();
 
         $(".bullet").remove();
         isReadyToFire = true;
