@@ -2,7 +2,7 @@
 var bullets = 30;
 var isReadyToFire = true;
 var time = setInterval(timer, 1000);
-var checkFriendlyFire = setInterval(friendlyFire, 100);
+var checkFriendlyFire = setInterval(friendlyFire, 500);
 var enemies = 0;
 var spawnRate = 3;
 
@@ -231,7 +231,7 @@ $(document).keypress(function(event){
 
                     /* Check for collision */
                     $(".stormtrooper").each(function(){
-                        var checkCol = setInterval(findCol, 10, $("#" + (bullets+1)), $(this));
+                        var checkCol = setInterval(findCol, 100, $("#" + (bullets+1)), $(this));
                     });
                 }
             }

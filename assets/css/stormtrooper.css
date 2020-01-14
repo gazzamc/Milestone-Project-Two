@@ -8,8 +8,8 @@
 .health{
     position: absolute;
     top:-20px;
-    right: 30%;
-    width: 50%;
+    right: 25%;
+    width: 60%;
     height: 5px;
     background-color: red;
     transform: scale(-1, 1);
