@@ -2,11 +2,12 @@
 var bullets = 30;
 var isReadyToFire = true;
 var time = setInterval(timer, 1000);
-var checkFriendlyFire = setInterval(friendlyFire, 500);
+var checkFriendlyFire = setInterval(friendlyFire, 100);
 var enemies = 0;
-var spawnRate = 3;
+var spawnRate = 5;
 var score = 0;
 var combo = 0;
+var checkCol = [];
 
 /* Functions */
 
@@ -53,6 +54,28 @@ function currEnemies(){
         });
 
     return enemiesAlive;
+}
+
+function findBlasterLoc(){
+    let blaster = $(".cblasterBarrel").offset();
+    
+    return [blaster.top, blaster.left]
+}
+
+function getBulletTrajectory(source){
+
+    let getAngle = source.attr("style");
+    let getDig = 0;
+
+    try{
+    /* https://stackoverflow.com/questions/650022/how-do-i-split-a-string-with-multiple-separators-in-javascript */
+        getDig = getAngle.split("(").join(",").split(")").join(",").split(",");
+        /* console.log(parseFloat(getDig[1])); */
+    }catch(error){
+        console.log("No angle found");
+    }
+
+    return getDig[1];
 }
 
 function friendlyFire(){
@@ -190,9 +213,7 @@ function findCol(bullet, enemy){
     if(bulletPos.left > innerWidth || bulletPos.top > innerHeight){
         try{
             console.log("Out of bounds");
-            bullet.remove();
-            isReadyToFire = true;
-            clearInterval(checkCol);
+            clearBulletArray();
         } catch (error){
 
         }
@@ -200,7 +221,7 @@ function findCol(bullet, enemy){
 
     /* This removes the bullet if it finishes the animation 
         before hitting an enemy or going out of view */
-    $(bullet).on('animationend webkitAnimationEnd', function() { 
+/*     $(bullet).on('animationend webkitAnimationEnd', function() { 
         try{
             console.log("bullet removed");
             bullet.remove();
@@ -210,7 +231,7 @@ function findCol(bullet, enemy){
 
         }
     });
-
+ */
     /* Check if we hit enemy */
     if(isHit(bullet, enemy)){
         let enemyType = findEnemyType(enemy);
@@ -225,13 +246,21 @@ function findCol(bullet, enemy){
             score += 10;
         }
 
-        /* Update score total */
+        /* Update score total and remove bullet/stop collision check */
+        clearBulletArray();
         updateScore();
-
-        $(".bullet").remove();
-        isReadyToFire = true;
     }
 };
+
+function clearBulletArray(){
+    isReadyToFire = true;
+    /* Clear bullet array */
+    checkCol.forEach(function(item){
+        clearInterval(item);
+        checkCol.splice(checkCol.indexOf(item));
+    });
+    $(".bullet").remove();
+}
 
 /* Key Presses */
 $(document).keypress(function(event){
@@ -257,8 +286,52 @@ $(document).keypress(function(event){
             if(isReadyToFire && (currEnemies() > 0)){
                 if(bullets > 0){
                     isReadyToFire = false;
-                    $("div.cblasterBarrel").append('<div class="bullet" id="' + bullets + '"></div>');
-                    $(".bullet").addClass("moveBullet");
+
+                    /* Find blaster */
+                    let top = findBlasterLoc()[0];
+                    let left = findBlasterLoc()[1];
+
+                    let b = getBulletTrajectory($(".crightArm"));
+
+                    $(".angle").text(b);
+
+                    /* console.log(parseFloat(b)); */
+
+                    /* Fix location of spawned bullet depending on arm angle */
+                    if(parseFloat(b) <= -30 && parseFloat(b) >= -35){
+                        /* console.log("-30"); */
+                        $("body").append('<div class="bullet" id="' + bullets + '" style="top:'+ (top - 36) +'px; left:'+ left +'px;"></div>');
+                    }
+                    else if(parseFloat(b) <= -25 && parseFloat(b) >= -29){
+                        /* console.log("-20"); */
+                        $("body").append('<div class="bullet" id="' + bullets + '" style="top:'+ (top - 50) +'px; left:'+ left +'px;"></div>');
+                    }
+                    else if(parseFloat(b) <= -10 && parseFloat(b) >= -20){
+                        /* console.log("-20"); */
+                        $("body").append('<div class="bullet" id="' + bullets + '" style="top:'+ (top - 50) +'px; left:'+ left +'px;"></div>');
+                    }
+                    else if(parseFloat(b) < -6 && parseFloat(b) >= -9){
+                        /* console.log("-10"); */
+                        $("body").append('<div class="bullet" id="' + bullets + '" style="top:'+ (top - 63) +'px; left:'+ left +'px;"></div>');
+                    }
+                    else{
+                        /* console.log("-10"); */
+                        $("body").append('<div class="bullet" id="' + bullets + '" style="top:'+ (top - 68) +'px; left:'+ left +'px;"></div>');
+                    }
+                    /* $("div.cblasterBarrel").append('<div class="bullet" id="' + bullets + '"></div>'); */
+                    $(".bullet").css("transform", "rotate("+ b +")");
+                    /* $(".bullet").addClass("moveBullet"); */
+
+                    $(".bullet").animate({left: '120vw', top: '-='+ (Math.abs(parseFloat(b)) * 3) +'vh'}, 3000, "linear", function() {
+                        if(isReadyToFire)
+                        {
+                            clearBulletArray(); 
+                            /* console.log("cleared"); */
+                        } else {
+
+                            /* console.log("Not running"); */
+                        }
+                    });
 
                     /* Deplete ammo count */
                     bullets -= 1;
@@ -266,7 +339,7 @@ $(document).keypress(function(event){
 
                     /* Check for collision */
                     $(".stormtrooper").each(function(){
-                        var checkCol = setInterval(findCol, 100, $("#" + (bullets+1)), $(this));
+                        checkCol.push(setInterval(findCol, 10, $("#" + (bullets+1)), $(this)));
                     });
                 }
             }

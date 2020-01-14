@@ -65,13 +65,13 @@ body{
 
 .moveBullet {
     animation-name: moveBullet;
-    animation-duration: 3s;
+    animation-duration: 10s;
     animation-timing-function: ease;
 }
 
 @keyframes moveBullet {
     from{
-        left: 0;
+
     }
     to {
         left: 120vw;
