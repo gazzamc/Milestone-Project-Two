@@ -20,6 +20,7 @@ function reload(){
         bullets = 30;
         $(".bulletCount").text(bullets);
         $(".cleftArm").removeClass("reloadAnimation");
+        isReadyToFire = true;
     });
 }
 
@@ -41,7 +42,7 @@ function friendlyFire(){
             damage(10, friendly);
         }
     });
-}
+};
 
 function damage(damageAmount, target){
     let currHealth = $(target).find(".health span.num").text();
@@ -51,11 +52,14 @@ function damage(damageAmount, target){
     $(target).find(".health").css("width", (currWidth - damageAmount) + "px");
     $(target).find(".health span.num").text(currHealth - damageAmount);
 
-    if((currHealth - damageAmount) <= 0 && target.find(".chewie")){
+    if((currHealth - damageAmount) <= 0){
         target.remove();
-        gameOver();
+
+        if(findEnemyType(target) == "chewie"){
+            gameOver();
+        }
     }
-}
+};
 
 function gameOver(){
     $(".timer h2").text("Game Over!");
@@ -149,6 +153,13 @@ function isHit(target, target2){
     }
 };
 
+function findEnemyType(enemy){
+    let getClasses = enemy.attr("class");
+    let splitClasses = getClasses.split(" ");
+
+    return splitClasses[0];
+};
+
 function findCol(bullet, enemy){
     let bulletPos = bullet.offset();
 
@@ -165,7 +176,7 @@ function findCol(bullet, enemy){
     };
 
     /* This removes the bullet if it finishes the animation 
-        before hitting and enemy or going out of view */
+        before hitting an enemy or going out of view */
     $(bullet).on('animationend webkitAnimationEnd', function() { 
         try{
             console.log("bullet removed");
@@ -179,25 +190,14 @@ function findCol(bullet, enemy){
 
     /* Check if we hit enemy */
     if(isHit(bullet, enemy)){
-        let health = $(".stormtrooper#" + enemy.attr("id") + " .health .num").text(); 
+        let enemyType = findEnemyType(enemy);
 
         /* Check for headshot */
-        if(isHit(bullet, $(".stormtrooper#" + enemy.attr("id") + " .head"))){
-            $(".stormtrooper#" + enemy.attr("id") + " .health .num").text(health - 50);
-            $(".stormtrooper#" + enemy.attr("id") + " .health").css("width", (health / 4) + "%");
-            health -= 50;
+        if(isHit(bullet, $("." + enemyType + "#" + enemy.attr("id") + " .head"))){
+            damage(50, enemy);
 
-            console.log("head");
         }else{
-
-            $(".stormtrooper#" + enemy.attr("id") + " .health .num").text(health - 10);
-            $(".stormtrooper#" + enemy.attr("id") + " .health").css("width", (health / 2) + "%");
-            health -= 10;
-        }
-
-        /* Remove stormtrooper when health depleted */
-        if(health <= 0){
-            $(enemy).remove();
+            damage(10, enemy); 
         }
 
         $(".bullet").remove();
