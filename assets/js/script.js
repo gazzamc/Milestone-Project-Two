@@ -237,16 +237,18 @@ function findCol(bullet, enemy){
 $(document).keypress(function(event){
         /* Move left or right with A/D keys  */
         if(event.which == 100){
-            var curPos = $("div.chewie").css("left");
-            var newPos = parseInt(curPos) + 5;
+            let curPos = $("div.chewie").css("left");
+            let newPos = parseInt(curPos) + 5;
             $("div.chewie").css("left", newPos);
-
         }
         else if(event.which == 97){
-            var curPos = $("div.chewie").css("left");
-            var newPos = parseInt(curPos) - 5;
-            $("div.chewie").css("left", newPos);
+            let curPos = $("div.chewie").css("left");
+            let newPos = parseInt(curPos) - 5;
 
+            /* Prevent player from leaving screen view */
+            if(parseInt(curPos) > 0){
+                $("div.chewie").css("left", newPos);
+            }
         }
 
         /* Fire, Reload and Crouch with space, R and C keys */
