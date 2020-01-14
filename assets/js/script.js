@@ -133,15 +133,10 @@ function timer(){
 /* https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection */
 function isHit(target, target2){
     let targetPos = target.offset();
-    let target2Top;
-    let target2Bottom;
-    let target2Left;
-    let target2Right;
-
-    target2Top = $(target2).offset().top;
-    target2Bottom = $(target2).offset().top + $(target2).outerHeight();
-    target2Left = $(target2).offset().left;
-    target2Right = $(target2).offset().left + $(target2).outerWidth();
+    let target2Top = $(target2).offset().top;
+    let target2Bottom = $(target2).offset().top + $(target2).outerHeight();
+    let target2Left = $(target2).offset().left;
+    let target2Right = $(target2).offset().left + $(target2).outerWidth();
 
     if(targetPos.left > target2Left && 
     targetPos.top > target2Top &&
