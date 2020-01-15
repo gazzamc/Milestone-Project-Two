@@ -72,7 +72,6 @@ function getBulletTrajectory(source){
         getDig = getAngle.split("(").join(",").split(")").join(",").split(",");
         /* console.log(parseFloat(getDig[1])); */
     }catch(error){
-        console.log("No angle found");
     }
 
     return getDig[1];
@@ -219,19 +218,6 @@ function findCol(bullet, enemy){
         }
     };
 
-    /* This removes the bullet if it finishes the animation 
-        before hitting an enemy or going out of view */
-/*     $(bullet).on('animationend webkitAnimationEnd', function() { 
-        try{
-            console.log("bullet removed");
-            bullet.remove();
-            isReadyToFire = true;
-            clearInterval(checkCol);
-        } catch (error){
-
-        }
-    });
- */
     /* Check if we hit enemy */
     if(isHit(bullet, enemy)){
         let enemyType = findEnemyType(enemy);
@@ -293,45 +279,31 @@ $(document).keypress(function(event){
 
                     let b = getBulletTrajectory($(".crightArm"));
 
-                    $(".angle").text(b);
-
-                    /* console.log(parseFloat(b)); */
-
                     /* Fix location of spawned bullet depending on arm angle */
                     if(parseFloat(b) <= -30 && parseFloat(b) >= -35){
-                        /* console.log("-30"); */
                         $("body").append('<div class="bullet" id="' + bullets + '" style="top:'+ (top - 36) +'px; left:'+ left +'px;"></div>');
                     }
                     else if(parseFloat(b) <= -25 && parseFloat(b) >= -29){
-                        /* console.log("-20"); */
                         $("body").append('<div class="bullet" id="' + bullets + '" style="top:'+ (top - 50) +'px; left:'+ left +'px;"></div>');
                     }
                     else if(parseFloat(b) <= -10 && parseFloat(b) >= -20){
-                        /* console.log("-20"); */
                         $("body").append('<div class="bullet" id="' + bullets + '" style="top:'+ (top - 50) +'px; left:'+ left +'px;"></div>');
                     }
                     else if(parseFloat(b) < -6 && parseFloat(b) >= -9){
-                        /* console.log("-10"); */
                         $("body").append('<div class="bullet" id="' + bullets + '" style="top:'+ (top - 63) +'px; left:'+ left +'px;"></div>');
                     }
                     else{
-                        /* console.log("-10"); */
                         $("body").append('<div class="bullet" id="' + bullets + '" style="top:'+ (top - 68) +'px; left:'+ left +'px;"></div>');
-                    }
-                    /* $("div.cblasterBarrel").append('<div class="bullet" id="' + bullets + '"></div>'); */
-                    $(".bullet").css("transform", "rotate("+ b +")");
-                    /* $(".bullet").addClass("moveBullet"); */
+                    };
 
-                    $(".bullet").animate({left: '120vw', top: '-='+ (Math.abs(parseFloat(b)) * 3) +'vh'}, 3000, "linear", function() {
+                    $(".bullet").css("transform", "rotate("+ b +")");
+
+                    $(".bullet").animate({left: '120vw', top: '-='+ (Math.abs(parseFloat(b)) * 3) +'vh'}, 2000, "linear", function() {
                         if(isReadyToFire)
                         {
                             clearBulletArray(); 
-                            /* console.log("cleared"); */
-                        } else {
+                    }});
 
-                            /* console.log("Not running"); */
-                        }
-                    });
                     /* Deplete ammo count */
                     bullets -= 1;
                     $(".bulletCount").text(bullets);
@@ -339,7 +311,7 @@ $(document).keypress(function(event){
                     /* Check for collision */
                     $(".stormtrooper").each(function(){
                         console.log($("#" + (bullets+1)));
-                        checkCol.push(setInterval(findCol, 1, $("#" + (bullets+1) + ".bullet"), $(this)));
+                        checkCol.push(setInterval(findCol, 100, $("#" + (bullets+1) + ".bullet"), $(this)));
                     });
                 }
             }

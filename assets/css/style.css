@@ -52,32 +52,6 @@ body{
     }
 }
 
-/* Bullet Class and animation */
-
-.bullet {
-    position: relative;
-    border-radius: 25%;
-    height: 4px;
-    width: 15px;
-    background-color: red;
-    z-index: -1;
-}
-
-.moveBullet {
-    animation-name: moveBullet;
-    animation-duration: 10s;
-    animation-timing-function: ease;
-}
-
-@keyframes moveBullet {
-    from{
-
-    }
-    to {
-        left: 120vw;
-    }
-}
-
 /* Timer */
 
 .timer{
