@@ -12,7 +12,7 @@ body{
 
 .crouch {
     animation-name: crouch;
-    animation-duration: 1s;
+    animation-duration: 2s;
 }
 
 @keyframes crouch {
@@ -20,7 +20,21 @@ body{
         bottom: 20vh; 
     }
     to {
-        bottom: 5vh;
+        bottom: 0vh;
+    }
+}
+
+.jump {
+    animation-name: jump;
+    animation-duration: 2s;
+}
+
+@keyframes jump {
+    from{
+        bottom: 20vh; 
+    }
+    to {
+        bottom: 40vh;
     }
 }
 
@@ -58,4 +72,24 @@ body{
     position: absolute;
     text-align: center;
     left: 48vw;
+}
+
+/* Bullet Classes */
+
+.bullet {
+    position: relative;
+    border-radius: 25%;
+    height: 4px;
+    width: 15px;
+    background-color: red;
+    z-index: -1;
+}
+
+.enBullet {
+    position: relative;
+    border-radius: 25%;
+    height: 4px;
+    width: 15px;
+    background-color: green;
+    z-index: -1;
 }
