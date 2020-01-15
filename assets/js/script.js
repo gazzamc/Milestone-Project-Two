@@ -215,7 +215,7 @@ function findCol(bullet, enemy){
             console.log("Out of bounds");
             clearBulletArray();
         } catch (error){
-
+            console.log(error);
         }
     };
 
@@ -332,14 +332,14 @@ $(document).keypress(function(event){
                             /* console.log("Not running"); */
                         }
                     });
-
                     /* Deplete ammo count */
                     bullets -= 1;
                     $(".bulletCount").text(bullets);
 
                     /* Check for collision */
                     $(".stormtrooper").each(function(){
-                        checkCol.push(setInterval(findCol, 10, $("#" + (bullets+1)), $(this)));
+                        console.log($("#" + (bullets+1)));
+                        checkCol.push(setInterval(findCol, 1, $("#" + (bullets+1) + ".bullet"), $(this)));
                     });
                 }
             }
