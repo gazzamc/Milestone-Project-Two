@@ -50,6 +50,7 @@ function pauseGame() {
         });
 
         $("html").css("cursor", "pointer");
+        $(".hidden").css("display", "block");
 
     }else{
         time = setInterval(timer, 1000);

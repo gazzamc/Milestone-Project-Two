@@ -8,6 +8,12 @@ body{
     padding:0;
 }
 
+/* Hide pause menu contents */
+
+.hidden{
+    display: none;
+}
+
 /* Animated Movements for Player/AI */
 
 .crouch {
