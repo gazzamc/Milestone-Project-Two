@@ -275,7 +275,6 @@ function timer() {
     if (seconds == 00) {
 
         seconds = 59;
-        spawnEnemies();
 
         if (mins > 0) {
             mins--;
@@ -288,12 +287,12 @@ function timer() {
 
             seconds = "0" + seconds
         }
+    }
 
-        /* Spawn enemies based on spawn rate */
-        if (seconds % spawnRate == 0) {
+    /* Spawn enemies based on spawn rate */
+    if (seconds % spawnRate == 0) {
 
-            spawnEnemies();
-        }
+        spawnEnemies();
     }
 
     if (mins == 0 && seconds == 0) {
