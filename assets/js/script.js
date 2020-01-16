@@ -120,17 +120,13 @@ function currEnemies() {
 
 function findBlasterLoc(char) {
     let blaster;
-
-    try{
+    
         if(findEnemyType(char) == "chewie"){
             blaster = $(".cblasterBarrel").offset();
         }
         else if(findEnemyType(char) == "stormtrooper"){
             blaster = $("." + findEnemyType(char) + "#" + char.attr("id") +" .body .blaster").offset();
         }
-    } catch (error){
-        console.log(error);
-    }
 
     return [blaster.top, blaster.left]
 }
@@ -143,9 +139,9 @@ function setBulletTrajectory(source, char) {
     try {
         /* https://stackoverflow.com/questions/650022/how-do-i-split-a-string-with-multiple-separators-in-javascript */
         getDig = getAngle.split("(").join(",").split(")").join(",").split(",");
-        /* console.log(parseFloat(getDig[1])); */
+
     } catch (error) {
-        /* console.log(error); */
+
     }
 
     let degree = getDig[1];
@@ -277,16 +273,21 @@ function damage(damageAmount, target) {
 function gameOver() {
     $(".timer h2").text("Game Over!");
 
-    $(".stormtrooper").each(function () {
-        $(this).remove();
+    /* clear enemy intervals */
+    clearBulletArray("enemy");
 
-        /* clear enemy arrays */
-        clearBulletArray("enemy", $(this).attr("id"));
-    })
+    /* Delete all troopers */
+    $(".stormtrooper").each(function(){
+        $(this).remove();
+    });
 
     updateScore("clear");
 
+    /* Stop time interval */
     clearInterval(time);
+
+    /* Stop friendly fire interval */
+    clearInterval(checkFriendlyFire);
 }
 
 function spawnEnemies() {
@@ -370,9 +371,6 @@ function timer() {
 /* https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection */
 function isHit(target, target2) {
 
-    /* Catch errors when player dies */
-    try{
-
     let targetPos = target.offset();
     let target2Top = $(target2).offset().top;
     let target2Bottom = $(target2).offset().top + $(target2).outerHeight();
@@ -386,9 +384,6 @@ function isHit(target, target2) {
         return true;
     } else {
         return false;
-    }
-
-    } catch(error){
     }
 };
 
@@ -416,12 +411,7 @@ function findCol(bullet, enemy) {
 
     let isOut = outOfBounds(bulletPos);
     if(isOut){
-        try {
-            console.log("Out of bounds");
-            clearBulletArray();
-        } catch (error) {
-            console.log(error);
-        }
+        clearBulletArray();
     };
 
     /* Check if we hit enemy */
@@ -447,19 +437,26 @@ function findCol(bullet, enemy) {
 function clearBulletArray(type, enemyId) {
 
     if(type == "enemy"){
-        /* Clear bullet array */
-        enemyFireArr.forEach(function (item) {
-            if((parseInt(enemyId) - 1) == enemyFireArr.indexOf(item)){
+        if(enemyId == null){
+                /* Clear all trooper intervals */
+                enemyFireArr.forEach(function(interval){
+                    clearInterval(interval);
+                });
+        }else{
 
-                /* https://stackoverflow.com/questions/32891807/jquery-wildcard-selector-starts-w-string-and-ends-w-variable */
-                $(["id^=enemy" + parseInt(enemyId) + "bullet"]).remove();
+            /* Clear individual trooper interval */
+            enemyFireArr.forEach(function (item) {
+                if((parseInt(enemyId) - 1) == enemyFireArr.indexOf(item)){
 
-                clearInterval(item);
-                /* replace interval id with cleared to maintain array size */
-                enemyFireArr[enemyFireArr.indexOf(item)] = "cleared";
-                
-            }
-        });
+                    /* https://stackoverflow.com/questions/32891807/jquery-wildcard-selector-starts-w-string-and-ends-w-variable */
+                    $(["id^=enemy" + parseInt(enemyId) + "bullet"]).remove();
+
+                    clearInterval(item);
+                    /* replace interval id with cleared to maintain array size */
+                    enemyFireArr[enemyFireArr.indexOf(item)] = "cleared";                
+                }
+            });
+        }
 
     }else{
         isReadyToFire = true;
