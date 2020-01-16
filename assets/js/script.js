@@ -66,7 +66,7 @@ function pauseGame() {
             enemyFireArr[troopId] = setInterval(enemyFire, 4000, $(this));
         });
 
-        /* Display pause menu */
+        /* hide pause menu */
         $("#pauseMenu").dialog("close");
         $("html").css("cursor", "none");
     }
