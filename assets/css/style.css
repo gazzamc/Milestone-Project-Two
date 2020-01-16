@@ -83,7 +83,7 @@ body{
 /* Bullet Classes */
 
 .bullet {
-    position: relative;
+    position: absolute;
     border-radius: 25%;
     height: 4px;
     width: 15px;
@@ -92,7 +92,7 @@ body{
 }
 
 .enBullet {
-    position: relative;
+    position: absolute;
     border-radius: 25%;
     height: 4px;
     width: 15px;

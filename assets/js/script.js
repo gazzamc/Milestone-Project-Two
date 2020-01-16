@@ -4,7 +4,7 @@ var isReadyToFire = true;
 var time = setInterval(timer, 1000);
 var checkFriendlyFire = setInterval(friendlyFire, 1);
 var enemies = 0;
-var spawnRate = 8;
+var spawnRate = 10;
 var score = 0;
 var combo = 0;
 var checkCol = [];
@@ -17,6 +17,24 @@ var keyHandlerActive = true;
 $(document).ready(function(){
     spawnEnemies();
 });
+
+function changeCharacter(char){
+    let clone;
+
+    /* Remove character */
+    if($("."+ char).length != 0){
+        $(".chewie").remove();
+
+    };
+
+    if(char == "chewie"){
+        let template = $("#chewieTemp").html();
+        clone = template;
+    }
+
+    $(".timer").after(clone);
+    $("head").append('<link rel="stylesheet" href="assets/css/'+ char + '.css">');
+}
 
 function changeBackground(map){
     let clone;
@@ -50,9 +68,9 @@ function pauseGame() {
         keyHandlerActive = false;
 
         /* Stop enemies shooting by clearing all intervals */
-        enemyFireArr.forEach(function(interval){
+        /* enemyFireArr.forEach(function(interval){
             clearInterval(interval);
-        });
+        }); */
 
 
         /* Display pause menu */
@@ -63,6 +81,10 @@ function pauseGame() {
 
         $("#mapChange").click(function(){
             changeBackground("tatooine");
+        });
+
+        $("#charChange").click(function(){
+            changeCharacter("chewie");
         });
 
         $("html").css("cursor", "pointer");
@@ -195,31 +217,34 @@ function setBulletTrajectory(source, char) {
         });
     } else if(findEnemyType(char) == "stormtrooper"){
 
+        if(char.attr('id') ==  1){
+            console.log(degree, (parseFloat(degree) * 6));
+        }
+
         /* Fix location of spawned bullet depending on arm angle */
-        if (parseFloat(degree) <= -30 && parseFloat(degree) >= -35) {
+        if (parseFloat(degree) <= -20 && parseFloat(degree) >= -25) {
             $("body").append('<div class="enBullet" id="enemy' + char.attr("id") + 'bullet' + left +'" style="top:' + (top - 36) + 'px; left:' + left + 'px;"></div>');
         }
-        else if (parseFloat(degree) <= -25 && parseFloat(degree) >= -29) {
+        else if (parseFloat(degree) <= -15 && parseFloat(degree) >= -19) {
             $("body").append('<div class="enBullet" id="enemy' + char.attr("id") + 'bullet' + left +'" style="top:' + (top - 50) + 'px; left:' + left + 'px;"></div>');
         }
-        else if (parseFloat(degree) <= -10 && parseFloat(degree) >= -25) {
+        else if (parseFloat(degree) <= -10 && parseFloat(degree) >= -15) {
             $("body").append('<div class="enBullet" id="enemy' + char.attr("id") + 'bullet' + left +'" style="top:' + (top - 50) + 'px; left:' + left + 'px;"></div>');
         }
         else if (parseFloat(degree) < -6 && parseFloat(degree) >= -9) {
             $("body").append('<div class="enBullet" id="enemy' + char.attr("id") + 'bullet' + left +'" style="top:' + (top - 63) + 'px; left:' + left + 'px;"></div>');
         }
         else {
-            $("body").append('<div class="enBullet" id="enemy' + char.attr("id") + 'bullet' + left +'" style="top:' + (top - 68) + 'px; left:' + left + 'px;"></div>');
+            $("body").append('<div class="enBullet" id="enemy' + char.attr("id") + 'bullet' + left +'" style="top:' + (top + 7) + 'px; left:' + left + 'px;"></div>');
         };
 
         if(parseFloat(degree) > 0){
-            $(".enBullet").css("transform", "rotate(-" + degree + ")");
-
-            $(".enBullet").animate({left: '-40vw', top: '+=' + (parseFloat(degree) * 6) + 'vh' }, 5000, "linear");
+            $(".enBullet").css("transform", "rotate(-"+ degree + "deg");
         } else{
-            $(".enBullet").css("transform", "rotate(" + (degree + 4) + ")");
-            $(".enBullet").animate({left: '-40vw', top: '+=' + (parseFloat(degree) * 6) + 'vh' }, 5000, "linear");
+            $(".enBullet").css("transform", "rotate(" + degree + "deg)");
         }
+
+        $(".enBullet").animate({left: '-40vw', top: '+=' + (parseFloat(degree) * 5.2) + 'vh' }, 3000, "linear");
 
     }
 }
@@ -331,17 +356,18 @@ function spawnEnemies() {
 function setEnemyAim(enemy) {
     let enemyId = enemy.attr("id");
 
-    /* Get random number between -20 and 20 */
+    /* Get random number between -25 and 25 */
     /* https://stackoverflow.com/questions/13455042/random-number-between-negative-and-positive-value?lq=1 */
-    let randomNum = Math.random() * 20;
+    let randomNum = Math.random() * 25;
     randomNum *= Math.floor(Math.random() * 2) == 1 ? 1 : -1;
     $("#" + enemyId + ".stormtrooper .blaster").css("transform", "rotate(" + randomNum + "deg)");
 
+    setBulletTrajectory($(".stormtrooper#1 .body .blaster"), enemy);
 }
 
 function enemyFire(enemy) {
     setEnemyAim(enemy);
-    setBulletTrajectory($(".stormtrooper#1 .body .blaster"), enemy);
+    /* setBulletTrajectory($(".stormtrooper#1 .body .blaster"), enemy); */
 }
 
 function timer() {
