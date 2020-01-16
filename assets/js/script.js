@@ -320,9 +320,7 @@ function setEnemyAim(enemy) {
     let randomNum = Math.random() * 20;
     randomNum *= Math.floor(Math.random() * 2) == 1 ? 1 : -1;
     $("#" + enemyId + ".stormtrooper .blaster").css("transform", "rotate(" + randomNum + "deg)");
-
-    /* $("#" + enemyId + ".stormtrooper .blaster").animate(
-        {transform: 'rotate(' + randomNum + 'deg)'}, 1000, "linear"); */
+    
 }
 
 function enemyFire(enemy) {
@@ -505,37 +503,6 @@ $(document).keypress(function (event) {
         if (isReadyToFire && (currEnemies() > 0)) {
             if (bullets > 0) {
                 isReadyToFire = false;
-
-                /* Find blaster */
-                /*                     let top = findBlasterLoc()[0];
-                                    let left = findBlasterLoc()[1];
-                
-                                    let b = getBulletTrajectory($(".crightArm")); */
-
-                /* Fix location of spawned bullet depending on arm angle */
-                /*                     if(parseFloat(b) <= -30 && parseFloat(b) >= -35){
-                                        $("body").append('<div class="bullet" id="' + bullets + '" style="top:'+ (top - 36) +'px; left:'+ left +'px;"></div>');
-                                    }
-                                    else if(parseFloat(b) <= -25 && parseFloat(b) >= -29){
-                                        $("body").append('<div class="bullet" id="' + bullets + '" style="top:'+ (top - 50) +'px; left:'+ left +'px;"></div>');
-                                    }
-                                    else if(parseFloat(b) <= -10 && parseFloat(b) >= -20){
-                                        $("body").append('<div class="bullet" id="' + bullets + '" style="top:'+ (top - 50) +'px; left:'+ left +'px;"></div>');
-                                    }
-                                    else if(parseFloat(b) < -6 && parseFloat(b) >= -9){
-                                        $("body").append('<div class="bullet" id="' + bullets + '" style="top:'+ (top - 63) +'px; left:'+ left +'px;"></div>');
-                                    }
-                                    else{
-                                        $("body").append('<div class="bullet" id="' + bullets + '" style="top:'+ (top - 68) +'px; left:'+ left +'px;"></div>');
-                                    };
-                
-                                    $(".bullet").css("transform", "rotate("+ b +")");
-                
-                                    $(".bullet").animate({left: '120vw', top: '-='+ (Math.abs(parseFloat(b)) * 3) +'vh'}, 2000, "linear", function() {
-                                        if(isReadyToFire)
-                                        {
-                                            clearBulletArray(); 
-                                    }}); */
 
                 setBulletTrajectory($(".crightArm"), $(".chewie"));
 
