@@ -18,6 +18,18 @@ $(document).ready(function(){
     spawnEnemies();
 });
 
+function changeBackground(map){
+    let clone;
+
+    if(map == "tatooine"){
+        let template = $("#tatooineTemp").html();
+        clone = template;
+    }
+
+    $(".timer").before(clone);
+    $("head").append('<link rel="stylesheet" href="assets/css/'+ map + '.css">');
+}
+
 function pauseGame() {
     gamePaused = !gamePaused;
     if (gamePaused){
@@ -47,6 +59,10 @@ function pauseGame() {
         $("#pauseMenu").dialog();
         $(document).on('click','.ui-dialog-titlebar-close',function(){
             pauseGame();
+        });
+
+        $("#mapChange").click(function(){
+            changeBackground("tatooine");
         });
 
         $("html").css("cursor", "pointer");
@@ -320,7 +336,7 @@ function setEnemyAim(enemy) {
     let randomNum = Math.random() * 20;
     randomNum *= Math.floor(Math.random() * 2) == 1 ? 1 : -1;
     $("#" + enemyId + ".stormtrooper .blaster").css("transform", "rotate(" + randomNum + "deg)");
-    
+
 }
 
 function enemyFire(enemy) {
@@ -486,10 +502,18 @@ $(document).keypress(function (event) {
         let curPos = $("div.chewie").css("left");
         let newPos = parseInt(curPos) + 5;
         $("div.chewie").css("left", newPos);
+
+        let curBgPos = $("div.horizon").css("left");
+        let newBgPos = parseInt(curBgPos) - 5;
+        $("div.horizon").css("left", newBgPos);
     }
     else if (event.which == 97) {
         let curPos = $("div.chewie").css("left");
         let newPos = parseInt(curPos) - 5;
+
+        let curBgPos = $("div.horizon").css("left");
+        let newBgPos = parseInt(curBgPos) + 5;
+         $("div.horizon").css("left", newBgPos);
 
         /* Prevent player from leaving screen view */
         if (parseInt(curPos) > 0) {

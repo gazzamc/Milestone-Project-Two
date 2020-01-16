@@ -68,7 +68,8 @@
 		<div class="cbody carms cleftArm">
 		</div>
 	</div>
-<!--     https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template -->
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template -->
+    <!-- Trooper Template -->
     <template id="trooperTemp">
         <div class="stormtrooper moveEnemy">
             <div class="health">
@@ -105,11 +106,49 @@
             </div>
         </div>
     </template>
+    <!-- Map templates -->
+    <template id="tatooineTemp">
+        <div class="background">
+        <div class="sky">
+            <div class="moons">
+            <div class="topMoon"></div>
+            <div class="bottomMoon"></div>
+            </div>
+        </div>
+        <div class="horizon">
+            <div class="building">
+            <div class="outerFrame">
+                <div class="doorFrame">
+                <div class="door"></div>
+                </div>
+                <div class="arch"></div>
+                <div class="archWall"></div>
+                <div class="stairs"></div>
+            </div>
+            </div>
+            <div class="building second">
+            <div class="outerFrame">
+                <div class="doorFrame">
+                <div class="door"></div>
+                </div>
+                <div class="arch"></div>
+                <div class="archWall"></div>
+                <div class="stairs"></div>
+            </div>
+            </div>
+            <div class="radio"></div>
+        </div>
+        <div class="foreground"></div>
+        </div>
+    </template>
     <div class="bulletCount">30</div>
     <div class="score">Score: 0</div>
     <div class="combo">Combo: x0</div>
     <div id="pauseMenu" title="Game Paused">
-        <p class="hidden">Sample Text</p>
+        <div class="hidden">
+            <p>Sample Text</p>
+            <button id="mapChange">Change Map</button>
+        </div>
     </div>
 	<script src="assets/js/script.js"></script>
 </body>
