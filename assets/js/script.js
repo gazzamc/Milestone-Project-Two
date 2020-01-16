@@ -4,13 +4,73 @@ var isReadyToFire = true;
 var time = setInterval(timer, 1000);
 var checkFriendlyFire = setInterval(friendlyFire, 1);
 var enemies = 0;
-var spawnRate = 10;
+var spawnRate = 8;
 var score = 0;
 var combo = 0;
 var checkCol = [];
 var enemyFireArr = [];
+var gamePaused = false;
+var keyHandlerActive = true;
 
 /* Functions */
+
+$(document).ready(function(){
+    spawnEnemies();
+});
+
+function pauseGame() {
+    gamePaused = !gamePaused;
+    if (gamePaused){
+        /* Stop timer */
+        clearInterval(time);  
+
+        /* Stop taking damage */
+        clearInterval(checkFriendlyFire);  
+
+        /* https://www.quackit.com/css/css3/properties/css_animation-play-state.cfm */
+        /* Stop Enemies moving */
+        $(".stormtrooper").each(function(){
+            $(this).css("animation-play-state", "paused");
+        });
+
+        /* https://stackoverflow.com/questions/36454853/start-stop-keypress-event-jquery */
+        /* Pause user inputs other than pause button */
+        keyHandlerActive = false;
+
+        /* Stop enemies shooting by clearing all intervals */
+        enemyFireArr.forEach(function(interval){
+            clearInterval(interval);
+        });
+
+
+        /* Display pause menu */
+        $("#pauseMenu").dialog();
+        $(document).on('click','.ui-dialog-titlebar-close',function(){
+            pauseGame();
+        });
+
+        $("html").css("cursor", "pointer");
+
+    }else{
+        time = setInterval(timer, 1000);
+        checkFriendlyFire = setInterval(friendlyFire, 1);
+
+        $(".stormtrooper").each(function(){
+            $(this).css("animation-play-state", "running");
+        });
+
+        keyHandlerActive = true;
+
+        $(".stormtrooper").each(function(){
+            let troopId = $(this).attr("id");
+            enemyFireArr[troopId] = setInterval(enemyFire, 4000, $(this));
+        });
+
+        /* Display pause menu */
+        $("#pauseMenu").dialog("close");
+        $("html").css("cursor", "none");
+    }
+}
 
 function updateScore(behaviour = "update") {
 
@@ -163,7 +223,6 @@ function friendlyFire() {
             clearInterval(getArr);
 
             enemyFireArr[($(this).attr("id") - 1)] = "cleared";
-            console.log(enemyFireArr);
             updateScore("clear");
             damage(10, friendly);
         }
@@ -219,6 +278,9 @@ function gameOver() {
 
     $(".stormtrooper").each(function () {
         $(this).remove();
+
+        /* clear enemy arrays */
+        clearBulletArray("enemy", $(this).attr("id"));
     })
 
     updateScore("clear");
@@ -295,6 +357,7 @@ function timer() {
         spawnEnemies();
     }
 
+    /* Game over if time runs out */
     if (mins == 0 && seconds == 0) {
 
         gameOver();
@@ -305,6 +368,10 @@ function timer() {
 
 /* https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection */
 function isHit(target, target2) {
+
+    /* Catch errors when player dies */
+    try{
+
     let targetPos = target.offset();
     let target2Top = $(target2).offset().top;
     let target2Bottom = $(target2).offset().top + $(target2).outerHeight();
@@ -318,6 +385,9 @@ function isHit(target, target2) {
         return true;
     } else {
         return false;
+    }
+
+    } catch(error){
     }
 };
 
@@ -404,6 +474,17 @@ function clearBulletArray(type, enemyId) {
 
 /* Key Presses */
 $(document).keypress(function (event) {
+
+    /* pause game */
+    if (event.which == 112) {
+        pauseGame();
+    }
+
+    /* Check that game isnt paused */
+    if (!keyHandlerActive){ 
+        return; 
+    }
+
     /* Move left or right with A/D keys  */
     if (event.which == 100) {
         let curPos = $("div.chewie").css("left");
