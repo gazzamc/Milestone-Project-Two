@@ -4,7 +4,7 @@ var isReadyToFire = true;
 var time = setInterval(timer, 1000);
 var checkFriendlyFire = setInterval(friendlyFire, 1);
 var enemies = 0;
-var spawnRate = 10;
+var spawnRate = 6;
 var score = 0;
 var combo = 0;
 var checkCol = [];
@@ -68,9 +68,9 @@ function pauseGame() {
         keyHandlerActive = false;
 
         /* Stop enemies shooting by clearing all intervals */
-        /* enemyFireArr.forEach(function(interval){
+        enemyFireArr.forEach(function(interval){
             clearInterval(interval);
-        }); */
+        });
 
 
         /* Display pause menu */
@@ -172,79 +172,97 @@ function findBlasterLoc(char) {
 function setBulletTrajectory(source, char) {
 
     let getAngle = source.attr("style");
-    let getDig = 0;
 
-    try {
-        /* https://stackoverflow.com/questions/650022/how-do-i-split-a-string-with-multiple-separators-in-javascript */
-        getDig = getAngle.split("(").join(",").split(")").join(",").split(",");
-
-    } catch (error) {
-
+    if(getAngle == null){
+        getAngle = "transform: rotate(0deg)";
     }
 
-    let degree = getDig[1];
+    /* https://stackoverflow.com/questions/650022/how-do-i-split-a-string-with-multiple-separators-in-javascript */
+    getDig = getAngle.split("(").join(",").split(")").join(",").split(",");
+
+    let degree = parseFloat(getDig[1]);
 
     /* Find blaster */
     let blasterPos = findBlasterLoc(char);
     let top = blasterPos[0];
     let left = blasterPos[1];
 
+
     if(findEnemyType(char) == "chewie"){
 
         /* Fix location of spawned bullet depending on arm angle */
-        if (parseFloat(degree) <= -30 && parseFloat(degree) >= -35) {
-            $("body").append('<div class="bullet" id="' + bullets + '" style="top:' + (top - 36) + 'px; left:' + left + 'px;"></div>');
+        if (degree <= -30 && degree >= -35) {
+            $("body").append('<div class="bullet" id="' + bullets + '" style="top:' + (top + 28) + 'px; left:' + left + 'px;"></div>');
         }
-        else if (parseFloat(degree) <= -25 && parseFloat(degree) >= -29) {
-            $("body").append('<div class="bullet" id="' + bullets + '" style="top:' + (top - 50) + 'px; left:' + left + 'px;"></div>');
+        else if (degree <= -25 && degree >= -30) {
+            $("body").append('<div class="bullet" id="' + bullets + '" style="top:' + (top + 35) + 'px; left:' + left + 'px;"></div>');
         }
-        else if (parseFloat(degree) <= -10 && parseFloat(degree) >= -25) {
-            $("body").append('<div class="bullet" id="' + bullets + '" style="top:' + (top - 50) + 'px; left:' + left + 'px;"></div>');
+        else if (degree <= -16 && degree >= -25) {
+            $("body").append('<div class="bullet" id="' + bullets + '" style="top:' + (top + 30) + 'px; left:' + left + 'px;"></div>');
         }
-        else if (parseFloat(degree) < -6 && parseFloat(degree) >= -9) {
-            $("body").append('<div class="bullet" id="' + bullets + '" style="top:' + (top - 63) + 'px; left:' + left + 'px;"></div>');
+        else if (degree <= -10 && degree >= -16) {
+            $("body").append('<div class="bullet" id="' + bullets + '" style="top:' + (top + 22) + 'px; left:' + left + 'px;"></div>');
         }
-        else {
-            $("body").append('<div class="bullet" id="' + bullets + '" style="top:' + (top - 68) + 'px; left:' + left + 'px;"></div>');
+        else if (degree <= -6 && degree >= -10) {
+            $("body").append('<div class="bullet" id="' + bullets + '" style="top:' + (top + 10) + 'px; left:' + left + 'px;"></div>');
+        }
+        else if (degree <= 0 && degree >= -6) {
+            $("body").append('<div class="bullet" id="' + bullets + '" style="top:' + (top + 5) + 'px; left:' + left + 'px;"></div>');
         };
 
         $(".bullet").css("transform", "rotate(" + degree + ")");
 
-        $(".bullet").animate({ left: '120vw', top: '-=' + (Math.abs(parseFloat(degree)) * 3) + 'vh' }, 5000, "linear", function () {
+        $(".bullet").animate({ left: '120vw', top: '-=' + (Math.abs(parseFloat(degree)) * 3) + 'vh' }, 3000, "linear", function () {
             if (isReadyToFire) {
                 clearBulletArray();
             }
         });
+
     } else if(findEnemyType(char) == "stormtrooper"){
 
-        if(char.attr('id') ==  1){
-            console.log(degree, (parseFloat(degree) * 6));
-        }
+        let bulletId = "enemy" + char.attr("id") + "bullet" + left;
 
         /* Fix location of spawned bullet depending on arm angle */
-        if (parseFloat(degree) <= -20 && parseFloat(degree) >= -25) {
-            $("body").append('<div class="enBullet" id="enemy' + char.attr("id") + 'bullet' + left +'" style="top:' + (top - 36) + 'px; left:' + left + 'px;"></div>');
+        if (degree <= -20 && degree >= -25) {
+            $("body").append('<div class="enBullet" id="' + bulletId + '" style="top:' + (top + 20) + 'px; left:' + left + 'px;"></div>');
         }
-        else if (parseFloat(degree) <= -15 && parseFloat(degree) >= -19) {
-            $("body").append('<div class="enBullet" id="enemy' + char.attr("id") + 'bullet' + left +'" style="top:' + (top - 50) + 'px; left:' + left + 'px;"></div>');
+        else if (degree <= -15 && degree >= -20) {
+            $("body").append('<div class="enBullet" id="' + bulletId + '" style="top:' + (top + 38) + 'px; left:' + left + 'px;"></div>');
         }
-        else if (parseFloat(degree) <= -10 && parseFloat(degree) >= -15) {
-            $("body").append('<div class="enBullet" id="enemy' + char.attr("id") + 'bullet' + left +'" style="top:' + (top - 50) + 'px; left:' + left + 'px;"></div>');
+        else if (degree <= -10 && degree >= -15) {
+            $("body").append('<div class="enBullet" id="' + bulletId + '" style="top:' + (top + 37) + 'px; left:' + left + 'px;"></div>');
         }
-        else if (parseFloat(degree) < -6 && parseFloat(degree) >= -9) {
-            $("body").append('<div class="enBullet" id="enemy' + char.attr("id") + 'bullet' + left +'" style="top:' + (top - 63) + 'px; left:' + left + 'px;"></div>');
+        else if (degree < -6 && degree >= -10) {
+            $("body").append('<div class="enBullet" id="' + bulletId + '" style="top:' + (top + 35) + 'px; left:' + left + 'px;"></div>');
         }
         else {
-            $("body").append('<div class="enBullet" id="enemy' + char.attr("id") + 'bullet' + left +'" style="top:' + (top + 7) + 'px; left:' + left + 'px;"></div>');
+            $("body").append('<div class="enBullet" id="' + bulletId + '" style="top:' + (top + 7) + 'px; left:' + left + 'px;"></div>');
         };
 
-        if(parseFloat(degree) > 0){
-            $(".enBullet").css("transform", "rotate(-"+ degree + "deg");
+        if(degree > 0){
+            $("#" + bulletId).css("transform", "rotate(-"+ Math.abs(degree) + "deg");
         } else{
-            $(".enBullet").css("transform", "rotate(" + degree + "deg)");
+            $("#" + bulletId).css("transform", "rotate(" + Math.abs(degree) + "deg)");
         }
 
-        $(".enBullet").animate({left: '-40vw', top: '+=' + (parseFloat(degree) * 5.2) + 'vh' }, 3000, "linear");
+        /* Adjust animation angle based on the enemies placement on screen */
+        if(left  <= (window.innerWidth * 0.9)){
+            $(".enBullet").animate({left: '-40vw', top: '+=' + ((degree * 5.2) - (degree * 5.2) * 0.1)  + 'vh' }, 3000, "linear");
+        } else if(left  <= (window.innerWidth * 0.8)){
+           $(".enBullet").animate({left: '-40vw', top: '+=' + ((degree * 5.2) * 5.2) - ((degree * 5.2) * 0.2)  + 'vh' }, 3000, "linear"); 
+        } else if(left  <= (window.innerWidth * 0.7)){
+           $(".enBullet").animate({left: '-40vw', top: '+=' + ((degree * 5.2) * 5.2) - ((degree * 5.2) * 0.3)  + 'vh' }, 3000, "linear"); 
+        } else if(left  <= (window.innerWidth * 0.6)){
+           $(".enBullet").animate({left: '-40vw', top: '+=' + ((degree * 5.2) * 5.2) - ((degree * 5.2) * 0.4)  + 'vh' }, 3000, "linear"); 
+        } else if(left  <= (window.innerWidth * 0.5)){
+           $(".enBullet").animate({left: '-40vw', top: '+=' + ((degree * 5.2) * 5.2) - ((degree * 5.2) * 0.5)  + 'vh' }, 3000, "linear"); 
+        } else if(left  <= (window.innerWidth * 0.4)){
+           $(".enBullet").animate({left: '-40vw', top: '+=' + ((degree * 5.2) * 5.2) - ((degree * 5.2) * 0.6)  + 'vh' }, 3000, "linear"); 
+        } else if(left  <= (window.innerWidth * 0.3)){
+           $(".enBullet").animate({left: '-40vw', top: '+=' + ((degree * 5.2) * 5.2) - ((degree * 5.2) * 0.7)  + 'vh' }, 3000, "linear"); 
+        } else{
+           $(".enBullet").animate({left: '-40vw', top: '+=' + (degree * 5.2)  + 'vh' }, 3000, "linear");      
+        }
 
     }
 }
@@ -360,14 +378,20 @@ function setEnemyAim(enemy) {
     /* https://stackoverflow.com/questions/13455042/random-number-between-negative-and-positive-value?lq=1 */
     let randomNum = Math.random() * 25;
     randomNum *= Math.floor(Math.random() * 2) == 1 ? 1 : -1;
-    $("#" + enemyId + ".stormtrooper .blaster").css("transform", "rotate(" + randomNum + "deg)");
 
-    setBulletTrajectory($(".stormtrooper#1 .body .blaster"), enemy);
+    /* Prevent any number above 10 */
+    if(randomNum > 10){
+        randomNum = Math.random() * 10;
+        randomNum *= Math.floor(Math.random() * 2) == 1 ? 1 : -1;
+    }
+
+    $("#" + enemyId + ".stormtrooper .blaster").css("transform", "rotate(" + randomNum + "deg)");
+    $("#" + enemyId + ".stormtrooper .arms.leftArm").css("transform", "rotate(" + randomNum + "deg)");
 }
 
 function enemyFire(enemy) {
     setEnemyAim(enemy);
-    /* setBulletTrajectory($(".stormtrooper#1 .body .blaster"), enemy); */
+    setBulletTrajectory($(".stormtrooper#"+ enemy.attr("id") +" .body .blaster"), enemy);
 }
 
 function timer() {
@@ -448,8 +472,8 @@ function outOfBounds(bulletPos) {
 
 function findCol(bullet, enemy) {
     let bulletPos = bullet.offset();
-
     let isOut = outOfBounds(bulletPos);
+
     if(isOut){
         clearBulletArray();
     };
@@ -504,7 +528,7 @@ function clearBulletArray(type, enemyId) {
         /* Clear bullet array */
         checkCol.forEach(function (item) {
             clearInterval(item);
-            checkCol.splice(checkCol.indexOf(item));
+            checkCol[checkCol.indexOf(item)] = "cleared";  
         });
         $(".bullet").remove();
     }
