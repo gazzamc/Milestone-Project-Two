@@ -192,27 +192,28 @@ function setBulletTrajectory(source, char) {
 
         /* Fix location of spawned bullet depending on arm angle */
         if (degree <= -30 && degree >= -35) {
-            $("body").append('<div class="bullet" id="' + bullets + '" style="top:' + (top + 28) + 'px; left:' + left + 'px;"></div>');
+            top += 28;
         }
         else if (degree <= -25 && degree >= -30) {
-            $("body").append('<div class="bullet" id="' + bullets + '" style="top:' + (top + 35) + 'px; left:' + left + 'px;"></div>');
+            top += 35;
         }
         else if (degree <= -16 && degree >= -25) {
-            $("body").append('<div class="bullet" id="' + bullets + '" style="top:' + (top + 30) + 'px; left:' + left + 'px;"></div>');
+            top += 30;
         }
         else if (degree <= -10 && degree >= -16) {
-            $("body").append('<div class="bullet" id="' + bullets + '" style="top:' + (top + 22) + 'px; left:' + left + 'px;"></div>');
+            top += 22;
         }
         else if (degree <= -6 && degree >= -10) {
-            $("body").append('<div class="bullet" id="' + bullets + '" style="top:' + (top + 10) + 'px; left:' + left + 'px;"></div>');
+            top += 10;
         }
         else if (degree <= 0 && degree >= -6) {
-            $("body").append('<div class="bullet" id="' + bullets + '" style="top:' + (top + 5) + 'px; left:' + left + 'px;"></div>');
+            top += 5;
         };
 
+        $("body").append('<div class="bullet" id="' + bullets + '" style="top:' + top + 'px; left:' + left + 'px;"></div>');
         $(".bullet").css("transform", "rotate(" + degree + ")");
 
-        $(".bullet").animate({ left: '120vw', top: '-=' + (Math.abs(parseFloat(degree)) * 3) + 'vh' }, 3000, "linear", function () {
+        $(".bullet").animate({ left: '120vw', top: '-=' + (Math.abs(degree) * 3) + 'vh' }, 3000, "linear", function () {
             if (isReadyToFire) {
                 clearBulletArray();
             }
@@ -224,20 +225,22 @@ function setBulletTrajectory(source, char) {
 
         /* Fix location of spawned bullet depending on arm angle */
         if (degree <= -20 && degree >= -25) {
-            $("body").append('<div class="enBullet" id="' + bulletId + '" style="top:' + (top + 20) + 'px; left:' + left + 'px;"></div>');
+            top += 20;
         }
         else if (degree <= -15 && degree >= -20) {
-            $("body").append('<div class="enBullet" id="' + bulletId + '" style="top:' + (top + 38) + 'px; left:' + left + 'px;"></div>');
+            top += 38;
         }
         else if (degree <= -10 && degree >= -15) {
-            $("body").append('<div class="enBullet" id="' + bulletId + '" style="top:' + (top + 37) + 'px; left:' + left + 'px;"></div>');
+            top += 37;
         }
-        else if (degree < -6 && degree >= -10) {
-            $("body").append('<div class="enBullet" id="' + bulletId + '" style="top:' + (top + 35) + 'px; left:' + left + 'px;"></div>');
+        else if (degree <= -6 && degree >= -10) {
+            top += 35;
         }
-        else {
-            $("body").append('<div class="enBullet" id="' + bulletId + '" style="top:' + (top + 7) + 'px; left:' + left + 'px;"></div>');
+        else{
+            top += 7;
         };
+
+        $("body").append('<div class="enBullet" id="' + bulletId + '" style="top:' + top + 'px; left:' + left + 'px;"></div>');
 
         if(degree > 0){
             $("#" + bulletId).css("transform", "rotate(-"+ Math.abs(degree) + "deg");
