@@ -1,8 +1,8 @@
 /* Global Variables */
 var bullets = 30;
 var isReadyToFire = true;
-var time = setInterval(timer, 1000);
-var checkFriendlyFire = setInterval(friendlyFire, 1);
+var time;
+var checkFriendlyFire;
 var enemies = 0;
 var spawnRate = 6;
 var score = 0;
@@ -15,8 +15,101 @@ var keyHandlerActive = true;
 /* Functions */
 
 $(document).ready(function(){
-    spawnEnemies();
+    showDialog("start");
 });
+
+function showDialog(type){
+    if(type == "start"){
+
+        $("#pauseMenu .hidden").children().remove();
+        $("#pauseMenu .hidden").append('<button id="start">start</button>');
+        $("html").css("cursor", "pointer");
+        $(".hidden").css("display", "block");
+
+        $("#pauseMenu").dialog({
+            title: "Start Game",
+            resizable: false,
+            minWidth: 600,
+            minHeight: 600
+        });
+        $(document).on('click','.ui-dialog-titlebar-close',function(){
+            startGame();
+            spawnEnemies();
+            $("#pauseMenu").dialog("destroy");
+            $(".hidden").css("display", "none");
+        });
+
+        $("#start").click(function(){
+            startGame();
+            spawnEnemies();
+            $("#pauseMenu").dialog("destroy");
+            $(".hidden").css("display", "none");
+        });
+
+    } else if(type == "pause"){
+        $("#pauseMenu .hidden").children().remove();
+
+        $("#pauseMenu").dialog();
+        $(document).on('click','.ui-dialog-titlebar-close',function(){
+            pauseGame();
+        });
+
+        $("#pauseMenu .hidden").append('<button id="continue">Continue</button>');
+        $("#pauseMenu .hidden").append('<button id="restart">Restart</button>');
+
+        $("#continue").click(function(){
+            pauseGame();
+        });
+
+        $("#restart").click(function(){
+            /* Reset boolean variables */
+            gamePaused = false;
+            keyHandlerActive = true;
+
+            startGame("restart");
+            spawnEnemies();
+
+            $("#pauseMenu").dialog("destroy");
+            $(".hidden").css("display", "none");
+        });
+
+/*         $("#charChange").click(function(){
+            changeCharacter("chewie");
+        }); */
+
+        $("html").css("cursor", "pointer");
+        $(".hidden").css("display", "block");
+
+    } else{
+
+    }
+}
+
+function startGame(type){
+
+    if(type == "restart"){
+        /* Reset global variables */
+        enemies = 0;
+        bullets = 30;
+        score = 0;
+        combo = 0;
+
+        /* Call gameOver function to remove intervals/spawned enemies */
+        gameOver();
+
+        /* Reset UI */
+        $(".timer h2").text("3:00");
+        $(".score").text("Score: 0");
+        $(".combo").text("Combo: x0");
+        $(".bulletCount").text("30");
+        $(".chewie .health .num").text("100");
+    };
+
+    /* Start/Restart intervals */
+    time = setInterval(timer, 1000);
+    checkFriendlyFire = setInterval(friendlyFire, 1); 
+
+}
 
 function changeCharacter(char){
     let clone;
@@ -70,11 +163,12 @@ function pauseGame() {
         /* Stop enemies shooting by clearing all intervals */
         enemyFireArr.forEach(function(interval){
             clearInterval(interval);
+            enemyFireArr[enemyFireArr.indexOf(interval)] = "cleared";
         });
 
 
         /* Display pause menu */
-        $("#pauseMenu").dialog();
+/*         $("#pauseMenu").dialog();
         $(document).on('click','.ui-dialog-titlebar-close',function(){
             pauseGame();
         });
@@ -88,7 +182,9 @@ function pauseGame() {
         });
 
         $("html").css("cursor", "pointer");
-        $(".hidden").css("display", "block");
+        $(".hidden").css("display", "block"); */
+
+        showDialog("pause");
 
     }else{
         time = setInterval(timer, 1000);
@@ -102,7 +198,7 @@ function pauseGame() {
 
         $(".stormtrooper").each(function(){
             let troopId = $(this).attr("id");
-            enemyFireArr[troopId] = setInterval(enemyFire, 4000, $(this));
+            enemyFireArr[troopId - 1] = setInterval(enemyFire, 4000, $(this));
         });
 
         /* hide pause menu */
@@ -273,43 +369,48 @@ function setBulletTrajectory(source, char) {
 function friendlyFire() {
     let friendly = $(".chewie");
 
-    /* Check if stormtrooper hits player */
-    $(".stormtrooper").each(function () {
-        if (isHit($(this), friendly)) {
-            $(this).remove();
+    /* Return if player no longer exists */
+    if(friendly != null){
 
-            let getArr = enemyFireArr[($(this).attr("id") - 1)];
-            clearInterval(getArr);
+        /* Check if stormtrooper hits player */
+        $(".stormtrooper").each(function () {
+            if (isHit($(this), friendly)) {
 
-            enemyFireArr[($(this).attr("id") - 1)] = "cleared";
-            updateScore("clear");
-            damage(10, friendly);
-        }
-    });
+                let getArr = enemyFireArr[($(this).attr("id") - 1)];
+                clearInterval(getArr);
 
-    /* Check if stormtroopers bullets hits player */
-    $('[id^=enemy]').each(function () {
+                enemyFireArr[($(this).attr("id") - 1)] = "cleared";
 
-        let enBulletPos = $(this).offset();
+                $(this).remove();
+                updateScore("clear");
+                damage(10, friendly);
+            }
+        });
 
-        /* Remove enemy bullet if out of bounds */
-        let isOut = outOfBounds(enBulletPos);
-        if(isOut){
-            $(this).remove();
-        }
+        /* Check if stormtroopers bullets hits player */
+        $('[id^=enemy]').each(function () {
 
-        if (isHit($(this), $(".chewie .cbody"))) {
-            $(this).remove();
-                
-            updateScore("clear");
-            damage(10, friendly);
-        } else if(isHit($(this), $(".chewie .chead"))){
-            $(this).remove();
+            let enBulletPos = $(this).offset();
 
-            updateScore("clear");
-            damage(20, friendly);
-        }
-    });
+            /* Remove enemy bullet if out of bounds */
+            let isOut = outOfBounds(enBulletPos);
+            if(isOut){
+                $(this).remove();
+            }
+
+            if (isHit($(this), $(".chewie .cbody"))) {
+                $(this).remove();
+                    
+                updateScore("clear");
+                damage(10, friendly);
+            } else if(isHit($(this), $(".chewie .chead"))){
+                $(this).remove();
+
+                updateScore("clear");
+                damage(20, friendly);
+            }
+        });
+    };
 };
 
 function damage(damageAmount, target) {
@@ -393,8 +494,12 @@ function setEnemyAim(enemy) {
 }
 
 function enemyFire(enemy) {
-    setEnemyAim(enemy);
-    setBulletTrajectory($(".stormtrooper#"+ enemy.attr("id") +" .body .blaster"), enemy);
+
+    /* Check if enemy still exists */
+    if(enemy != null){
+        setEnemyAim(enemy);
+        setBulletTrajectory($(".stormtrooper#"+ enemy.attr("id") +" .body .blaster"), enemy);
+    };
 }
 
 function timer() {
@@ -509,6 +614,7 @@ function clearBulletArray(type, enemyId) {
                 enemyFireArr.forEach(function(interval){
                     clearInterval(interval);
                 });
+                enemyFireArr = [];
         }else{
 
             /* Clear individual trooper interval */
@@ -520,7 +626,7 @@ function clearBulletArray(type, enemyId) {
 
                     clearInterval(item);
                     /* replace interval id with cleared to maintain array size */
-                    enemyFireArr[enemyFireArr.indexOf(item)] = "cleared";                
+                    enemyFireArr[enemyFireArr.indexOf(item)] = "cleared";   
                 }
             });
         }
