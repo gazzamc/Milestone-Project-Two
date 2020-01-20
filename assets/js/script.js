@@ -3,6 +3,8 @@ var bullets = 30;
 var isReadyToFire = true;
 var time;
 var checkFriendlyFire;
+var healthSpawn;
+var healthSpawnRate = 30000;
 var enemies = 0;
 var spawnRate = 6;
 var score = 0;
@@ -17,6 +19,28 @@ var keyHandlerActive = true;
 $(document).ready(function(){
     showDialog("start");
 });
+
+function spawnHealth(){
+    /* prevent multiple spawns */
+    if($(".healthTopUp").length == 0){
+
+        /* find player position */
+        let playerPos = $(".chewie").offset();
+
+        if((playerPos.left + 600) < innerWidth){
+            $(".combo").after('<div class="healthTopUp"><div class="horizontal"></div><div class="vertical"></div></div>');
+            $(".healthTopUp").css("left", playerPos.left + 600);
+        } else{
+            $(".combo").after('<div class="healthTopUp"><div class="horizontal"></div><div class="vertical"></div></div>');
+            $(".healthTopUp").css("left", playerPos.left - 600);
+        }
+
+        /* adjust health position if almost of screen */
+        if($(".healthTopUp").offset().left + $(".healthTopUp").outerWidth() > innerWidth){
+            $(".healthTopUp").css(($(".healthTopUp").offset().left) - 100);
+        }
+    }
+}
 
 function showDialog(type){
     if(type == "start"){
@@ -35,6 +59,7 @@ function showDialog(type){
         $(document).on('click','.ui-dialog-titlebar-close',function(){
             startGame();
             spawnEnemies();
+            $("html").css("cursor", "none");
             $("#pauseMenu").dialog("destroy");
             $(".hidden").css("display", "none");
         });
@@ -42,6 +67,7 @@ function showDialog(type){
         $("#start").click(function(){
             startGame();
             spawnEnemies();
+            $("html").css("cursor", "none");
             $("#pauseMenu").dialog("destroy");
             $(".hidden").css("display", "none");
         });
@@ -59,6 +85,7 @@ function showDialog(type){
 
         $("#continue").click(function(){
             pauseGame();
+            spawnHealth();
         });
 
         $("#restart").click(function(){
@@ -108,6 +135,7 @@ function startGame(type){
     /* Start/Restart intervals */
     time = setInterval(timer, 1000);
     checkFriendlyFire = setInterval(friendlyFire, 1); 
+    healthSpawn = setInterval(spawnHealth, healthSpawnRate); 
 
 }
 
@@ -150,6 +178,9 @@ function pauseGame() {
         /* Stop taking damage */
         clearInterval(checkFriendlyFire);  
 
+        /* Stop health spawn */
+        clearInterval(healthSpawn);
+
         /* https://www.quackit.com/css/css3/properties/css_animation-play-state.cfm */
         /* Stop Enemies moving */
         $(".stormtrooper").each(function(){
@@ -189,6 +220,7 @@ function pauseGame() {
     }else{
         time = setInterval(timer, 1000);
         checkFriendlyFire = setInterval(friendlyFire, 1);
+        healthSpawn = setInterval(spawnHealth, healthSpawnRate);
 
         $(".stormtrooper").each(function(){
             $(this).css("animation-play-state", "running");
@@ -309,7 +341,7 @@ function setBulletTrajectory(source, char) {
         $("body").append('<div class="bullet" id="' + bullets + '" style="top:' + top + 'px; left:' + left + 'px;"></div>');
         $(".bullet").css("transform", "rotate(" + degree + ")");
 
-        $(".bullet").animate({ left: '120vw', top: '-=' + (Math.abs(degree) * 3) + 'vh' }, 3000, "linear", function () {
+        $(".bullet").animate({ left: '120vw', top: '-=' + (Math.abs(degree) * 3) + 'vh' }, 2000, "linear", function () {
             if (isReadyToFire) {
                 clearBulletArray();
             }
@@ -360,7 +392,7 @@ function setBulletTrajectory(source, char) {
         } else if(left  <= (window.innerWidth * 0.3)){
            $(".enBullet").animate({left: '-40vw', top: '+=' + ((degree * 5.2) * 5.2) - ((degree * 5.2) * 0.7)  + 'vh' }, 3000, "linear"); 
         } else{
-           $(".enBullet").animate({left: '-40vw', top: '+=' + (degree * 5.2)  + 'vh' }, 3000, "linear");      
+           $(".enBullet").animate({left: '-40vw', top: '+=' + (degree * 5.2)  + 'vh' }, 2000, "linear");      
         }
 
     }
@@ -368,6 +400,7 @@ function setBulletTrajectory(source, char) {
 
 function friendlyFire() {
     let friendly = $(".chewie");
+    let currHealth = parseInt($(".chewie .health .num").text());
 
     /* Return if player no longer exists */
     if(friendly != null){
@@ -410,6 +443,27 @@ function friendlyFire() {
                 damage(20, friendly);
             }
         });
+
+        /* check if health top up exists then check if player hit health spawn */
+        if($(".healthTopUp").length != 0 && currHealth < 100 && $(".chewie").length != 0){
+
+            if (isHit($(".healthTopUp"), $(".chewie .cbody")) || isHit($(".healthTopUp"), $(".chewie .chead"))) {
+                $(".healthTopUp").remove();
+
+                /* get random health number */
+                let randNum = Math.floor(Math.random() * 100);
+
+                if((currHealth + randNum) > 100){
+                    $(".chewie").find(".health").css("width", 100 + "px");
+                    $(".chewie .health .num").text(100); 
+                }else{
+                    let currWidth = parseInt($(".chewie").find(".health").css("width"));
+
+                    $(".chewie").find(".health").css("width", (currWidth + randNum) + "px");
+                    $(".chewie .health .num").text(currHealth + randNum); 
+                };
+            };
+        };
     };
 };
 
@@ -451,6 +505,9 @@ function gameOver() {
 
     /* Stop friendly fire interval */
     clearInterval(checkFriendlyFire);
+
+    /* Stop health spawn */
+    clearInterval(healthSpawn);
 }
 
 function spawnEnemies() {
@@ -645,7 +702,6 @@ function clearBulletArray(type, enemyId) {
 
 /* Key Presses */
 $(document).keypress(function (event) {
-
     /* pause game */
     if (event.which == 112) {
         pauseGame();

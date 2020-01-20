@@ -99,3 +99,28 @@ body{
     background-color: green;
     z-index: -1;
 }
+
+.healthTopUp{
+    position: absolute;
+    bottom: 5vh;
+    left: 5vw;
+    width: 50px;
+    height: 35px;
+    background-color: rgba(255,255,255, 1);
+    border: 2px solid rgba(0, 0, 0, 0.6);
+}
+
+.horizontal, .vertical{
+    position: absolute;
+    top: 17%;
+    left: 45%;
+    width: 10%;
+    height: 70%;
+    background-color: rgba(0, 255, 0, 1);
+    transform: rotate(90deg);
+    box-shadow: -1px 1px 20px rgba(0,0,0, 0.5);
+}
+
+.vertical{
+    transform: rotate(0deg);
+}
