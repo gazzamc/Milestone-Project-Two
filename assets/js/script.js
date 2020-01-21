@@ -183,6 +183,9 @@ function startGame(type){
         if($(".chewie").length == 0){
             changeCharacter("chewie");
         }
+
+        /* reset player position */
+        $(".chewie").css("left", "");
     }
 
     /* if no map selected add default- tatooine */
@@ -231,7 +234,7 @@ function changeBackground(map){
 function pauseGame() {
     gamePaused = !gamePaused;
     if (gamePaused){
-        console.log("cleared");
+
         /* Stop timer */
         clearInterval(time);
 
