@@ -100,6 +100,8 @@ body{
     z-index: -1;
 }
 
+/* Health pickup */
+
 .healthTopUp{
     position: absolute;
     bottom: 5vh;
@@ -123,4 +125,30 @@ body{
 
 .vertical{
     transform: rotate(0deg);
+}
+
+/* dialog styles */
+button#start{
+    position: absolute;
+    bottom: 10%;
+    left: 40%;
+    font-size: 2em;
+    font-variant: small-caps;
+}
+
+button#start:hover{
+    color: green;
+}
+
+button#try{
+    position: absolute;
+    bottom: 10%;
+    left: 40%;
+    font-size: 1em;
+    font-variant: small-caps;
+}
+
+h3.map{
+    position: absolute;
+    top: 45%;
 }

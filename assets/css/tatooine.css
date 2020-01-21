@@ -1,3 +1,11 @@
+.backgroundStart{
+  position: absolute;
+  left: -135%;
+  top: 40%;
+  bottom: 30%;
+  transform: scale(0.1);
+}
+
 .background {
   position: absolute;
   z-index: -1;

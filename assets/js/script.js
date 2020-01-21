@@ -1,18 +1,20 @@
 /* Global Variables */
 var bullets = 30;
+var highestCombo = 0;
 var isReadyToFire = true;
 var time;
 var checkFriendlyFire;
 var healthSpawn;
-var healthSpawnRate = 30000;
+var healthSpawnRate = 30000; //ms
 var enemies = 0;
-var spawnRate = 6;
+var spawnRate = 6; //seconds
 var score = 0;
 var combo = 0;
 var checkCol = [];
 var enemyFireArr = [];
 var gamePaused = false;
 var keyHandlerActive = true;
+var dialogIsOpen = false;
 
 /* Functions */
 
@@ -42,73 +44,134 @@ function spawnHealth(){
     }
 }
 
+function cloneTemplate(templateName){
+    let clone;
+    let template = templateName.html();
+    clone = template;
+
+    return clone;
+}
+
 function showDialog(type){
-    if(type == "start"){
+    /* check if anoter dialog is open */
+    if(!dialogIsOpen){   
 
-        $("#pauseMenu .hidden").children().remove();
-        $("#pauseMenu .hidden").append('<button id="start">start</button>');
-        $("html").css("cursor", "pointer");
-        $(".hidden").css("display", "block");
+        if(type == "start"){
+            dialogIsOpen = true;
 
-        $("#pauseMenu").dialog({
-            title: "Start Game",
-            resizable: false,
-            minWidth: 600,
-            minHeight: 600
-        });
-        $(document).on('click','.ui-dialog-titlebar-close',function(){
-            startGame();
-            spawnEnemies();
-            $("html").css("cursor", "none");
-            $("#pauseMenu").dialog("destroy");
-            $(".hidden").css("display", "none");
-        });
+            $("#pauseMenu .hidden").children().remove();
 
-        $("#start").click(function(){
-            startGame();
-            spawnEnemies();
-            $("html").css("cursor", "none");
-            $("#pauseMenu").dialog("destroy");
-            $(".hidden").css("display", "none");
-        });
+            $("#pauseMenu .hidden").append('<h3 class="char">Pick Character</h3>');
+            $("#pauseMenu .hidden").append(cloneTemplate($("#chewieTemp")));
+            $("#pauseMenu .hidden .chewie").addClass("chewieStart");
+            $("#pauseMenu .hidden .chewie").removeClass("chewie");
 
-    } else if(type == "pause"){
-        $("#pauseMenu .hidden").children().remove();
+            $("#pauseMenu .hidden").append('<h3 class="map">Pick Map</h3>');
+            $("#pauseMenu .hidden").append(cloneTemplate($("#tatooineTemp")));
+            $("#pauseMenu .hidden .background").addClass("backgroundStart");
+            $("#pauseMenu .hidden .background").removeClass("background");
+            $("#pauseMenu .hidden").append('<button id="start">start</button>');
+            $("html").css("cursor", "pointer");
+            $(".hidden").css("display", "block");
 
-        $("#pauseMenu").dialog();
-        $(document).on('click','.ui-dialog-titlebar-close',function(){
-            pauseGame();
-        });
+            $(".chewieStart").click(function(){
+                $(this).toggleClass("active");
+            });
 
-        $("#pauseMenu .hidden").append('<button id="continue">Continue</button>');
-        $("#pauseMenu .hidden").append('<button id="restart">Restart</button>');
+            $("#pauseMenu").dialog({
+                title: "Start Game",
+                resizable: false,
+                minWidth: 600,
+                minHeight: 700
+            });
+            $(document).on('click','.ui-dialog-titlebar-close',function(){
+                startGame();
+                spawnEnemies();
+                $("html").css("cursor", "none");
+                $("#pauseMenu").dialog("destroy");
+                $(".hidden").css("display", "none");
+                dialogIsOpen = false;
+            });
 
-        $("#continue").click(function(){
-            pauseGame();
-            spawnHealth();
-        });
+            $("#start").click(function(){
+                startGame();
+                spawnEnemies();
+                $("html").css("cursor", "none");
+                $("#pauseMenu").dialog("destroy");
+                $(".hidden").css("display", "none");
+                dialogIsOpen = false;
+            });
 
-        $("#restart").click(function(){
-            /* Reset boolean variables */
-            gamePaused = false;
-            keyHandlerActive = true;
+        } else if(type == "pause"){
+            dialogIsOpen = true;
+            $("#pauseMenu .hidden").children().remove();
 
-            startGame("restart");
-            spawnEnemies();
+            $("#pauseMenu").dialog();
+            $(document).on('click','.ui-dialog-titlebar-close',function(){
+                pauseGame();
+            });
 
-            $("#pauseMenu").dialog("destroy");
-            $(".hidden").css("display", "none");
-        });
+            $("#pauseMenu .hidden").append('<button id="continue">Continue</button>');
+            $("#pauseMenu .hidden").append('<button id="restart">Restart</button>');
 
-/*         $("#charChange").click(function(){
-            changeCharacter("chewie");
-        }); */
+            $("#continue").click(function(){
+                pauseGame();
+                dialogIsOpen = false;
+            });
 
-        $("html").css("cursor", "pointer");
-        $(".hidden").css("display", "block");
+            $("#restart").click(function(){
+                /* Reset boolean variables */
+                gamePaused = false;
+                keyHandlerActive = true;
 
-    } else{
+                startGame("restart");
+                spawnEnemies();
 
+                $("#pauseMenu").dialog("destroy");
+                $(".hidden").css("display", "none");
+                dialogIsOpen = false;
+            });
+
+    /*         $("#charChange").click(function(){
+                changeCharacter("chewie");
+            }); */
+
+            $("html").css("cursor", "pointer");
+            $(".hidden").css("display", "block");
+
+        } else{
+            dialogIsOpen = true;
+
+            $("#pauseMenu .hidden").children().remove();
+
+            $("#pauseMenu .hidden").append('<h3 class="char">Stats:</h3>');
+            $("#pauseMenu .hidden").append('<p>Score: '+ score +'</p>');
+            $("#pauseMenu .hidden").append('<p>Enemies: '+ enemies +'</p>');
+            $("#pauseMenu .hidden").append('<p>Highest Combo: '+ highestCombo +'</p>');
+            $("#pauseMenu .hidden").append('<button id="try">Try Again</button>');
+            $("html").css("cursor", "pointer");
+            $(".hidden").css("display", "block");
+
+            $("#pauseMenu").dialog({
+                title: "Game Over",
+                resizable: false,
+                minWidth: 400,
+                minHeight: 400
+            });
+
+            $("#try").click(function(){
+                /* Reset boolean variables */
+                gamePaused = false;
+                keyHandlerActive = true;
+
+                startGame("restart");
+                spawnEnemies();
+
+                $("#pauseMenu").dialog("destroy");
+                $(".hidden").css("display", "none");
+                dialogIsOpen = false;
+            });
+        }
     }
 }
 
@@ -120,6 +183,7 @@ function startGame(type){
         bullets = 30;
         score = 0;
         combo = 0;
+        highestCombo = 0;
 
         /* Call gameOver function to remove intervals/spawned enemies */
         gameOver();
@@ -130,7 +194,18 @@ function startGame(type){
         $(".combo").text("Combo: x0");
         $(".bulletCount").text("30");
         $(".chewie .health .num").text("100");
-    };
+
+        /* if character deleted add */
+        if($(".chewie").length == 0){
+            changeCharacter("chewie");
+        }
+    }
+
+    /* if no map selected add default- tatooine */
+    if($(".background").length == 0 && $(".chewie").length == 0){
+        changeBackground("tatooine");
+        changeCharacter("chewie");
+    }
 
     /* Start/Restart intervals */
     time = setInterval(timer, 1000);
@@ -146,7 +221,7 @@ function changeCharacter(char){
     if($("."+ char).length != 0){
         $(".chewie").remove();
 
-    };
+    }
 
     if(char == "chewie"){
         let template = $("#chewieTemp").html();
@@ -235,6 +310,7 @@ function pauseGame() {
 
         /* hide pause menu */
         $("#pauseMenu").dialog("close");
+        dialogIsOpen = false;
         $("html").css("cursor", "none");
     }
 }
@@ -245,6 +321,8 @@ function updateScore(behaviour = "update") {
 
         /* Remove Combo and add to score */
         score += combo;
+
+        if(combo > highestCombo){highestCombo = combo};
         combo = 0;
         $(".combo").text("Combo: x" + combo);
         $(".score").text("Score: " + score);
@@ -294,7 +372,7 @@ function findBlasterLoc(char) {
             blaster = $("." + findEnemyType(char) + "#" + char.attr("id") +" .body .blaster").offset();
         }
 
-    return [blaster.top, blaster.left]
+    return [blaster.top, blaster.left];
 }
 
 function setBulletTrajectory(source, char) {
@@ -336,7 +414,7 @@ function setBulletTrajectory(source, char) {
         }
         else if (degree <= 0 && degree >= -6) {
             top += 5;
-        };
+        }
 
         $("body").append('<div class="bullet" id="' + bullets + '" style="top:' + top + 'px; left:' + left + 'px;"></div>');
         $(".bullet").css("transform", "rotate(" + degree + ")");
@@ -366,7 +444,7 @@ function setBulletTrajectory(source, char) {
         }
         else{
             top += 7;
-        };
+        }
 
         $("body").append('<div class="enBullet" id="' + bulletId + '" style="top:' + top + 'px; left:' + left + 'px;"></div>');
 
@@ -461,11 +539,11 @@ function friendlyFire() {
 
                     $(".chewie").find(".health").css("width", (currWidth + randNum) + "px");
                     $(".chewie .health .num").text(currHealth + randNum); 
-                };
-            };
-        };
-    };
-};
+                }
+            }
+        }
+    }
+}
 
 function damage(damageAmount, target) {
     let currHealth = $(target).find(".health span.num").text();
@@ -481,11 +559,12 @@ function damage(damageAmount, target) {
 
         if (findEnemyType(target) == "chewie") {
             gameOver();
+            showDialog();
         } else {
             score += 50;
         }
     }
-};
+}
 
 function gameOver() {
     $(".timer h2").text("Game Over!");
@@ -497,6 +576,8 @@ function gameOver() {
     $(".stormtrooper").each(function(){
         $(this).remove();
     });
+
+    $(".healthTopUp").remove();
 
     updateScore("clear");
 
@@ -511,8 +592,6 @@ function gameOver() {
 }
 
 function spawnEnemies() {
-    let stormtrooper = $("template#trooperTemp #document-fragment");
-    let curTime = $(".timer h2").text();
 
     /* https://stackoverflow.com/questions/15930706/html-template-tag-and-jquery */
     /* Grabbing template of trooper from document fragment and cloning/copying 
@@ -556,7 +635,7 @@ function enemyFire(enemy) {
     if(enemy != null){
         setEnemyAim(enemy);
         setBulletTrajectory($(".stormtrooper#"+ enemy.attr("id") +" .body .blaster"), enemy);
-    };
+    }
 }
 
 function timer() {
@@ -565,7 +644,7 @@ function timer() {
     let mins = splitTime[0];
     let seconds = splitTime[1];
 
-    if (seconds == 00) {
+    if (seconds == 0) {
 
         seconds = 59;
 
@@ -578,7 +657,7 @@ function timer() {
 
         if (seconds < 10) {
 
-            seconds = "0" + seconds
+            seconds = "0" + seconds;
         }
     }
 
@@ -592,6 +671,7 @@ function timer() {
     if (mins == 0 && seconds == 0) {
 
         gameOver();
+        showDialog();
     } else {
         $(".timer h2").text(mins + ":" + seconds);
     }
@@ -614,23 +694,22 @@ function isHit(target, target2) {
     } else {
         return false;
     }
-};
+}
 
 function findEnemyType(enemy) {
     let getClasses = enemy.attr("class");
     let splitClasses = getClasses.split(" ");
 
     return splitClasses[0];
-};
+}
 
 function outOfBounds(bulletPos) {
     let istrue = false;
 
     /* This removes the bullet if it missed and goes out of view */
-    if (bulletPos.left > innerWidth || bulletPos.top > innerHeight
-        || bulletPos.left < 0 || bulletPos.left < 0) {
+    if (bulletPos.left > innerWidth || bulletPos.top > innerHeight || bulletPos.left < 0 || bulletPos.left < 0) {
         istrue = true;     
-    };
+    }
 
     return istrue;
 }
@@ -641,7 +720,7 @@ function findCol(bullet, enemy) {
 
     if(isOut){
         clearBulletArray();
-    };
+    }
 
     /* Check if we hit enemy */
     if (isHit(bullet, enemy)) {
@@ -661,7 +740,7 @@ function findCol(bullet, enemy) {
         clearBulletArray();
         updateScore();
     }
-};
+}
 
 function clearBulletArray(type, enemyId) {
 
@@ -779,7 +858,7 @@ $(document).keypress(function (event) {
             $("div.chewie").removeClass("jump");
 
         });
-    };
+    }
 });
 
 /* Move players arm when mouse is moved */
@@ -788,5 +867,5 @@ $(document).mousemove(function (event) {
     var radian = Math.atan2(180, event.pageY);
     var grade = radian / (Math.PI / 90);
 
-    $('.cbody.carms.crightArm').css("transform", "rotate(-" + (grade - 10) + "deg)");
+    $('.chewie .cbody.carms.crightArm').css("transform", "rotate(-" + (grade - 10) + "deg)");
 });
