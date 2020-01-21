@@ -125,7 +125,7 @@ function showDialog(type){
                 keyHandlerActive = true;
 
                 startGame("restart");
-                spawnEnemies();
+/*                 spawnEnemies(); */
 
                 $("#pauseMenu").dialog("destroy");
                 $(".hidden").css("display", "none");
@@ -194,6 +194,7 @@ function startGame(type){
         $(".combo").text("Combo: x0");
         $(".bulletCount").text("30");
         $(".chewie .health .num").text("100");
+        $(".chewie .health .num").css("width", "100px");
 
         /* if character deleted add */
         if($(".chewie").length == 0){
@@ -567,8 +568,6 @@ function damage(damageAmount, target) {
 }
 
 function gameOver() {
-    $(".timer h2").text("Game Over!");
-
     /* clear enemy intervals */
     clearBulletArray("enemy");
 
