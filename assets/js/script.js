@@ -184,8 +184,9 @@ function startGame(type){
             changeCharacter("chewie");
         }
 
-        /* reset player position */
+        /* reset player/horizon position */
         $(".chewie").css("left", "");
+        $(".horizon").css("left", "");
     }
 
     /* if no map selected add default- tatooine */
