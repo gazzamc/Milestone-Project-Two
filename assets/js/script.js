@@ -84,14 +84,6 @@ function showDialog(type){
                 minWidth: 600,
                 minHeight: 700
             });
-            $(document).on('click','.ui-dialog-titlebar-close',function(){
-                startGame();
-                spawnEnemies();
-                $("html").css("cursor", "none");
-                $("#pauseMenu").dialog("destroy");
-                $(".hidden").css("display", "none");
-                dialogIsOpen = false;
-            });
 
             $("#start").click(function(){
                 startGame();
@@ -105,12 +97,7 @@ function showDialog(type){
         } else if(type == "pause"){
             dialogIsOpen = true;
             $("#pauseMenu .hidden").children().remove();
-
             $("#pauseMenu").dialog();
-            $(document).on('click','.ui-dialog-titlebar-close',function(){
-                pauseGame();
-            });
-
             $("#pauseMenu .hidden").append('<button id="continue">Continue</button>');
             $("#pauseMenu .hidden").append('<button id="restart">Restart</button>');
 
@@ -125,16 +112,12 @@ function showDialog(type){
                 keyHandlerActive = true;
 
                 startGame("restart");
-/*                 spawnEnemies(); */
+                spawnEnemies();
 
                 $("#pauseMenu").dialog("destroy");
                 $(".hidden").css("display", "none");
                 dialogIsOpen = false;
             });
-
-    /*         $("#charChange").click(function(){
-                changeCharacter("chewie");
-            }); */
 
             $("html").css("cursor", "pointer");
             $(".hidden").css("display", "block");
@@ -248,11 +231,12 @@ function changeBackground(map){
 function pauseGame() {
     gamePaused = !gamePaused;
     if (gamePaused){
+        console.log("cleared");
         /* Stop timer */
-        clearInterval(time);  
+        clearInterval(time);
 
         /* Stop taking damage */
-        clearInterval(checkFriendlyFire);  
+        clearInterval(checkFriendlyFire);
 
         /* Stop health spawn */
         clearInterval(healthSpawn);
@@ -294,6 +278,7 @@ function pauseGame() {
         showDialog("pause");
 
     }else{
+
         time = setInterval(timer, 1000);
         checkFriendlyFire = setInterval(friendlyFire, 1);
         healthSpawn = setInterval(spawnHealth, healthSpawnRate);

@@ -152,3 +152,9 @@ h3.map{
     position: absolute;
     top: 45%;
 }
+
+/* Remove x button from dialog */
+
+.ui-dialog-titlebar-close {
+    visibility: hidden;
+}
