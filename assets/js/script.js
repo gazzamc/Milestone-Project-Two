@@ -194,7 +194,7 @@ function startGame(type){
         $(".combo").text("Combo: x0");
         $(".bulletCount").text("30");
         $(".chewie .health .num").text("100");
-        $(".chewie .health .num").css("width", "100px");
+        $(".chewie .health").css("width", "100px");
 
         /* if character deleted add */
         if($(".chewie").length == 0){
