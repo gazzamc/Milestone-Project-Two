@@ -1,7 +1,6 @@
 /* Global Variables */
 var bullets = 30;
 var highestCombo = 0;
-var isReadyToFire = true;
 var time;
 var checkFriendlyFire;
 var healthSpawn;
@@ -12,9 +11,10 @@ var score = 0;
 var combo = 0;
 var checkCol = [];
 var enemyFireArr = [];
-var gamePaused = false;
-var keyHandlerActive = true;
-var dialogIsOpen = false;
+var isGamePaused = false;
+var isKeyHandlerActive = true;
+var isDialogOpen = false;
+var isReadyToFire = true;
 
 /* Functions */
 
@@ -54,28 +54,28 @@ function cloneTemplate(templateName){
 
 function showDialog(type){
     /* check if anoter dialog is open */
-    if(!dialogIsOpen){   
+    if(!isDialogOpen){   
 
         if(type == "start"){
-            dialogIsOpen = true;
+            isDialogOpen = true;
 
             $("#pauseMenu .hidden").children().remove();
-
             $("#pauseMenu .hidden").append('<h3 class="char">Pick Character</h3>');
-            $("#pauseMenu .hidden").append(cloneTemplate($("#chewieTemp")));
-            $("#pauseMenu .hidden .chewie").addClass("chewieStart");
-            $("#pauseMenu .hidden .chewie").removeClass("chewie");
-
+            $("#pauseMenu .hidden").append('<button id="charChewie">Chewie</button>');
+            $("#pauseMenu .hidden").append('<button id="charHan">Han</button>');
             $("#pauseMenu .hidden").append('<h3 class="map">Pick Map</h3>');
-            $("#pauseMenu .hidden").append(cloneTemplate($("#tatooineTemp")));
-            $("#pauseMenu .hidden .background").addClass("backgroundStart");
-            $("#pauseMenu .hidden .background").removeClass("background");
+            $("#pauseMenu .hidden").append('<button id="mapTatooine">Tatooine</button>');
             $("#pauseMenu .hidden").append('<button id="start">start</button>');
+
             $("html").css("cursor", "pointer");
             $(".hidden").css("display", "block");
 
-            $(".chewieStart").click(function(){
-                $(this).toggleClass("active");
+            $("#charChewie").click(function(){
+                changeCharacter("chewie", true);
+            });
+
+            $("#mapTatooine").click(function(){
+                changeBackground("tatooine", true);
             });
 
             $("#pauseMenu").dialog({
@@ -86,16 +86,28 @@ function showDialog(type){
             });
 
             $("#start").click(function(){
+                if($(".chewieStart").length != 0){
+                    changeCharacter("chewie");
+                } else{
+                    /* Change to han */
+                }
+
+                if($(".tatooineStart").length != 0){
+                    changeBackground("tatooine");
+                } else{
+                    /* Change to different map */
+                }
+
                 startGame();
                 spawnEnemies();
                 $("html").css("cursor", "none");
                 $("#pauseMenu").dialog("destroy");
                 $(".hidden").css("display", "none");
-                dialogIsOpen = false;
+                isDialogOpen = false;
             });
 
         } else if(type == "pause"){
-            dialogIsOpen = true;
+            isDialogOpen = true;
             $("#pauseMenu .hidden").children().remove();
             $("#pauseMenu").dialog();
             $("#pauseMenu .hidden").append('<button id="continue">Continue</button>');
@@ -103,28 +115,28 @@ function showDialog(type){
 
             $("#continue").click(function(){
                 pauseGame();
-                dialogIsOpen = false;
+                isDialogOpen = false;
             });
 
             $("#restart").click(function(){
                 /* Reset boolean variables */
-                gamePaused = false;
-                keyHandlerActive = true;
+                isGamePaused = false;
+                isKeyHandlerActive = true;
 
                 startGame("restart");
                 spawnEnemies();
 
                 $("#pauseMenu").dialog("destroy");
                 $(".hidden").css("display", "none");
-                dialogIsOpen = false;
+                isDialogOpen = false;
             });
 
             $("html").css("cursor", "pointer");
             $(".hidden").css("display", "block");
 
         } else{
-            keyHandlerActive = false;
-            dialogIsOpen = true;
+            isKeyHandlerActive = false;
+            isDialogOpen = true;
 
             $("#pauseMenu .hidden").children().remove();
 
@@ -145,15 +157,15 @@ function showDialog(type){
 
             $("#try").click(function(){
                 /* Reset boolean variables */
-                gamePaused = false;
-                keyHandlerActive = true;
+                isGamePaused = false;
+                isKeyHandlerActive = true;
 
                 startGame("restart");
                 spawnEnemies();
 
                 $("#pauseMenu").dialog("destroy");
                 $(".hidden").css("display", "none");
-                dialogIsOpen = false;
+                isDialogOpen = false;
             });
         }
     }
@@ -203,39 +215,71 @@ function startGame(type){
 
 }
 
-function changeCharacter(char){
+function changeCharacter(char, startMenu){
     let clone;
 
-    /* Remove character */
-    if($("."+ char).length != 0){
-        $(".chewie").remove();
+    if(startMenu){
+        if(char == "chewie" &&  $("#pauseMenu .hidden .chewieStart").length == 0){
 
+            /* Remove CSS from head and replace it */
+            $("#selectedChar").remove();
+            $("head").append('<link id="selectedChar" rel="stylesheet" href="assets/css/'+ char + '.css">');
+
+            /* Add preview of character to start menu */
+            $("#pauseMenu .hidden #charHan").before(cloneTemplate($("#chewieTemp")));
+            $("#pauseMenu .hidden .chewie").addClass("chewieStart");
+            $("#pauseMenu .hidden .chewie").removeClass("chewie");
+        }
+    } else{
+
+        /* Remove character */
+        if($("."+ char).length != 0){
+            $(".chewie").remove();
+
+        }
+
+        if(char == "chewie"){
+            let template = $("#chewieTemp").html();
+            clone = template;
+        }
+
+        $(".timer").after(clone);
     }
-
-    if(char == "chewie"){
-        let template = $("#chewieTemp").html();
-        clone = template;
-    }
-
-    $(".timer").after(clone);
-    $("head").append('<link rel="stylesheet" href="assets/css/'+ char + '.css">');
 }
 
-function changeBackground(map){
+function changeBackground(map, startMenu){
     let clone;
 
-    if(map == "tatooine"){
-        let template = $("#tatooineTemp").html();
-        clone = template;
-    }
+        if(startMenu){
+        if(map == "tatooine"){
+            if($(".backgroundStart").length != 0){
+                $("#pauseMenu .hidden .backgroundStart").remove();
+            }
 
-    $(".timer").before(clone);
-    $("head").append('<link rel="stylesheet" href="assets/css/'+ map + '.css">');
+            /* Remove CSS from head and replace it */
+            $("#selectedMap").remove();
+            $("head").append('<link id="selectedMap" rel="stylesheet" href="assets/css/'+ map + '.css">');
+
+            $("#pauseMenu .hidden").append(cloneTemplate($("#tatooineTemp")));
+            $("#pauseMenu .hidden .background").addClass("tatooineStart");
+            $("#pauseMenu .hidden .background").removeClass("background");  
+        }
+    } else{
+
+        if(map == "tatooine"){
+            let template = $("#tatooineTemp").html();
+            clone = template;
+        }else{
+            /* han */
+        }
+
+        $(".timer").before(clone);
+    }
 }
 
 function pauseGame() {
-    gamePaused = !gamePaused;
-    if (gamePaused){
+    isGamePaused = !isGamePaused;
+    if (isGamePaused){
 
         /* Stop timer */
         clearInterval(time);
@@ -254,7 +298,7 @@ function pauseGame() {
 
         /* https://stackoverflow.com/questions/36454853/start-stop-keypress-event-jquery */
         /* Pause user inputs other than pause button */
-        keyHandlerActive = false;
+        isKeyHandlerActive = false;
 
         /* Stop enemies shooting by clearing all intervals */
         enemyFireArr.forEach(function(interval){
@@ -292,7 +336,7 @@ function pauseGame() {
             $(this).css("animation-play-state", "running");
         });
 
-        keyHandlerActive = true;
+        isKeyHandlerActive = true;
 
         $(".stormtrooper").each(function(){
             let troopId = $(this).attr("id");
@@ -301,7 +345,7 @@ function pauseGame() {
 
         /* hide pause menu */
         $("#pauseMenu").dialog("close");
-        dialogIsOpen = false;
+        isDialogOpen = false;
         $("html").css("cursor", "none");
     }
 }
@@ -780,7 +824,7 @@ $(document).keypress(function (event) {
     }
 
     /* Check that game isnt paused */
-    if (!keyHandlerActive){ 
+    if (!isKeyHandlerActive){ 
         return; 
     }
 

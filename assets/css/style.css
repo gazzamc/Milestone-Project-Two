@@ -130,6 +130,8 @@ body{
 }
 
 /* dialog styles */
+
+/* Start Dialog */
 button#start{
     position: absolute;
     bottom: 10%;
@@ -153,6 +155,16 @@ button#try{
 h3.map{
     position: absolute;
     top: 45%;
+}
+
+button#mapTatooine{
+    position: absolute;
+    top: 54%;
+    left: 3%;
+}
+
+#pauseMenu button{
+    margin: 1%;
 }
 
 /* Remove x button from dialog */
