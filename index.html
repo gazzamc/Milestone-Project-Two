@@ -16,9 +16,9 @@
 </head>
 
 <body>
-    <div class="timer">
+<!--     <div class="timer">
         <h2>3:00</h2>
-    </div>
+    </div> -->
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template -->
     <!-- Trooper Template -->
     <template id="trooperTemp">
@@ -145,9 +145,15 @@
             </div>
         </div>
     </template>
-    <div class="bulletCount">30</div>
-    <div class="score">Score: 0</div>
-    <div class="combo">Combo: x0</div>
+    <div class="playerUi">
+        <div class="timer">
+            <h2>3:00</h2>
+        </div>
+        <div class="bulletCount">30</div>
+        <div class="score">Score: 0</div>
+        <div class="combo">Combo: x0</div>
+        <div class="announce">Wave 1</div>
+    </div>
     <div id="pauseMenu" title="Game Paused">
         <div class="hidden">
             <p>Sample Text</p>

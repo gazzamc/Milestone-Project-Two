@@ -10,7 +10,7 @@ body{
 
 /* Hide pause menu contents */
 
-.hidden{
+.hidden {
     display: none;
 }
 
@@ -171,4 +171,64 @@ button#mapTatooine{
 
 .ui-dialog-titlebar-close {
     visibility: hidden;
+}
+
+/* player UI */
+
+.playerUi{
+
+}
+
+.bulletCount{
+
+}
+
+.score{
+
+}
+
+.combo{
+
+}
+
+.announce{
+    position: absolute;
+    left: -20vw;
+    top: 40vh;
+    text-shadow: -3px 0 rgba(204, 163, 0), 0 3px rgba(204, 163, 0), 3px 0 rgba(204, 163, 0), 0 -3px rgba(204, 163, 0);
+    color: rgba(0,0,0, 5);
+    font-size: 5em;
+    font-weight: bolder;
+    white-space: nowrap;
+}
+
+.announceMove{
+    animation-name: waveAnnounce;
+    animation-duration: 8s;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes waveAnnounce{
+    from{
+        left: -20vw;
+    }
+    to{
+        left: 45vw;
+    }
+}
+
+.announceText{
+    font-size: 2em;
+    animation-name: waveText;
+    animation-duration: 2s;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes waveText{
+    from{
+        left: 45vw;
+    }
+    to{
+        left: 45vw;
+    }
 }

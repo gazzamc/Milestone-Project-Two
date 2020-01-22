@@ -1,5 +1,5 @@
 /* Global Variables */
-var bullets = 30;
+var bullets = 5;
 var highestCombo = 0;
 var time;
 var checkFriendlyFire;
@@ -15,6 +15,7 @@ var isGamePaused = false;
 var isKeyHandlerActive = true;
 var isDialogOpen = false;
 var isReadyToFire = true;
+var waves = 0;
 
 /* Functions */
 
@@ -44,7 +45,31 @@ function spawnHealth(){
     }
 }
 
+function showWave(message, isWave){
+    let animationType;
+
+    if(isWave){
+        animationType = "announceMove";
+    } else{
+        animationType = "announceText";
+    }
+
+    /* Announce Wave */
+    $(".announce").text(message);
+    $(".announce").addClass(animationType);
+
+    /* Remove once finished */
+    $('.announce').on('animationend webkitAnimationEnd', function () {
+        $(".announce").removeClass(animationType);
+    });
+}
+
 function cloneTemplate(templateName){
+
+    /* https://stackoverflow.com/questions/15930706/html-template-tag-and-jquery */
+    /* Grabbing template of trooper/character from document fragment and cloning/copying 
+        it to a seperate variable in order to put it into the DOM */
+
     let clone;
     let template = templateName.html();
     clone = template;
@@ -68,7 +93,7 @@ function showDialog(type){
             $("#pauseMenu .hidden").append('<button id="start">start</button>');
 
             $("html").css("cursor", "pointer");
-            $(".hidden").css("display", "block");
+            $("#pauseMenu .hidden").css("display", "block");
 
             $("#charChewie").click(function(){
                 changeCharacter("chewie", true);
@@ -98,11 +123,12 @@ function showDialog(type){
                     /* Change to different map */
                 }
 
+                showWave("Wave " + (waves + 1), true);
                 startGame();
                 spawnEnemies();
                 $("html").css("cursor", "none");
                 $("#pauseMenu").dialog("destroy");
-                $(".hidden").css("display", "none");
+                $("#pauseMenu .hidden").css("display", "none");
                 isDialogOpen = false;
             });
 
@@ -125,14 +151,15 @@ function showDialog(type){
 
                 startGame("restart");
                 spawnEnemies();
+                showWave("Wave " + (waves + 1), true);
 
                 $("#pauseMenu").dialog("destroy");
-                $(".hidden").css("display", "none");
+                $("#pauseMenu .hidden").css("display", "none");
                 isDialogOpen = false;
             });
 
             $("html").css("cursor", "pointer");
-            $(".hidden").css("display", "block");
+            $("#pauseMenu .hidden").css("display", "block");
 
         } else{
             isKeyHandlerActive = false;
@@ -144,9 +171,10 @@ function showDialog(type){
             $("#pauseMenu .hidden").append('<p>Score: '+ score +'</p>');
             $("#pauseMenu .hidden").append('<p>Enemies: '+ enemies +'</p>');
             $("#pauseMenu .hidden").append('<p>Highest Combo: '+ highestCombo +'</p>');
+            $("#pauseMenu .hidden").append('<p>Waves Completed: '+ waves +'</p>');
             $("#pauseMenu .hidden").append('<button id="try">Try Again</button>');
             $("html").css("cursor", "pointer");
-            $(".hidden").css("display", "block");
+            $("#pauseMenu .hidden").css("display", "block");
 
             $("#pauseMenu").dialog({
                 title: "Game Over",
@@ -162,9 +190,10 @@ function showDialog(type){
 
                 startGame("restart");
                 spawnEnemies();
+                showWave("Wave " + (waves + 1), true);
 
                 $("#pauseMenu").dialog("destroy");
-                $(".hidden").css("display", "none");
+                $("#pauseMenu .hidden").css("display", "none");
                 isDialogOpen = false;
             });
         }
@@ -626,13 +655,7 @@ function gameOver() {
 
 function spawnEnemies() {
 
-    /* https://stackoverflow.com/questions/15930706/html-template-tag-and-jquery */
-    /* Grabbing template of trooper from document fragment and cloning/copying 
-        it to a seperate variable in order to put it into the DOM */
-    let template = $("#trooperTemp").html();
-    let clone = template;
-
-    $("body").append(clone);
+    $("body").append(cloneTemplate($("#trooperTemp")));
 
     /* Giving trooper a unique ID based on enemies spawned count */
     $(".stormtrooper").each(function () {
@@ -869,6 +892,9 @@ $(document).keypress(function (event) {
                 $(".stormtrooper").each(function () {
                     checkCol.push(setInterval(findCol, 100, $("#" + (bullets + 1) + ".bullet"), $(this)));
                 });
+            }
+            else{
+                showWave("No Ammo!");
             }
         }
     }
