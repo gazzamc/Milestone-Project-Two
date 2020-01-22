@@ -1,12 +1,12 @@
 /* Global Variables */
-var bullets = 5;
+var bullets = 30;
 var highestCombo = 0;
 var time;
 var checkFriendlyFire;
 var healthSpawn;
 var healthSpawnRate = 30000; //ms
 var enemies = 0;
-var spawnRate = 6; //seconds
+var spawnRate = 10; //seconds
 var score = 0;
 var combo = 0;
 var checkCol = [];
@@ -51,7 +51,7 @@ function showWave(message, isWave){
     if(isWave){
         animationType = "announceMove";
     } else{
-        animationType = "announceText";
+        animationType = "announceText"; 
     }
 
     /* Announce Wave */
@@ -209,6 +209,7 @@ function startGame(type){
         score = 0;
         combo = 0;
         highestCombo = 0;
+        waves = 0;
 
         /* Call gameOver function to remove intervals/spawned enemies */
         gameOver();
@@ -724,10 +725,20 @@ function timer() {
     }
 
     /* Game over if time runs out */
-    if (mins == 0 && seconds == 0) {
+    if (mins == 0 && seconds == 00) {
 
-        gameOver();
-        showDialog();
+        waves++;
+
+        /* Check waves complete and change diff depending on which one */
+        if(waves == 3){
+            
+            gameOver();
+            showDialog();
+        }else{
+            $(".timer h2").text("3:00");
+            spawnRate -= 3;
+            showWave("Wave " + (waves + 1), true);
+        }
     } else {
         $(".timer h2").text(mins + ":" + seconds);
     }

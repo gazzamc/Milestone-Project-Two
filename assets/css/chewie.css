@@ -5,10 +5,6 @@
   transform: scale(0.3);
 }
 
-.chewieStart.active{
-    box-shadow: 3px 1px 100px rgba(0,0,0, 1)
-}
-
 .chewie {
   position: absolute;
   left: 5vw;
