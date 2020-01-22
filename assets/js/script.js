@@ -667,9 +667,9 @@ function timer() {
 
 /* https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection */
 function isHit(target, target2) {
-
+    
     /* check if targets still exist */
-    if(target != null && target2 != null){
+    if(target.length != 0 && target2.length != 0){
 
         let targetPos = target.offset();
         let target2Top = $(target2).offset().top;
