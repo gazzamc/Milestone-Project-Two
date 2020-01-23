@@ -19,39 +19,39 @@ var waves = 0;
 
 /* Functions */
 
-$(document).ready(function(){
+$(document).ready(function () {
     showDialog("start");
 });
 
-function spawnHealth(){
+function spawnHealth() {
     /* prevent multiple spawns */
-    if($(".healthTopUp").length == 0){
+    if ($(".healthTopUp").length == 0) {
 
         /* find player position */
         let playerPos = $(".chewie").offset();
 
-        if((playerPos.left + 600) < innerWidth){
+        if ((playerPos.left + 600) < innerWidth) {
             $(".combo").after('<div class="healthTopUp"><div class="horizontal"></div><div class="vertical"></div></div>');
             $(".healthTopUp").css("left", playerPos.left + 600);
-        } else{
+        } else {
             $(".combo").after('<div class="healthTopUp"><div class="horizontal"></div><div class="vertical"></div></div>');
             $(".healthTopUp").css("left", playerPos.left - 600);
         }
 
         /* adjust health position if almost of screen */
-        if($(".healthTopUp").offset().left + $(".healthTopUp").outerWidth() > innerWidth){
+        if ($(".healthTopUp").offset().left + $(".healthTopUp").outerWidth() > innerWidth) {
             $(".healthTopUp").css(($(".healthTopUp").offset().left) - 100);
         }
     }
 }
 
-function showWave(message, isWave){
+function showWave(message, isWave) {
     let animationType;
 
-    if(isWave){
+    if (isWave) {
         animationType = "announceMove";
-    } else{
-        animationType = "announceText"; 
+    } else {
+        animationType = "announceText";
     }
 
     /* Announce Wave */
@@ -64,7 +64,7 @@ function showWave(message, isWave){
     });
 }
 
-function cloneTemplate(templateName){
+function cloneTemplate(templateName) {
 
     /* https://stackoverflow.com/questions/15930706/html-template-tag-and-jquery */
     /* Grabbing template of trooper/character from document fragment and cloning/copying 
@@ -77,11 +77,38 @@ function cloneTemplate(templateName){
     return clone;
 }
 
-function showDialog(type){
-    /* check if anoter dialog is open */
-    if(!isDialogOpen){   
+function controlDialog(){
+    $("#pauseMenu").after('<div id="controlDialog"><div class="hidden"></div></div>');
+    $("#controlDialog .hidden").append('<button id="closeControls">Close</button>');
+    $("#controlDialog .hidden").append('<p><span class="title">Move:</span> <span class="key">A</span>/<span class="key">D</span></p>');
+    $("#controlDialog .hidden").append('<p><span class="title">Shoot:</span> <span class="key">Space</span></p>');
+    $("#controlDialog .hidden").append('<p><span class="title">Jump:</span> <span class="key">Z</span></p>');
+    $("#controlDialog .hidden").append('<p><span class="title">Crouch:</span> <span class="key">C</span></p>');
+    $("#controlDialog .hidden").append('<p><span class="title">Reload:</span> <span class="key">R</span></p>');
+    $("#controlDialog .hidden").append('<p><span class="title">Pause:</span> <span class="key">P</span></p>');
 
-        if(type == "start"){
+    $("html").css("cursor", "pointer");
+    $("#controlDialog .hidden").css("display", "block");
+
+    $("#controlDialog").dialog({
+        title: "Controls",
+        resizable: false,
+        minWidth: 400,
+        minHeight: 350
+    });
+
+    $("#closeControls").click(function () {
+        $("#controlDialog .hidden").children().remove();
+        $("#controlDialog").remove();
+        $("#controlDialog").dialog("destroy");
+    });
+}
+
+function showDialog(type) {
+    /* check if another dialog is open */
+    if (!isDialogOpen) {
+
+        if (type == "start") {
             isDialogOpen = true;
 
             $("#pauseMenu .hidden").children().remove();
@@ -90,17 +117,22 @@ function showDialog(type){
             $("#pauseMenu .hidden").append('<button id="charHan">Han</button>');
             $("#pauseMenu .hidden").append('<h3 class="map">Pick Map</h3>');
             $("#pauseMenu .hidden").append('<button id="mapTatooine">Tatooine</button>');
-            $("#pauseMenu .hidden").append('<button id="start">start</button>');
+            $("#pauseMenu .hidden").append('<button id="start">Start</button>');
+            $("#pauseMenu .hidden").append('<button id="controls">Controls</button>');
 
             $("html").css("cursor", "pointer");
             $("#pauseMenu .hidden").css("display", "block");
 
-            $("#charChewie").click(function(){
+            $("#charChewie").click(function () {
                 changeCharacter("chewie", true);
             });
 
-            $("#mapTatooine").click(function(){
+            $("#mapTatooine").click(function () {
                 changeBackground("tatooine", true);
+            });
+
+            $("#controls").click(function () {
+                controlDialog();
             });
 
             $("#pauseMenu").dialog({
@@ -110,16 +142,16 @@ function showDialog(type){
                 minHeight: 700
             });
 
-            $("#start").click(function(){
-                if($(".chewieStart").length != 0){
+            $("#start").click(function () {
+                if ($(".chewieStart").length != 0) {
                     changeCharacter("chewie");
-                } else{
+                } else {
                     /* Change to han */
                 }
 
-                if($(".tatooineStart").length != 0){
+                if ($(".tatooineStart").length != 0) {
                     changeBackground("tatooine");
-                } else{
+                } else {
                     /* Change to different map */
                 }
 
@@ -132,19 +164,24 @@ function showDialog(type){
                 isDialogOpen = false;
             });
 
-        } else if(type == "pause"){
+        } else if (type == "pause") {
             isDialogOpen = true;
             $("#pauseMenu .hidden").children().remove();
             $("#pauseMenu").dialog();
             $("#pauseMenu .hidden").append('<button id="continue">Continue</button>');
             $("#pauseMenu .hidden").append('<button id="restart">Restart</button>');
+            $("#pauseMenu .hidden").append('<button id="controls">Controls</button>');
 
-            $("#continue").click(function(){
+            $("#continue").click(function () {
                 pauseGame();
                 isDialogOpen = false;
             });
 
-            $("#restart").click(function(){
+            $("#controls").click(function () {
+                controlDialog();
+            });
+
+            $("#restart").click(function () {
                 /* Reset boolean variables */
                 isGamePaused = false;
                 isKeyHandlerActive = true;
@@ -161,17 +198,17 @@ function showDialog(type){
             $("html").css("cursor", "pointer");
             $("#pauseMenu .hidden").css("display", "block");
 
-        } else{
+        } else {
             isKeyHandlerActive = false;
             isDialogOpen = true;
 
             $("#pauseMenu .hidden").children().remove();
 
             $("#pauseMenu .hidden").append('<h3 class="char">Stats:</h3>');
-            $("#pauseMenu .hidden").append('<p>Score: '+ score +'</p>');
-            $("#pauseMenu .hidden").append('<p>Enemies: '+ enemies +'</p>');
-            $("#pauseMenu .hidden").append('<p>Highest Combo: '+ highestCombo +'</p>');
-            $("#pauseMenu .hidden").append('<p>Waves Completed: '+ waves +'</p>');
+            $("#pauseMenu .hidden").append('<p>Score: ' + score + '</p>');
+            $("#pauseMenu .hidden").append('<p>Enemies: ' + enemies + '</p>');
+            $("#pauseMenu .hidden").append('<p>Highest Combo: ' + highestCombo + '</p>');
+            $("#pauseMenu .hidden").append('<p>Waves Completed: ' + waves + '</p>');
             $("#pauseMenu .hidden").append('<button id="try">Try Again</button>');
             $("html").css("cursor", "pointer");
             $("#pauseMenu .hidden").css("display", "block");
@@ -183,7 +220,7 @@ function showDialog(type){
                 minHeight: 400
             });
 
-            $("#try").click(function(){
+            $("#try").click(function () {
                 /* Reset boolean variables */
                 isGamePaused = false;
                 isKeyHandlerActive = true;
@@ -200,9 +237,9 @@ function showDialog(type){
     }
 }
 
-function startGame(type){
+function startGame(type) {
 
-    if(type == "restart"){
+    if (type == "restart") {
         /* Reset global variables */
         enemies = 0;
         bullets = 30;
@@ -215,7 +252,7 @@ function startGame(type){
         gameOver();
 
         /* Reset UI */
-        $(".timer h2").text("3:00");
+        $(".timer h2").text("1:00");
         $(".score").text("Score: 0");
         $(".combo").text("Combo: x0");
         $(".bulletCount").text("30");
@@ -223,7 +260,7 @@ function startGame(type){
         $(".chewie .health").css("width", "100px");
 
         /* if character deleted add */
-        if($(".chewie").length == 0){
+        if ($(".chewie").length == 0) {
             changeCharacter("chewie");
         }
 
@@ -233,42 +270,42 @@ function startGame(type){
     }
 
     /* if no map selected add default- tatooine */
-    if($(".background").length == 0 && $(".chewie").length == 0){
+    if ($(".background").length == 0 && $(".chewie").length == 0) {
         changeBackground("tatooine");
         changeCharacter("chewie");
     }
 
     /* Start/Restart intervals */
     time = setInterval(timer, 1000);
-    checkFriendlyFire = setInterval(friendlyFire, 1); 
-    healthSpawn = setInterval(spawnHealth, healthSpawnRate); 
+    checkFriendlyFire = setInterval(friendlyFire, 1);
+    healthSpawn = setInterval(spawnHealth, healthSpawnRate);
 
 }
 
-function changeCharacter(char, startMenu){
+function changeCharacter(char, startMenu) {
     let clone;
 
-    if(startMenu){
-        if(char == "chewie" &&  $("#pauseMenu .hidden .chewieStart").length == 0){
+    if (startMenu) {
+        if (char == "chewie" && $("#pauseMenu .hidden .chewieStart").length == 0) {
 
             /* Remove CSS from head and replace it */
             $("#selectedChar").remove();
-            $("head").append('<link id="selectedChar" rel="stylesheet" href="assets/css/'+ char + '.css">');
+            $("head").append('<link id="selectedChar" rel="stylesheet" href="assets/css/' + char + '.css">');
 
             /* Add preview of character to start menu */
             $("#pauseMenu .hidden #charHan").before(cloneTemplate($("#chewieTemp")));
             $("#pauseMenu .hidden .chewie").addClass("chewieStart");
             $("#pauseMenu .hidden .chewie").removeClass("chewie");
         }
-    } else{
+    } else {
 
         /* Remove character */
-        if($("."+ char).length != 0){
+        if ($("." + char).length != 0) {
             $(".chewie").remove();
 
         }
 
-        if(char == "chewie"){
+        if (char == "chewie") {
             let template = $("#chewieTemp").html();
             clone = template;
         }
@@ -277,29 +314,29 @@ function changeCharacter(char, startMenu){
     }
 }
 
-function changeBackground(map, startMenu){
+function changeBackground(map, startMenu) {
     let clone;
 
-        if(startMenu){
-        if(map == "tatooine"){
-            if($(".backgroundStart").length != 0){
+    if (startMenu) {
+        if (map == "tatooine") {
+            if ($(".backgroundStart").length != 0) {
                 $("#pauseMenu .hidden .backgroundStart").remove();
             }
 
             /* Remove CSS from head and replace it */
             $("#selectedMap").remove();
-            $("head").append('<link id="selectedMap" rel="stylesheet" href="assets/css/'+ map + '.css">');
+            $("head").append('<link id="selectedMap" rel="stylesheet" href="assets/css/' + map + '.css">');
 
             $("#pauseMenu .hidden").append(cloneTemplate($("#tatooineTemp")));
             $("#pauseMenu .hidden .background").addClass("tatooineStart");
-            $("#pauseMenu .hidden .background").removeClass("background");  
+            $("#pauseMenu .hidden .background").removeClass("background");
         }
-    } else{
+    } else {
 
-        if(map == "tatooine"){
+        if (map == "tatooine") {
             let template = $("#tatooineTemp").html();
             clone = template;
-        }else{
+        } else {
             /* han */
         }
 
@@ -309,7 +346,7 @@ function changeBackground(map, startMenu){
 
 function pauseGame() {
     isGamePaused = !isGamePaused;
-    if (isGamePaused){
+    if (isGamePaused) {
 
         /* Stop timer */
         clearInterval(time);
@@ -322,7 +359,7 @@ function pauseGame() {
 
         /* https://www.quackit.com/css/css3/properties/css_animation-play-state.cfm */
         /* Stop Enemies moving */
-        $(".stormtrooper").each(function(){
+        $(".stormtrooper").each(function () {
             $(this).css("animation-play-state", "paused");
         });
 
@@ -331,44 +368,44 @@ function pauseGame() {
         isKeyHandlerActive = false;
 
         /* Stop enemies shooting by clearing all intervals */
-        enemyFireArr.forEach(function(interval){
+        enemyFireArr.forEach(function (interval) {
             clearInterval(interval);
             enemyFireArr[enemyFireArr.indexOf(interval)] = "cleared";
         });
 
 
         /* Display pause menu */
-/*         $("#pauseMenu").dialog();
-        $(document).on('click','.ui-dialog-titlebar-close',function(){
-            pauseGame();
-        });
-
-        $("#mapChange").click(function(){
-            changeBackground("tatooine");
-        });
-
-        $("#charChange").click(function(){
-            changeCharacter("chewie");
-        });
-
-        $("html").css("cursor", "pointer");
-        $(".hidden").css("display", "block"); */
+        /*         $("#pauseMenu").dialog();
+                $(document).on('click','.ui-dialog-titlebar-close',function(){
+                    pauseGame();
+                });
+        
+                $("#mapChange").click(function(){
+                    changeBackground("tatooine");
+                });
+        
+                $("#charChange").click(function(){
+                    changeCharacter("chewie");
+                });
+        
+                $("html").css("cursor", "pointer");
+                $(".hidden").css("display", "block"); */
 
         showDialog("pause");
 
-    }else{
+    } else {
 
         time = setInterval(timer, 1000);
         checkFriendlyFire = setInterval(friendlyFire, 1);
         healthSpawn = setInterval(spawnHealth, healthSpawnRate);
 
-        $(".stormtrooper").each(function(){
+        $(".stormtrooper").each(function () {
             $(this).css("animation-play-state", "running");
         });
 
         isKeyHandlerActive = true;
 
-        $(".stormtrooper").each(function(){
+        $(".stormtrooper").each(function () {
             let troopId = $(this).attr("id");
             enemyFireArr[troopId - 1] = setInterval(enemyFire, 4000, $(this));
         });
@@ -387,7 +424,7 @@ function updateScore(behaviour = "update") {
         /* Remove Combo and add to score */
         score += combo;
 
-        if(combo > highestCombo){highestCombo = combo};
+        if (combo > highestCombo) { highestCombo = combo };
         combo = 0;
         $(".combo").text("Combo: x" + combo);
         $(".score").text("Score: " + score);
@@ -429,13 +466,13 @@ function currEnemies() {
 
 function findBlasterLoc(char) {
     let blaster;
-    
-        if(findEnemyType(char) == "chewie"){
-            blaster = $(".cblasterBarrel").offset();
-        }
-        else if(findEnemyType(char) == "stormtrooper"){
-            blaster = $("." + findEnemyType(char) + "#" + char.attr("id") +" .body .blaster").offset();
-        }
+
+    if (findEnemyType(char) == "chewie") {
+        blaster = $(".cblasterBarrel").offset();
+    }
+    else if (findEnemyType(char) == "stormtrooper") {
+        blaster = $("." + findEnemyType(char) + "#" + char.attr("id") + " .body .blaster").offset();
+    }
 
     return [blaster.top, blaster.left];
 }
@@ -444,7 +481,7 @@ function setBulletTrajectory(source, char) {
 
     let getAngle = source.attr("style");
 
-    if(getAngle == null){
+    if (getAngle == null) {
         getAngle = "transform: rotate(0deg)";
     }
 
@@ -459,7 +496,7 @@ function setBulletTrajectory(source, char) {
     let left = blasterPos[1];
 
 
-    if(findEnemyType(char) == "chewie"){
+    if (findEnemyType(char) == "chewie") {
 
         /* Fix location of spawned bullet depending on arm angle */
         if (degree <= -30 && degree >= -35) {
@@ -490,7 +527,7 @@ function setBulletTrajectory(source, char) {
             }
         });
 
-    } else if(findEnemyType(char) == "stormtrooper"){
+    } else if (findEnemyType(char) == "stormtrooper") {
 
         let bulletId = "enemy" + char.attr("id") + "bullet" + left;
 
@@ -507,35 +544,35 @@ function setBulletTrajectory(source, char) {
         else if (degree <= -6 && degree >= -10) {
             top += 35;
         }
-        else{
+        else {
             top += 7;
         }
 
         $("body").append('<div class="enBullet" id="' + bulletId + '" style="top:' + top + 'px; left:' + left + 'px;"></div>');
 
-        if(degree > 0){
-            $("#" + bulletId).css("transform", "rotate(-"+ Math.abs(degree) + "deg");
-        } else{
+        if (degree > 0) {
+            $("#" + bulletId).css("transform", "rotate(-" + Math.abs(degree) + "deg");
+        } else {
             $("#" + bulletId).css("transform", "rotate(" + Math.abs(degree) + "deg)");
         }
 
         /* Adjust animation angle based on the enemies placement on screen */
-        if(left  <= (window.innerWidth * 0.9)){
-            $(".enBullet").animate({left: '-40vw', top: '+=' + ((degree * 5.2) - (degree * 5.2) * 0.1)  + 'vh' }, 3000, "linear");
-        } else if(left  <= (window.innerWidth * 0.8)){
-           $(".enBullet").animate({left: '-40vw', top: '+=' + ((degree * 5.2) * 5.2) - ((degree * 5.2) * 0.2)  + 'vh' }, 3000, "linear"); 
-        } else if(left  <= (window.innerWidth * 0.7)){
-           $(".enBullet").animate({left: '-40vw', top: '+=' + ((degree * 5.2) * 5.2) - ((degree * 5.2) * 0.3)  + 'vh' }, 3000, "linear"); 
-        } else if(left  <= (window.innerWidth * 0.6)){
-           $(".enBullet").animate({left: '-40vw', top: '+=' + ((degree * 5.2) * 5.2) - ((degree * 5.2) * 0.4)  + 'vh' }, 3000, "linear"); 
-        } else if(left  <= (window.innerWidth * 0.5)){
-           $(".enBullet").animate({left: '-40vw', top: '+=' + ((degree * 5.2) * 5.2) - ((degree * 5.2) * 0.5)  + 'vh' }, 3000, "linear"); 
-        } else if(left  <= (window.innerWidth * 0.4)){
-           $(".enBullet").animate({left: '-40vw', top: '+=' + ((degree * 5.2) * 5.2) - ((degree * 5.2) * 0.6)  + 'vh' }, 3000, "linear"); 
-        } else if(left  <= (window.innerWidth * 0.3)){
-           $(".enBullet").animate({left: '-40vw', top: '+=' + ((degree * 5.2) * 5.2) - ((degree * 5.2) * 0.7)  + 'vh' }, 3000, "linear"); 
-        } else{
-           $(".enBullet").animate({left: '-40vw', top: '+=' + (degree * 5.2)  + 'vh' }, 2000, "linear");      
+        if (left <= (window.innerWidth * 0.9)) {
+            $(".enBullet").animate({ left: '-40vw', top: '+=' + ((degree * 5.2) - (degree * 5.2) * 0.1) + 'vh' }, 3000, "linear");
+        } else if (left <= (window.innerWidth * 0.8)) {
+            $(".enBullet").animate({ left: '-40vw', top: '+=' + ((degree * 5.2) * 5.2) - ((degree * 5.2) * 0.2) + 'vh' }, 3000, "linear");
+        } else if (left <= (window.innerWidth * 0.7)) {
+            $(".enBullet").animate({ left: '-40vw', top: '+=' + ((degree * 5.2) * 5.2) - ((degree * 5.2) * 0.3) + 'vh' }, 3000, "linear");
+        } else if (left <= (window.innerWidth * 0.6)) {
+            $(".enBullet").animate({ left: '-40vw', top: '+=' + ((degree * 5.2) * 5.2) - ((degree * 5.2) * 0.4) + 'vh' }, 3000, "linear");
+        } else if (left <= (window.innerWidth * 0.5)) {
+            $(".enBullet").animate({ left: '-40vw', top: '+=' + ((degree * 5.2) * 5.2) - ((degree * 5.2) * 0.5) + 'vh' }, 3000, "linear");
+        } else if (left <= (window.innerWidth * 0.4)) {
+            $(".enBullet").animate({ left: '-40vw', top: '+=' + ((degree * 5.2) * 5.2) - ((degree * 5.2) * 0.6) + 'vh' }, 3000, "linear");
+        } else if (left <= (window.innerWidth * 0.3)) {
+            $(".enBullet").animate({ left: '-40vw', top: '+=' + ((degree * 5.2) * 5.2) - ((degree * 5.2) * 0.7) + 'vh' }, 3000, "linear");
+        } else {
+            $(".enBullet").animate({ left: '-40vw', top: '+=' + (degree * 5.2) + 'vh' }, 2000, "linear");
         }
 
     }
@@ -546,7 +583,7 @@ function friendlyFire() {
     let currHealth = parseInt($(".chewie .health .num").text());
 
     /* Return if player no longer exists */
-    if(friendly != null){
+    if (friendly != null) {
 
         /* Check if stormtrooper hits player */
         $(".stormtrooper").each(function () {
@@ -570,16 +607,16 @@ function friendlyFire() {
 
             /* Remove enemy bullet if out of bounds */
             let isOut = outOfBounds(enBulletPos);
-            if(isOut){
+            if (isOut) {
                 $(this).remove();
             }
 
             if (isHit($(this), $(".chewie .cbody"))) {
                 $(this).remove();
-                    
+
                 updateScore("clear");
                 damage(10, friendly);
-            } else if(isHit($(this), $(".chewie .chead"))){
+            } else if (isHit($(this), $(".chewie .chead"))) {
                 $(this).remove();
 
                 updateScore("clear");
@@ -588,7 +625,7 @@ function friendlyFire() {
         });
 
         /* check if health top up exists then check if player hit health spawn */
-        if($(".healthTopUp").length != 0 && currHealth < 100 && $(".chewie").length != 0){
+        if ($(".healthTopUp").length != 0 && currHealth < 100 && $(".chewie").length != 0) {
 
             if (isHit($(".healthTopUp"), $(".chewie .cbody")) || isHit($(".healthTopUp"), $(".chewie .chead"))) {
                 $(".healthTopUp").remove();
@@ -596,14 +633,14 @@ function friendlyFire() {
                 /* get random health number */
                 let randNum = Math.floor(Math.random() * 100);
 
-                if((currHealth + randNum) > 100){
+                if ((currHealth + randNum) > 100) {
                     $(".chewie").find(".health").css("width", 100 + "px");
-                    $(".chewie .health .num").text(100); 
-                }else{
+                    $(".chewie .health .num").text(100);
+                } else {
                     let currWidth = parseInt($(".chewie").find(".health").css("width"));
 
                     $(".chewie").find(".health").css("width", (currWidth + randNum) + "px");
-                    $(".chewie .health .num").text(currHealth + randNum); 
+                    $(".chewie .health .num").text(currHealth + randNum);
                 }
             }
         }
@@ -636,7 +673,7 @@ function gameOver() {
     clearBulletArray("enemy");
 
     /* Delete all troopers */
-    $(".stormtrooper").each(function(){
+    $(".stormtrooper").each(function () {
         $(this).remove();
     });
 
@@ -677,7 +714,7 @@ function setEnemyAim(enemy) {
     randomNum *= Math.floor(Math.random() * 2) == 1 ? 1 : -1;
 
     /* Prevent any number above 10 */
-    if(randomNum > 10){
+    if (randomNum > 10) {
         randomNum = Math.random() * 10;
         randomNum *= Math.floor(Math.random() * 2) == 1 ? 1 : -1;
     }
@@ -689,9 +726,9 @@ function setEnemyAim(enemy) {
 function enemyFire(enemy) {
 
     /* Check if enemy still exists */
-    if(enemy != null){
+    if (enemy != null) {
         setEnemyAim(enemy);
-        setBulletTrajectory($(".stormtrooper#"+ enemy.attr("id") +" .body .blaster"), enemy);
+        setBulletTrajectory($(".stormtrooper#" + enemy.attr("id") + " .body .blaster"), enemy);
     }
 }
 
@@ -702,13 +739,10 @@ function timer() {
     let seconds = splitTime[1];
 
     if (seconds == 0) {
-
         seconds = 59;
-
         if (mins > 0) {
             mins--;
         }
-
     } else {
         seconds--;
 
@@ -717,25 +751,19 @@ function timer() {
             seconds = "0" + seconds;
         }
     }
-
     /* Spawn enemies based on spawn rate */
     if (seconds % spawnRate == 0) {
-
         spawnEnemies();
     }
-
     /* Game over if time runs out */
     if (mins == 0 && seconds == 00) {
-
         waves++;
-
         /* Check waves complete and change diff depending on which one */
-        if(waves == 3){
-            
+        if (waves == 3) {
             gameOver();
             showDialog();
-        }else{
-            $(".timer h2").text("3:00");
+        } else {
+            $(".timer h2").text("1:00");
             spawnRate -= 3;
             showWave("Wave " + (waves + 1), true);
         }
@@ -748,7 +776,7 @@ function timer() {
 function isHit(target, target2) {
 
     /* check if targets still exist */
-    if(target.length != 0 && target2.length != 0){
+    if (target.length != 0 && target2.length != 0) {
 
         let targetPos = target.offset();
         let target2Top = $(target2).offset().top;
@@ -779,7 +807,7 @@ function outOfBounds(bulletPos) {
 
     /* This removes the bullet if it missed and goes out of view */
     if (bulletPos.left > innerWidth || bulletPos.top > innerHeight || bulletPos.left < 0 || bulletPos.left < 0) {
-        istrue = true;     
+        istrue = true;
     }
 
     return istrue;
@@ -789,7 +817,7 @@ function findCol(bullet, enemy) {
     let bulletPos = bullet.offset();
     let isOut = outOfBounds(bulletPos);
 
-    if(isOut){
+    if (isOut) {
         clearBulletArray();
     }
 
@@ -815,36 +843,36 @@ function findCol(bullet, enemy) {
 
 function clearBulletArray(type, enemyId) {
 
-    if(type == "enemy"){
-        if(enemyId == null){
-                /* Clear all trooper intervals */
-                enemyFireArr.forEach(function(interval){
-                    clearInterval(interval);
-                });
-                enemyFireArr = [];
-        }else{
+    if (type == "enemy") {
+        if (enemyId == null) {
+            /* Clear all trooper intervals */
+            enemyFireArr.forEach(function (interval) {
+                clearInterval(interval);
+            });
+            enemyFireArr = [];
+        } else {
 
             /* Clear individual trooper interval */
             enemyFireArr.forEach(function (item) {
-                if((parseInt(enemyId) - 1) == enemyFireArr.indexOf(item)){
+                if ((parseInt(enemyId) - 1) == enemyFireArr.indexOf(item)) {
 
                     /* https://stackoverflow.com/questions/32891807/jquery-wildcard-selector-starts-w-string-and-ends-w-variable */
                     $(["id^=enemy" + parseInt(enemyId) + "bullet"]).remove();
 
                     clearInterval(item);
                     /* replace interval id with cleared to maintain array size */
-                    enemyFireArr[enemyFireArr.indexOf(item)] = "cleared";   
+                    enemyFireArr[enemyFireArr.indexOf(item)] = "cleared";
                 }
             });
         }
 
-    }else{
+    } else {
         isReadyToFire = true;
 
         /* Clear bullet array */
         checkCol.forEach(function (item) {
             clearInterval(item);
-            checkCol[checkCol.indexOf(item)] = "cleared";  
+            checkCol[checkCol.indexOf(item)] = "cleared";
         });
         $(".bullet").remove();
     }
@@ -858,8 +886,8 @@ $(document).keypress(function (event) {
     }
 
     /* Check that game isnt paused */
-    if (!isKeyHandlerActive){ 
-        return; 
+    if (!isKeyHandlerActive) {
+        return;
     }
 
     /* Move left or right with A/D keys  */
@@ -878,7 +906,7 @@ $(document).keypress(function (event) {
 
         let curBgPos = $("div.horizon").css("left");
         let newBgPos = parseInt(curBgPos) + 5;
-         $("div.horizon").css("left", newBgPos);
+        $("div.horizon").css("left", newBgPos);
 
         /* Prevent player from leaving screen view */
         if (parseInt(curPos) > 0) {
@@ -904,7 +932,7 @@ $(document).keypress(function (event) {
                     checkCol.push(setInterval(findCol, 100, $("#" + (bullets + 1) + ".bullet"), $(this)));
                 });
             }
-            else{
+            else {
                 showWave("No Ammo!");
             }
         }

@@ -134,10 +134,16 @@ body{
 /* Start Dialog */
 button#start{
     position: absolute;
-    bottom: 10%;
+    bottom: 8%;
     left: 40%;
     font-size: 2em;
     font-variant: small-caps;
+}
+
+button#controls{
+    position: absolute;
+    bottom: 2%;
+    left: 42%;
 }
 
 button#start:hover{
@@ -165,6 +171,33 @@ button#mapTatooine{
 
 #pauseMenu button{
     margin: 1%;
+}
+
+/* Controls dialog */
+
+#closeControls{
+    position: absolute;
+    bottom: 3%;
+    left: 43%;
+}
+
+#controlDialog p {
+    padding-left: 30%;
+    margin-top: 5%;
+}
+
+span.key{
+    background-color: beige;
+    border-radius: 10%;
+    padding: 1% 2% 1% 2%;
+    margin: 2%;
+    border: 1px solid black;
+    font-weight: bolder;
+}
+
+span.title{
+    margin: 0 10% 0 0;
+    font-weight: bolder;
 }
 
 /* Remove x button from dialog */
