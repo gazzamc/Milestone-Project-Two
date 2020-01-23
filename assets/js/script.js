@@ -82,8 +82,8 @@ function controlDialog(){
     $("#controlDialog .hidden").append('<button id="closeControls">Close</button>');
     $("#controlDialog .hidden").append('<p><span class="title">Move:</span> <span class="key">A</span>/<span class="key">D</span></p>');
     $("#controlDialog .hidden").append('<p><span class="title">Shoot:</span> <span class="key">Space</span></p>');
-    $("#controlDialog .hidden").append('<p><span class="title">Jump:</span> <span class="key">Z</span></p>');
-    $("#controlDialog .hidden").append('<p><span class="title">Crouch:</span> <span class="key">C</span></p>');
+    $("#controlDialog .hidden").append('<p><span class="title">Jump:</span> <span class="key">E</span></p>');
+    $("#controlDialog .hidden").append('<p><span class="title">Crouch:</span> <span class="key">Q</span></p>');
     $("#controlDialog .hidden").append('<p><span class="title">Reload:</span> <span class="key">R</span></p>');
     $("#controlDialog .hidden").append('<p><span class="title">Pause:</span> <span class="key">P</span></p>');
 
@@ -945,7 +945,7 @@ $(document).keypress(function (event) {
         }
     }
 
-    else if (event.which == 99) {
+    else if (event.which == 113) {
         $("div.chewie").addClass("crouch");
 
         $(document).keyup(function (event) {
@@ -953,7 +953,7 @@ $(document).keypress(function (event) {
 
         });
     }
-    else if (event.which == 122) {
+    else if (event.which == 101) {
         $("div.chewie").addClass("jump");
 
         $(document).keyup(function (event) {
