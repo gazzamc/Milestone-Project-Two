@@ -8,6 +8,7 @@ function startGame(type) {
         combo = 0;
         highestCombo = 0;
         waves = 0;
+        spawnRate = 10;
 
         /* Call gameOver function to remove intervals/spawned enemies */
         gameOver();
