@@ -22,7 +22,7 @@ function changeCharacter(char, startMenu) {
             $("head").append('<link id="selectedChar" rel="stylesheet" href="assets/css/' + char + '.css">');
 
             /* Add preview of character to start menu */
-            $("#pauseMenu .hidden #charHan").before(cloneTemplate($("#chewieTemp")));
+            $("#pauseMenu .hidden #charDiv").append(cloneTemplate($("#chewieTemp")));
             $("#pauseMenu .hidden .chewie").addClass("chewieStart");
             $("#pauseMenu .hidden .chewie").removeClass("chewie");
         }

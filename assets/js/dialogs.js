@@ -6,11 +6,13 @@ function showDialog(type) {
             isDialogOpen = true;
 
             $("#pauseMenu .hidden").children().remove();
-            $("#pauseMenu .hidden").append('<h3 class="char">Pick Character</h3>');
+            $("#pauseMenu .hidden").append('<h3 class="char">Pick Character:</h3>');
             $("#pauseMenu .hidden").append('<button id="charChewie">Chewie</button>');
             $("#pauseMenu .hidden").append('<button id="charHan">Han</button>');
-            $("#pauseMenu .hidden").append('<h3 class="map">Pick Map</h3>');
+            $("#pauseMenu .hidden").append('<div id="charDiv"></div>');
+            $("#pauseMenu .hidden").append('<h3 class="map">Pick Map:</h3>');
             $("#pauseMenu .hidden").append('<button id="mapTatooine">Tatooine</button>');
+            $("#pauseMenu .hidden").append('<div id="bgDiv"></div>');
             $("#pauseMenu .hidden").append('<button id="start">Start</button>');
             $("#pauseMenu .hidden").append('<button id="controls">Controls</button>');
             $("#pauseMenu .hidden").append('<div class="introCheck"><label><input type="checkbox" id="introPlay"> Skip Intro</label></div>');
@@ -31,7 +33,7 @@ function showDialog(type) {
             });
 
             $("#pauseMenu").dialog({
-                title: "Start Game",
+                title: "Start Game - Star Wars",
                 resizable: false,
                 minWidth: 600,
                 minHeight: 700
@@ -95,7 +97,14 @@ function showDialog(type) {
             $("#pauseMenu").dialog();
             $("#pauseMenu .hidden").append('<button id="continue">Continue</button>');
             $("#pauseMenu .hidden").append('<button id="restart">Restart</button>');
-            $("#pauseMenu .hidden").append('<button id="controls">Controls</button>');
+            $("#pauseMenu .hidden").append('<button id="controlsPause">Controls</button>');
+
+            $("#pauseMenu").dialog({
+                title: "Game Paused",
+                resizable: false,
+                minWidth: 100,
+                minHeight: 200
+            })
 
             $("#continue").click(function () {
                 pauseGame();

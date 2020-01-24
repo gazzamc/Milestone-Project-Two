@@ -7,6 +7,8 @@ body{
     margin:0;
     padding:0;
     background-color: black;
+    font-family: 'Pathway Gothic One', sans-serif;
+    font-weight: 600;
 }
 
 /* Hide pause menu contents */
@@ -144,7 +146,9 @@ button#start{
 button#controls{
     position: absolute;
     bottom: 2%;
-    left: 42%;
+    left: 41%;
+    margin:0;
+    font-size: 90%;
 }
 
 button#start:hover{
@@ -172,6 +176,48 @@ button#mapTatooine{
 
 #pauseMenu button{
     margin: 1%;
+}
+
+#charDiv{
+    height: 20vh;
+    width: 29vw;
+    background-color: rgba(0,0,0, 0.5);
+
+}
+
+/* Global dialog styles */
+
+.ui-widget-header{
+    background-color: rgba(0,0,0, 0.9);
+    border: 1px solid rgba(224,140,0, 0.9);
+    color: #DF8C00;
+}
+
+.ui-dialog .ui-dialog-title{
+    margin:0;
+    text-align: center;
+    padding-left: 5%;
+}
+
+#pauseMenu button{
+    /* font-variant: small-caps; */
+    color: #fff;
+    background-color: rgba(0,0,0, 0.8);
+    border-radius: 8%;
+}
+
+#pauseMenu button:hover{
+    color: #DF8C00;
+}
+
+.ui-widget-content{
+    background-color: #FFFFDE;
+    box-shadow: 1px 1px 10px rgba(0,0,0, 0.5);
+}
+
+#ui-id-1, #ui-id-2{
+    font-size: 1.5em;
+    font-family: 'Pathway Gothic One', sans-serif;
 }
 
 /* Controls dialog */
@@ -205,6 +251,16 @@ span.title{
     position: absolute;
     bottom: 5%;
     left: 10%;
+}
+
+/* Pause Menu Dialog */
+
+button#controlsPause, button#continue, button#restart{
+    position: relative;
+    width: 40%;
+    left: 25%;
+    margin: 5%;
+    display: block;
 }
 
 /* Remove x button from dialog */
