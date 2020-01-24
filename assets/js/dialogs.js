@@ -208,11 +208,3 @@ function showWave(message, isWave) {
         $(".announce").removeClass(animationType);
     });
 }
-
-function introCredits(){
-    let clone = cloneTemplate($("#introText"));
-    $("body").append(clone);
-
-     /* Add CSS */
-     $("head").append('<link id="introCSS" rel="stylesheet" href="assets/css/crawl.css">');
-}
