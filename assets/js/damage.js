@@ -10,7 +10,7 @@ function damage(damageAmount, target) {
         clearBulletArray("enemy", target.attr("id"));
         target.remove();
 
-        if (findEnemyType(target) == "chewie") {
+        if (findEnemyType(target) == character) {
             gameOver();
             showDialog();
         } else {

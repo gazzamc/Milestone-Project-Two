@@ -13,9 +13,15 @@ function cloneTemplate(templateName) {
 
 function changeCharacter(char, startMenu) {
     let clone;
+    let template;
 
     if (startMenu) {
         if (char == "chewie" && $("#pauseMenu .hidden .chewieStart").length == 0) {
+
+            /* check for han, then remove */
+            if($("#pauseMenu .hidden .hanStart").length != 0){
+                $(".hanStart").remove();
+            }
 
             /* Remove CSS from head and replace it */
             $("#selectedChar").remove();
@@ -25,18 +31,29 @@ function changeCharacter(char, startMenu) {
             $("#pauseMenu .hidden #charDiv").append(cloneTemplate($("#chewieTemp")));
             $("#pauseMenu .hidden .chewie").addClass("chewieStart");
             $("#pauseMenu .hidden .chewie").removeClass("chewie");
+        } else if (char == "han" && $("#pauseMenu .hidden .hanStart").length == 0){
+
+            /* check for chewie, then remove */
+            if($("#pauseMenu .hidden .chewieStart").length != 0){
+                $(".chewieStart").remove();
+            }
+
+            /* Remove CSS from head and replace it */
+            $("#selectedChar").remove();
+            $("head").append('<link id="selectedChar" rel="stylesheet" href="assets/css/' + char + '.css">');
+
+            /* Add preview of character to start menu */
+            $("#pauseMenu .hidden #charDiv").append(cloneTemplate($("#hanTemp")));
+            $("#pauseMenu .hidden .han").addClass("hanStart");
+            $("#pauseMenu .hidden .han").removeClass("han"); 
         }
     } else {
-
-        /* Remove character */
-        if ($("." + char).length != 0) {
-            $(".chewie").remove();
-
-        }
-
         if (char == "chewie") {
-            let template = $("#chewieTemp").html();
+            template = $("#chewieTemp").html();
             clone = template;
+        }else{
+            template = $("#hanTemp").html();
+            clone = template; 
         }
 
         $("#trooperTemp").before(clone);

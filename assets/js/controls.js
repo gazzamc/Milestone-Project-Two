@@ -12,16 +12,16 @@ $(document).keypress(function (event) {
 
     /* Move left or right with A/D keys  */
     if (event.which == 100) {
-        let curPos = $("div.chewie").css("left");
+        let curPos = $("div." + character).css("left");
         let newPos = parseInt(curPos) + 5;
-        $("div.chewie").css("left", newPos);
+        $("div." + character).css("left", newPos);
 
         let curBgPos = $("div.horizon").css("left");
         let newBgPos = parseInt(curBgPos) - 5;
         $("div.horizon").css("left", newBgPos);
     }
     else if (event.which == 97) {
-        let curPos = $("div.chewie").css("left");
+        let curPos = $("div." + character).css("left");
         let newPos = parseInt(curPos) - 5;
 
         let curBgPos = $("div.horizon").css("left");
@@ -30,7 +30,7 @@ $(document).keypress(function (event) {
 
         /* Prevent player from leaving screen view */
         if (parseInt(curPos) > 0) {
-            $("div.chewie").css("left", newPos);
+            $("div." + character).css("left", newPos);
         }
     }
 
@@ -41,7 +41,7 @@ $(document).keypress(function (event) {
             if (bullets > 0) {
                 isReadyToFire = false;
 
-                setBulletTrajectory($(".crightArm"), $(".chewie"));
+                setBulletTrajectory($(".crightArm"), $("." + character));
 
                 /* Deplete ammo count */
                 bullets -= 1;
@@ -66,18 +66,18 @@ $(document).keypress(function (event) {
     }
 
     else if (event.which == 113) {
-        $("div.chewie").addClass("crouch");
+        $("div." + character).addClass("crouch");
 
         $(document).keyup(function (event) {
-            $("div.chewie").removeClass("crouch");
+            $("div." + character).removeClass("crouch");
 
         });
     }
     else if (event.which == 101) {
-        $("div.chewie").addClass("jump");
+        $("div." + character).addClass("jump");
 
         $(document).keyup(function (event) {
-            $("div.chewie").removeClass("jump");
+            $("div." + character).removeClass("jump");
 
         });
     }
@@ -89,5 +89,5 @@ $(document).mousemove(function (event) {
     var radian = Math.atan2(180, event.pageY);
     var grade = radian / (Math.PI / 90);
 
-    $('.chewie .cbody.carms.crightArm').css("transform", "rotate(-" + (grade - 10) + "deg)");
+    $('.' + character + ' .cbody.carms.crightArm').css("transform", "rotate(-" + (grade - 10) + "deg)");
 });

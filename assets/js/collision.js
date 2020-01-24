@@ -61,8 +61,8 @@ function isHit(target, target2) {
 }
 
 function friendlyFire() {
-    let friendly = $(".chewie");
-    let currHealth = parseInt($(".chewie .health .num").text());
+    let friendly = $("." + character);
+    let currHealth = parseInt($("." + character + " .health .num").text());
 
     /* Return if player no longer exists */
     if (friendly != null) {
@@ -93,12 +93,12 @@ function friendlyFire() {
                 $(this).remove();
             }
 
-            if (isHit($(this), $(".chewie .cbody"))) {
+            if (isHit($(this), $("."+ character + " .cbody"))) {
                 $(this).remove();
 
                 updateScore("clear");
                 damage(10, friendly);
-            } else if (isHit($(this), $(".chewie .chead"))) {
+            } else if (isHit($(this), $("."+ character + " .chead"))) {
                 $(this).remove();
 
                 updateScore("clear");
@@ -107,22 +107,22 @@ function friendlyFire() {
         });
 
         /* check if health top up exists then check if player hit health spawn */
-        if ($(".healthTopUp").length != 0 && currHealth < 100 && $(".chewie").length != 0) {
+        if ($(".healthTopUp").length != 0 && currHealth < 100 && $("." + character).length != 0) {
 
-            if (isHit($(".healthTopUp"), $(".chewie .cbody")) || isHit($(".healthTopUp"), $(".chewie .chead"))) {
+            if (isHit($(".healthTopUp"), $("."+ character + " .cbody")) || isHit($(".healthTopUp"), $("."+ character + " .chead"))) {
                 $(".healthTopUp").remove();
 
                 /* get random health number */
                 let randNum = Math.floor(Math.random() * 100);
 
                 if ((currHealth + randNum) > 100) {
-                    $(".chewie").find(".health").css("width", 100 + "px");
-                    $(".chewie .health .num").text(100);
+                    $("."+ character).find(".health").css("width", 100 + "px");
+                    $("."+ character + " .health .num").text(100);
                 } else {
-                    let currWidth = parseInt($(".chewie").find(".health").css("width"));
+                    let currWidth = parseInt($("."+ character).find(".health").css("width"));
 
-                    $(".chewie").find(".health").css("width", (currWidth + randNum) + "px");
-                    $(".chewie .health .num").text(currHealth + randNum);
+                    $("."+ character).find(".health").css("width", (currWidth + randNum) + "px");
+                    $("."+ character + " .health .num").text(currHealth + randNum);
                 }
             }
         }

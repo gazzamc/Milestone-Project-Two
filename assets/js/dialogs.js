@@ -24,6 +24,10 @@ function showDialog(type) {
                 changeCharacter("chewie", true);
             });
 
+            $("#charHan").click(function () {
+                changeCharacter("han", true);
+            });
+
             $("#mapTatooine").click(function () {
                 changeBackground("tatooine", true);
             });
@@ -47,9 +51,12 @@ function showDialog(type) {
                     $('.crawl').on('animationend webkitAnimationEnd', function () {
 
                         if ($(".chewieStart").length != 0) {
+                            /* set character variable */
+                            character = "chewie";
                             changeCharacter("chewie");
                         } else {
-                            /* Change to han */
+                            character = "han";
+                            changeCharacter("han");
                         }
 
                         if ($(".tatooineStart").length != 0) {
@@ -69,9 +76,12 @@ function showDialog(type) {
                 }else{
 
                     if ($(".chewieStart").length != 0) {
+                        /* set character variable */
+                        character = "chewie";
                         changeCharacter("chewie");
                     } else {
-                        /* Change to han */
+                        character = "han";
+                        changeCharacter("han");
                     }
 
                     if ($(".tatooineStart").length != 0) {

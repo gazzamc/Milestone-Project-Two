@@ -17,21 +17,21 @@ function startGame(type) {
         $(".score").text("Score: 0");
         $(".combo").text("Combo: x0");
         $(".bulletCount").text("30");
-        $(".chewie .health .num").text("100");
-        $(".chewie .health").css("width", "100px");
+        $("." + character + " .health .num").text("100");
+        $("." + character + " .health").css("width", "100px");
 
         /* if character deleted add */
-        if ($(".chewie").length == 0) {
-            changeCharacter("chewie");
+        if ($("." + character).length == 0) {
+            changeCharacter(character);
         }
 
         /* reset player/horizon position */
-        $(".chewie").css("left", "");
+        $("." + character).css("left", "");
         $(".horizon").css("left", "");
     }
 
     /* if no map selected add default- tatooine */
-    if ($(".background").length == 0 && $(".chewie").length == 0) {
+    if ($(".background").length == 0 && $("." + character).length == 0) {
         changeBackground("tatooine");
         changeCharacter("chewie");
     }

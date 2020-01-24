@@ -16,6 +16,7 @@ var isKeyHandlerActive = true;
 var isDialogOpen = false;
 var isReadyToFire = true;
 var waves = 0;
+var character;
 
 $(document).ready(function () {
     showDialog("start");

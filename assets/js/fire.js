@@ -17,7 +17,7 @@ function setBulletTrajectory(source, char) {
     let left = blasterPos[1];
 
 
-    if (findEnemyType(char) == "chewie") {
+    if (findEnemyType(char) == character) {
 
         /* Fix location of spawned bullet depending on arm angle */
         if (degree <= -30 && degree >= -35) {
@@ -102,7 +102,7 @@ function setBulletTrajectory(source, char) {
 function findBlasterLoc(char) {
     let blaster;
 
-    if (findEnemyType(char) == "chewie") {
+    if (findEnemyType(char) == character) {
         blaster = $(".cblasterBarrel").offset();
     }
     else if (findEnemyType(char) == "stormtrooper") {

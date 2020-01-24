@@ -19,7 +19,7 @@ function spawnHealth() {
     if ($(".healthTopUp").length == 0) {
 
         /* find player position */
-        let playerPos = $(".chewie").offset();
+        let playerPos = $("." + character).offset();
 
         if ((playerPos.left + 600) < innerWidth) {
             $(".combo").after('<div class="healthTopUp"><div class="horizontal"></div><div class="vertical"></div></div>');
