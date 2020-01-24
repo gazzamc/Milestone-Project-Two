@@ -6,6 +6,7 @@ html{
 body{
     margin:0;
     padding:0;
+    background-color: black;
 }
 
 /* Hide pause menu contents */
@@ -182,7 +183,7 @@ button#mapTatooine{
 }
 
 #controlDialog p {
-    padding-left: 30%;
+    padding-left: 25%;
     margin-top: 5%;
 }
 
@@ -200,6 +201,12 @@ span.title{
     font-weight: bolder;
 }
 
+.introCheck{
+    position: absolute;
+    bottom: 5%;
+    left: 10%;
+}
+
 /* Remove x button from dialog */
 
 .ui-dialog-titlebar-close {
@@ -209,7 +216,7 @@ span.title{
 /* player UI */
 
 .playerUi{
-
+    display: none;
 }
 
 .bulletCount{

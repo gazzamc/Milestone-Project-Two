@@ -7,8 +7,8 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Star Wars</title>
 	<script src="assets/libraries/js/jquery-3.4.1.min.js"></script>
-    <script src="assets/libraries/js/jquery-ui.min.js"></script>
-    <link rel="stylesheet" href="assets/libraries/css/jquery-ui.min.css">
+	<script src="assets/libraries/js/jquery-ui.min.js"></script>
+	<link rel="stylesheet" href="assets/libraries/css/jquery-ui.min.css">
 	<link rel="stylesheet" href="assets/css/style.css">
 	<link id="selectedChar" rel="stylesheet" href="assets/css/chewie.css">
 	<link id="selectedMap" rel="stylesheet" href="assets/css/tatooine.css">
@@ -16,148 +16,165 @@
 </head>
 
 <body>
-    <!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template -->
-    <!-- Trooper Template -->
-    <template id="trooperTemp">
-        <div class="stormtrooper moveEnemy">
-            <div class="health">
-                <span class="num">100</span>
-            </div>
-            <div class="head">
-                <div class="brow"></div>
-                <div class="visor">
-                    <div class="visDiv"></div>
-                </div>
-                <div class="mouth">
-                    <div class="mouthLeft"></div>
-                    <div class="mouthRight"></div>
-                    <div class="mouthCenter"></div>
-                    <div class="mouthVent ventLeft"></div>
-                    <div class="mouthVent ventRight"></div>
-                </div>
-            </div>
-            <div class="body">
-                <div class="blaster">
-                    <div class="blasterCol blasterScope"></div>
-                    <div class="blasterCol blasterBarrel"></div>
-                    <div class="blasterCol blasterStock"></div>
-                    <div class="blasterCol blasterStockButt"></div>
-                    <div class="blasterCol blasterBody"></div>
-                    <div class="blasterCol blasterMag"></div>
-                </div>
-            </div>
-            <div id="arms">
-                <div class="arms leftArm">
-                </div>
-                <div class="arms rightArm">
-                </div>
-            </div>
-        </div>
-    </template>
-    <!-- Map templates -->
-    <template id="tatooineTemp">
-        <div class="background">
-        <div class="sky">
-            <div class="moons">
-            <div class="topMoon"></div>
-            <div class="bottomMoon"></div>
-            </div>
-        </div>
-        <div class="horizon">
-            <div class="building">
-            <div class="outerFrame">
-                <div class="doorFrame">
-                <div class="door"></div>
-                </div>
-                <div class="arch"></div>
-                <div class="archWall"></div>
-                <div class="stairs"></div>
-            </div>
-            </div>
-            <div class="building second">
-            <div class="outerFrame">
-                <div class="doorFrame">
-                <div class="door"></div>
-                </div>
-                <div class="arch"></div>
-                <div class="archWall"></div>
-                <div class="stairs"></div>
-            </div>
-            </div>
-            <div class="radio"></div>
-        </div>
-        <div class="foreground"></div>
-        </div>
-    </template>
-    <!-- Character templates -->
-    <template id="chewieTemp">
-        <div class="chewie">
-            <div class="health">
-                <span class="num">100</span>
-            </div>
-            <div class="chead">
-                <div class="hair">
-                    <div class="hair leftFringe">
-                    </div>
-                    <div class="hair rightFringe">
-                    </div>
-                </div>
-                <div class="cface">
-                    <div class="ceyes">
-                        <div class="ceye cleft">
-                            <div class="cpupil">
-                            </div>
-                        </div>
-                        <div class="ceye cright">
-                            <div class="cpupil">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="snout">
-                    </div>
-                    <div class="cmouth">
-                        <div class="ctooth leftFang"></div>
-                        <div class="ctooth rightFang"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="chead cbody">
-                <div class="cstrap">
-                    <div class="ammo"></div>
-                    <div class="ammo2"></div>
-                    <div class="ammo3"></div>
-                    <div class="pouch"></div>
-                </div>
-            </div>
-            <div class="cbody carms crightArm">
-                <div class="cblaster">
-                    <div class="cblasterHandle"></div>
-                    <div class="cblasterBody"></div>
-                    <div class="cblasterBarrel"></div>
-                    <div class="cblasterScope"></div>
-                    <div class="cblasterTrigger"></div>
-                </div>
-            </div>
-            <div class="cbody carms cleftArm">
-            </div>
-        </div>
-    </template>
-    <div class="playerUi">
-        <div class="timer">
-            <h2>1:00</h2>
-        </div>
-        <div class="bulletCount">30</div>
-        <div class="score">Score: 0</div>
-        <div class="combo">Combo: x0</div>
-        <div class="announce">Wave 1</div>
-    </div>
-    <div id="pauseMenu" title="Game Paused">
-        <div class="hidden">
-            <p>Sample Text</p>
-            <button id="mapChange">Change Map</button>
-            <button id="charChange">Change Character</button>
-        </div>
-    </div>
+	<!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template -->
+	<!-- Trooper Template -->
+	<template id="trooperTemp">
+		<div class="stormtrooper moveEnemy">
+			<div class="health">
+				<span class="num">100</span>
+			</div>
+			<div class="head">
+				<div class="brow"></div>
+				<div class="visor">
+					<div class="visDiv"></div>
+				</div>
+				<div class="mouth">
+					<div class="mouthLeft"></div>
+					<div class="mouthRight"></div>
+					<div class="mouthCenter"></div>
+					<div class="mouthVent ventLeft"></div>
+					<div class="mouthVent ventRight"></div>
+				</div>
+			</div>
+			<div class="body">
+				<div class="blaster">
+					<div class="blasterCol blasterScope"></div>
+					<div class="blasterCol blasterBarrel"></div>
+					<div class="blasterCol blasterStock"></div>
+					<div class="blasterCol blasterStockButt"></div>
+					<div class="blasterCol blasterBody"></div>
+					<div class="blasterCol blasterMag"></div>
+				</div>
+			</div>
+			<div id="arms">
+				<div class="arms leftArm">
+				</div>
+				<div class="arms rightArm">
+				</div>
+			</div>
+		</div>
+	</template>
+	<!-- Map templates -->
+	<template id="tatooineTemp">
+		<div class="background">
+			<div class="sky">
+				<div class="moons">
+					<div class="topMoon"></div>
+					<div class="bottomMoon"></div>
+				</div>
+			</div>
+			<div class="horizon">
+				<div class="building">
+					<div class="outerFrame">
+						<div class="doorFrame">
+							<div class="door"></div>
+						</div>
+						<div class="arch"></div>
+						<div class="archWall"></div>
+						<div class="stairs"></div>
+					</div>
+				</div>
+				<div class="building second">
+					<div class="outerFrame">
+						<div class="doorFrame">
+							<div class="door"></div>
+						</div>
+						<div class="arch"></div>
+						<div class="archWall"></div>
+						<div class="stairs"></div>
+					</div>
+				</div>
+				<div class="radio"></div>
+			</div>
+			<div class="foreground"></div>
+		</div>
+	</template>
+	<!-- Character templates -->
+	<template id="chewieTemp">
+		<div class="chewie">
+			<div class="health">
+				<span class="num">100</span>
+			</div>
+			<div class="chead">
+				<div class="hair">
+					<div class="hair leftFringe">
+					</div>
+					<div class="hair rightFringe">
+					</div>
+				</div>
+				<div class="cface">
+					<div class="ceyes">
+						<div class="ceye cleft">
+							<div class="cpupil">
+							</div>
+						</div>
+						<div class="ceye cright">
+							<div class="cpupil">
+							</div>
+						</div>
+					</div>
+					<div class="snout">
+					</div>
+					<div class="cmouth">
+						<div class="ctooth leftFang"></div>
+						<div class="ctooth rightFang"></div>
+					</div>
+				</div>
+			</div>
+			<div class="chead cbody">
+				<div class="cstrap">
+					<div class="ammo"></div>
+					<div class="ammo2"></div>
+					<div class="ammo3"></div>
+					<div class="pouch"></div>
+				</div>
+			</div>
+			<div class="cbody carms crightArm">
+				<div class="cblaster">
+					<div class="cblasterHandle"></div>
+					<div class="cblasterBody"></div>
+					<div class="cblasterBarrel"></div>
+					<div class="cblasterScope"></div>
+					<div class="cblasterTrigger"></div>
+				</div>
+			</div>
+			<div class="cbody carms cleftArm">
+			</div>
+		</div>
+	</template>
+	<template id="introText">
+		<div id="introCrawl">
+			<!-- Code taking from https://css-tricks.com/snippets/css/star-wars-crawl-text -->
+			<div class="fade"></div>
+			<section class="star-wars">
+				<div class="crawl">
+					<div class="title">
+						<p>Episode IV</p>
+						<h1>A New Hope</h1>
+					</div>
+					<p>It is a period of civil war. Rebel spaceships, striking from a hidden base, have won their first
+						victory against the evil Galactic Empire.</p>
+					<p>During the battle, Rebel spies managed to steal secret plans to the Empire’s ultimate weapon, the
+						DEATH STAR, an armored space station with enough power to destroy an entire planet.</p>
+					<p>Pursued by the Empire’s sinister agents, Princess Leia races home aboard her starship, custodian
+						of the stolen plans that can save her people and restore freedom to the galaxy…</p>
+				</div>
+			</section>
+		</div>
+	</template>
+	<div class="playerUi">
+		<div class="timer">
+			<h2>1:00</h2>
+		</div>
+		<div class="bulletCount">30</div>
+		<div class="score">Score: 0</div>
+		<div class="combo">Combo: x0</div>
+		<div class="announce">Wave 1</div>
+	</div>
+	<div id="pauseMenu" title="Game Paused">
+		<div class="hidden">
+		</div>
+	</div>
 	<script src="assets/js/script.js"></script>
 </body>
 

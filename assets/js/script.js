@@ -80,12 +80,13 @@ function cloneTemplate(templateName) {
 function controlDialog(){
     $("#pauseMenu").after('<div id="controlDialog"><div class="hidden"></div></div>');
     $("#controlDialog .hidden").append('<button id="closeControls">Close</button>');
-    $("#controlDialog .hidden").append('<p><span class="title">Move:</span> <span class="key">A</span>/<span class="key">D</span></p>');
+    $("#controlDialog .hidden").append('<p><span class="title">Move:</span> <span class="key">A</span> / <span class="key">D</span></p>');
     $("#controlDialog .hidden").append('<p><span class="title">Shoot:</span> <span class="key">Space</span></p>');
     $("#controlDialog .hidden").append('<p><span class="title">Jump:</span> <span class="key">E</span></p>');
     $("#controlDialog .hidden").append('<p><span class="title">Crouch:</span> <span class="key">Q</span></p>');
     $("#controlDialog .hidden").append('<p><span class="title">Reload:</span> <span class="key">R</span></p>');
     $("#controlDialog .hidden").append('<p><span class="title">Pause:</span> <span class="key">P</span></p>');
+    $("#controlDialog .hidden").append('<p><span class="title">Aim:</span>Mouse / TrackPad</p>');
 
     $("html").css("cursor", "pointer");
     $("#controlDialog .hidden").css("display", "block");
@@ -94,7 +95,7 @@ function controlDialog(){
         title: "Controls",
         resizable: false,
         minWidth: 400,
-        minHeight: 350
+        minHeight: 360
     });
 
     $("#closeControls").click(function () {
@@ -102,6 +103,14 @@ function controlDialog(){
         $("#controlDialog").remove();
         $("#controlDialog").dialog("destroy");
     });
+}
+
+function introCredits(){
+    let clone = cloneTemplate($("#introText"));
+    $("body").append(clone);
+
+     /* Add CSS */
+     $("head").append('<link id="introCSS" rel="stylesheet" href="assets/css/crawl.css">');
 }
 
 function showDialog(type) {
@@ -119,6 +128,7 @@ function showDialog(type) {
             $("#pauseMenu .hidden").append('<button id="mapTatooine">Tatooine</button>');
             $("#pauseMenu .hidden").append('<button id="start">Start</button>');
             $("#pauseMenu .hidden").append('<button id="controls">Controls</button>');
+            $("#pauseMenu .hidden").append('<div class="introCheck"><label><input type="checkbox" id="introPlay"> Skip Intro</label></div>');
 
             $("html").css("cursor", "pointer");
             $("#pauseMenu .hidden").css("display", "block");
@@ -140,25 +150,55 @@ function showDialog(type) {
                 resizable: false,
                 minWidth: 600,
                 minHeight: 700
-            });
+            })
 
             $("#start").click(function () {
-                if ($(".chewieStart").length != 0) {
-                    changeCharacter("chewie");
-                } else {
-                    /* Change to han */
-                }
+                /* Roll credits */
 
-                if ($(".tatooineStart").length != 0) {
-                    changeBackground("tatooine");
-                } else {
-                    /* Change to different map */
-                }
+                if(!$("input:checked").length){
+                    introCredits();
+                    $('.crawl').on('animationend webkitAnimationEnd', function () {
 
-                showWave("Wave " + (waves + 1), true);
-                startGame();
-                spawnEnemies();
-                $("html").css("cursor", "none");
+                        if ($(".chewieStart").length != 0) {
+                            changeCharacter("chewie");
+                        } else {
+                            /* Change to han */
+                        }
+
+                        if ($(".tatooineStart").length != 0) {
+                            changeBackground("tatooine");
+                        } else {
+                            /* Change to different map */
+                        }
+
+                        showWave("Wave " + (waves + 1), true);
+                        startGame();
+                        spawnEnemies();
+                        $(".playerUi").css("display", "block");
+                        $("html").css("cursor", "none");
+                        $("#introCrawl").remove();
+                        $("#introCSS").remove();
+                    });
+                }else{
+
+                    if ($(".chewieStart").length != 0) {
+                        changeCharacter("chewie");
+                    } else {
+                        /* Change to han */
+                    }
+
+                    if ($(".tatooineStart").length != 0) {
+                        changeBackground("tatooine");
+                    } else {
+                        /* Change to different map */
+                    }
+
+                    showWave("Wave " + (waves + 1), true);
+                    startGame();
+                    spawnEnemies();
+                    $(".playerUi").css("display", "block");
+                    $("html").css("cursor", "none");
+                }
                 $("#pauseMenu").dialog("destroy");
                 $("#pauseMenu .hidden").css("display", "none");
                 isDialogOpen = false;
@@ -310,7 +350,7 @@ function changeCharacter(char, startMenu) {
             clone = template;
         }
 
-        $(".timer").after(clone);
+        $("#trooperTemp").before(clone);
     }
 }
 
@@ -340,7 +380,7 @@ function changeBackground(map, startMenu) {
             /* han */
         }
 
-        $(".timer").before(clone);
+        $("#trooperTemp").before(clone);
     }
 }
 
