@@ -220,9 +220,6 @@ function initGame(setPlayerChoice = true){
             map = "tattoine";
             changeBackground("tatooine");
         }
-
-        $(".playerUi").css("display", "block");
-        $("html").css("cursor", "none");
     }else{
         startType = "restart";
     }
@@ -230,4 +227,7 @@ function initGame(setPlayerChoice = true){
     showWave("Wave " + (waves + 1), true);
     startGame(startType);
     spawnEnemies();
+    
+    $(".playerUi").css("display", "block");
+    $("html").css("cursor", "none");
 }
