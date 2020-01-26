@@ -2,7 +2,11 @@
 $(document).keypress(function (event) {
     /* pause game */
     if (event.which == 112) {
-        pauseGame();
+
+        /* Check if we are not on start/end screens */
+        if($("#start").length == 0 && $("#try").length == 0){
+            pauseGame();
+        }
     }
 
     /* Check that game isnt paused */

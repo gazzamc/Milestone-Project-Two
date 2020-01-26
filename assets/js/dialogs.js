@@ -48,7 +48,7 @@ function showDialog(type) {
             })
 
             $("#start").click(function () {
-                
+
                 /* Roll credits */
                 if(!$("input:checked").length){
                     introCredits();
@@ -63,6 +63,7 @@ function showDialog(type) {
                 }
                 
                 $("#pauseMenu").dialog("destroy");
+                $("#pauseMenu .hidden").children().remove();
                 $("#pauseMenu .hidden").css("display", "none");
                 isDialogOpen = false;
             });
@@ -87,7 +88,7 @@ function showDialog(type) {
                 isDialogOpen = false;
             });
 
-            $("#controls").click(function () {
+            $("#controlsPause").click(function () {
                 controlDialog();
             });
 
@@ -99,6 +100,7 @@ function showDialog(type) {
                 initGame(false);
 
                 $("#pauseMenu").dialog("destroy");
+                $("#pauseMenu .hidden").children().remove();
                 $("#pauseMenu .hidden").css("display", "none");
                 isDialogOpen = false;
             });
@@ -136,6 +138,7 @@ function showDialog(type) {
                 initGame(false);
 
                 $("#pauseMenu").dialog("destroy");
+                $("#pauseMenu .hidden").children().remove();
                 $("#pauseMenu .hidden").css("display", "none");
                 isDialogOpen = false;
             });
