@@ -17,6 +17,7 @@ var isDialogOpen = false;
 var isReadyToFire = true;
 var waves = 0;
 var character;
+var map;
 
 $(document).ready(function () {
     showDialog("start");

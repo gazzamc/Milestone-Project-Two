@@ -198,3 +198,36 @@ function clearBulletArray(type, enemyId) {
         $(".bullet").remove();
     }
 }
+
+/* Call all functions to start game and set character/map */
+function initGame(setPlayerChoice = true){
+    let startType;
+
+    if(setPlayerChoice){
+
+        /* set character/map */
+        if(character == "han"){
+            changeCharacter("han");
+        }else{
+            character = "chewie";
+            changeCharacter("chewie");
+        }
+
+        if(map == "tattoine"){
+            changeBackground("tatooine");
+        }else{
+            /* placeholder - set default map if none selected */
+            map = "tattoine";
+            changeBackground("tatooine");
+        }
+
+        $(".playerUi").css("display", "block");
+        $("html").css("cursor", "none");
+    }else{
+        startType = "restart";
+    }
+
+    showWave("Wave " + (waves + 1), true);
+    startGame(startType);
+    spawnEnemies();
+}

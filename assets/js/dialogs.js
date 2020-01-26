@@ -21,14 +21,18 @@ function showDialog(type) {
             $("#pauseMenu .hidden").css("display", "block");
 
             $("#charChewie").click(function () {
+                /* set character variable */
+                character = "chewie";
                 changeCharacter("chewie", true);
             });
 
             $("#charHan").click(function () {
+                character = "han";
                 changeCharacter("han", true);
             });
 
             $("#mapTatooine").click(function () {
+                map = "tatooine";
                 changeBackground("tatooine", true);
             });
 
@@ -44,58 +48,20 @@ function showDialog(type) {
             })
 
             $("#start").click(function () {
+                
                 /* Roll credits */
-
                 if(!$("input:checked").length){
                     introCredits();
+
                     $('.crawl').on('animationend webkitAnimationEnd', function () {
-
-                        if ($(".chewieStart").length != 0) {
-                            /* set character variable */
-                            character = "chewie";
-                            changeCharacter("chewie");
-                        } else {
-                            character = "han";
-                            changeCharacter("han");
-                        }
-
-                        if ($(".tatooineStart").length != 0) {
-                            changeBackground("tatooine");
-                        } else {
-                            /* Change to different map */
-                        }
-
-                        showWave("Wave " + (waves + 1), true);
-                        startGame();
-                        spawnEnemies();
-                        $(".playerUi").css("display", "block");
-                        $("html").css("cursor", "none");
+                        initGame();
                         $("#introCrawl").remove();
                         $("#introCSS").remove();
                     });
                 }else{
-
-                    if ($(".chewieStart").length != 0) {
-                        /* set character variable */
-                        character = "chewie";
-                        changeCharacter("chewie");
-                    } else {
-                        character = "han";
-                        changeCharacter("han");
-                    }
-
-                    if ($(".tatooineStart").length != 0) {
-                        changeBackground("tatooine");
-                    } else {
-                        /* Change to different map */
-                    }
-
-                    showWave("Wave " + (waves + 1), true);
-                    startGame();
-                    spawnEnemies();
-                    $(".playerUi").css("display", "block");
-                    $("html").css("cursor", "none");
+                    initGame();
                 }
+                
                 $("#pauseMenu").dialog("destroy");
                 $("#pauseMenu .hidden").css("display", "none");
                 isDialogOpen = false;
@@ -130,9 +96,7 @@ function showDialog(type) {
                 isGamePaused = false;
                 isKeyHandlerActive = true;
 
-                startGame("restart");
-                spawnEnemies();
-                showWave("Wave " + (waves + 1), true);
+                initGame(false);
 
                 $("#pauseMenu").dialog("destroy");
                 $("#pauseMenu .hidden").css("display", "none");
@@ -169,9 +133,7 @@ function showDialog(type) {
                 isGamePaused = false;
                 isKeyHandlerActive = true;
 
-                startGame("restart");
-                spawnEnemies();
-                showWave("Wave " + (waves + 1), true);
+                initGame(false);
 
                 $("#pauseMenu").dialog("destroy");
                 $("#pauseMenu .hidden").css("display", "none");
