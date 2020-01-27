@@ -170,31 +170,38 @@ function showDialog(type) {
 }
 
 function controlDialog(){
-    $("#pauseMenu").after('<div id="controlDialog"><div class="hidden"></div></div>');
-    $("#controlDialog .hidden").append('<p><span class="title">Move:</span> <span class="key">A</span> / <span class="key">D</span></p>');
-    $("#controlDialog .hidden").append('<p><span class="title">Shoot:</span> <span class="key">Space</span></p>');
-    $("#controlDialog .hidden").append('<p><span class="title">Jump:</span> <span class="key">E</span></p>');
-    $("#controlDialog .hidden").append('<p><span class="title">Crouch:</span> <span class="key">Q</span></p>');
-    $("#controlDialog .hidden").append('<p><span class="title">Reload:</span> <span class="key">R</span></p>');
-    $("#controlDialog .hidden").append('<p><span class="title">Pause:</span> <span class="key">P</span></p>');
-    $("#controlDialog .hidden").append('<p><span class="title">Aim:</span>Mouse / TrackPad</p>');
-    $("#controlDialog .hidden").append('<button id="closeControls">Close</button>');
 
-    $("html").css("cursor", "pointer");
-    $("#controlDialog .hidden").css("display", "block");
+    /* Check if options is open already */
+    if($("#controlDialog").length == 0){
 
-    $("#controlDialog").dialog({
-        title: "Controls",
-        resizable: false,
-        minWidth: 400,
-        minHeight: 400
-    });
+        $("#pauseMenu").after('<div id="controlDialog"><div class="hidden"></div></div>');
+        $("#controlDialog .hidden").append('<p><span class="title">Move:</span> <span class="key">A</span> / <span class="key">D</span></p>');
+        $("#controlDialog .hidden").append('<p><span class="title">Shoot:</span> <span class="key">Space</span></p>');
+        $("#controlDialog .hidden").append('<p><span class="title">Jump:</span> <span class="key">E</span></p>');
+        $("#controlDialog .hidden").append('<p><span class="title">Crouch:</span> <span class="key">Q</span></p>');
+        $("#controlDialog .hidden").append('<p><span class="title">Reload:</span> <span class="key">R</span></p>');
+        $("#controlDialog .hidden").append('<p><span class="title">Pause:</span> <span class="key">P</span></p>');
+        $("#controlDialog .hidden").append('<p><span class="title">Aim:</span>Mouse / TrackPad</p>');
+        $("#controlDialog .hidden").append('<button id="closeControls">Close</button>');
 
-    $("#closeControls").click(function () {
-        $("#controlDialog .hidden").children().remove();
-        $("#controlDialog").remove();
-        $("#controlDialog").dialog("destroy");
-    });
+        $("html").css("cursor", "pointer");
+        $("#controlDialog .hidden").css("display", "block");
+
+        $("#controlDialog").dialog({
+            title: "Controls",
+            resizable: false,
+            minWidth: 400,
+            minHeight: 400
+        });
+
+        $("#closeControls").click(function () {
+            $("#controlDialog .hidden").children().remove();
+            $("#controlDialog").remove();
+            $("#controlDialog").dialog("destroy");
+        });
+    }else{
+        $("#controlDialog").dialog( "moveToTop" );
+    }
 }
 
 function showWave(message, isWave) {
@@ -217,65 +224,72 @@ function showWave(message, isWave) {
 }
 
 function optionsDialog(){
-    $("#pauseMenu").after('<div id="optionsDialog"><div class="hidden"></div></div>');
-    $("#optionsDialog .hidden").append('<h4>Wave Time:</h4>');
-    $("#optionsDialog .hidden").append('<form>Min: <input type="text" id="waveMin" placeholder="'+ $(".timer h2").text().split(":")[0] +'">');
-    $("#optionsDialog .hidden").append('Sec: <input type="text" id="waveSec" placeholder="'+ $(".timer h2").text().split(":")[1] +'">');
-    $("#optionsDialog .hidden").append('<h4>Enemy Spawn Rate:</h4>');
-    $("#optionsDialog .hidden").append('Stormtrooper every: <input type="text" id="enSpawn" placeholder="'+ spawnRate + '"></form> second(s)<br>');
-    $("#optionsDialog .hidden").append('Decrease by: <input type="text" id="enSpawnDec" placeholder="'+ spawnRateDec +'"></form> second(s) per wave.</form><br>');
-    $("#optionsDialog .hidden").append('<h4>Health Spawn Rate:</h4>');
-    $("#optionsDialog .hidden").append('Health Spawn: <input type="text" id="healthSpawn" placeholder="'+ healthSpawnRate +'"></form> ms.</form><br>');
-    $("#optionsDialog .hidden").append('<button id="closeOptions">Close</button>');
 
-    $("html").css("cursor", "pointer");
-    $("#optionsDialog .hidden").css("display", "block");
+    /* Check if options is open already */
+    if($("#optionsDialog").length == 0){
 
-    $("#optionsDialog").dialog({
-        title: "Options",
-        resizable: false,
-        minWidth: 500,
-        minHeight: 400
-    });
+        $("#pauseMenu").after('<div id="optionsDialog"><div class="hidden"></div></div>');
+        $("#optionsDialog .hidden").append('<h4>Wave Time:</h4>');
+        $("#optionsDialog .hidden").append('<form>Min: <input type="text" id="waveMin" placeholder="'+ $(".timer h2").text().split(":")[0] +'">');
+        $("#optionsDialog .hidden").append('Sec: <input type="text" id="waveSec" placeholder="'+ $(".timer h2").text().split(":")[1] +'">');
+        $("#optionsDialog .hidden").append('<h4>Enemy Spawn Rate:</h4>');
+        $("#optionsDialog .hidden").append('Stormtrooper every: <input type="text" id="enSpawn" placeholder="'+ spawnRate + '"></form> second(s)<br>');
+        $("#optionsDialog .hidden").append('Decrease by: <input type="text" id="enSpawnDec" placeholder="'+ spawnRateDec +'"></form> second(s) per wave.</form><br>');
+        $("#optionsDialog .hidden").append('<h4>Health Spawn Rate:</h4>');
+        $("#optionsDialog .hidden").append('Health Spawn: <input type="text" id="healthSpawn" placeholder="'+ healthSpawnRate +'"></form> ms.</form><br>');
+        $("#optionsDialog .hidden").append('<button id="closeOptions">Close</button>');
 
-    $("#closeOptions").click(function () {
+        $("html").css("cursor", "pointer");
+        $("#optionsDialog .hidden").css("display", "block");
 
-        let  min = parseInt($("#waveMin").val());
-        let  secs =  parseInt($("#waveSec").val());
-        let  rate =  parseInt($("#enSpawn").val());
-        let  rateDec =  parseInt($("#enSpawnDec").val());
-        let  hSpawnRate =  parseInt($("#healthSpawn").val());
+        $("#optionsDialog").dialog({
+            title: "Options",
+            resizable: false,
+            minWidth: 500,
+            minHeight: 400
+        });
+
+        $("#closeOptions").click(function () {
+
+            let  min = parseInt($("#waveMin").val());
+            let  secs =  parseInt($("#waveSec").val());
+            let  rate =  parseInt($("#enSpawn").val());
+            let  rateDec =  parseInt($("#enSpawnDec").val());
+            let  hSpawnRate =  parseInt($("#healthSpawn").val());
 
 
-        if(!isNaN(min) && !isNaN(secs) && !isNaN(rate) && !isNaN(rateDec) && !isNaN(hSpawnRate)){
+            if(!isNaN(min) && !isNaN(secs) && !isNaN(rate) && !isNaN(rateDec) && !isNaN(hSpawnRate)){
 
-            if(secs < 0 || secs > 59 || min < 0 || min > 59){
-                $("#optionsDialog .hidden").append('<p id="warning">Seconds/Mins must be between 0 and 59.</p>');
-            } else if(hSpawnRate < 1000){
-                $("#optionsDialog .hidden").append('<p id="warning">Health spawn must be greater than 1 second (1000ms)</p>');
-            } else if(rate <= 0){
-                $("#optionsDialog .hidden").append('<p id="warning">Enemies spawn must be at least 1 second</p>');
-            } else if(rateDec >= rate){
-                $("#optionsDialog .hidden").append('<p id="warning">Enemies spawn decrease must be less than spawn rate</p>');
+                if(secs < 0 || secs > 59 || min < 0 || min > 59){
+                    $("#optionsDialog .hidden").append('<p id="warning">Seconds/Mins must be between 0 and 59.</p>');
+                } else if(hSpawnRate < 1000){
+                    $("#optionsDialog .hidden").append('<p id="warning">Health spawn must be greater than 1 second (1000ms)</p>');
+                } else if(rate <= 0){
+                    $("#optionsDialog .hidden").append('<p id="warning">Enemies spawn must be at least 1 second</p>');
+                } else if(rateDec >= rate){
+                    $("#optionsDialog .hidden").append('<p id="warning">Enemies spawn decrease must be less than spawn rate</p>');
+                }else{
+
+                    /* Set variables */
+                    timerMin = min;
+                    timerSec = secs;
+                    spawnRate =  rate;
+                    spawnRateDec =  rateDec;
+                    healthSpawnRate =  hSpawnRate;
+                    $(".timer h2").text(timerMin + ":" + timerSec);
+
+                    $("#optionsDialog .hidden").children().remove();
+                    $("#optionsDialog").remove();
+                    $("#optionsDialog").dialog("destroy");
+                }
             }else{
 
-                /* Set variables */
-                timerMin = min;
-                timerSec = secs;
-                spawnRate =  rate;
-                spawnRateDec =  rateDec;
-                healthSpawnRate =  hSpawnRate;
-                $(".timer h2").text(timerMin + ":" + timerSec);
-
-                $("#optionsDialog .hidden").children().remove();
-                $("#optionsDialog").remove();
-                $("#optionsDialog").dialog("destroy");
+                if($('#warning').length == 0){
+                    $("#optionsDialog .hidden").append('<p id="warning">Please fill all fields with only numbers.</p>');
+                }
             }
-        }else{
-
-            if($('#warning').length == 0){
-                $("#optionsDialog .hidden").append('<p id="warning">Please fill all fields with only numbers.</p>');
-            }
-        }
-    });
+        });
+    } else{
+        $("#optionsDialog").dialog( "moveToTop" );
+    }
 }
