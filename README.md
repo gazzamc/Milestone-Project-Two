@@ -45,7 +45,7 @@ You can try the live version of the game [Here](https://gazzamc.github.io/Milest
 - The UI keeps track of your Bullets/Score and Combos.
 - The game over dialog gives the player their stats for that session. Enemies spawned, waves completed, highests combo and final score.
 - If the player is out of ammo and tries to shoot a message will pop up to say they're out of ammo.
-- I would like to implement an option to adjust some of the variables in the start menu, such as spawn rate of health/enemies.
+- The players has an option to adjust some of the variables in the start menu, such as spawn rate of health/enemies.
 
 ### Features left to Implement
 
