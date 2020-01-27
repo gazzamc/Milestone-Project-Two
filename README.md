@@ -48,11 +48,11 @@ You can try the live version of the game [Here](https://gazzamc.github.io/Milest
 
 ### Features left to Implement
 
-- I wanted to add different types of enemies that would deal different amounds of damage and make the player use the animations a bit more.
+- I wanted to add different types of enemies that would deal different amounts of damage and make the player use the animations a bit more.
 - I wanted to add a boss fight between rounds.
 - I was thinking of adding a life system, so 3 lives which would be represented in the UI and you would just reset if you died until the lives were gone.
 - It would have been nice to have different perks for the two different characters.
-- I would like to implement an option to adjust soem of the variables in the start menu, such as spawn rate of health/enemies.
+- I would like to implement an option to adjust some of the variables in the start menu, such as spawn rate of health/enemies.
 - I wanted to implement a leaderboard that would show up on the game over screen [If completed all waves]. 
 This would show the top 20 scores with a username.
 

@@ -14,7 +14,12 @@ function startGame(type) {
         gameOver();
 
         /* Reset UI */
-        $(".timer h2").text("1:00");
+        if(timerSec < 10){
+            $(".timer h2").text(timerMin + ":" + timerSec + "0"); 
+        }else{
+            $(".timer h2").text(timerMin + ":" + timerSec);
+        }
+
         $(".score").text("Score: 0");
         $(".combo").text("Combo: x0");
         $(".bulletCount").text("30");
@@ -202,8 +207,8 @@ function initGame(setPlayerChoice = true){
         startType = "restart";
     }
 
-    showWave("Wave " + (waves + 1), true);
     startGame(startType);
+    showWave("Wave " + (waves + 1), true);
     spawnEnemies();
 
     $(".playerUi").css("display", "block");

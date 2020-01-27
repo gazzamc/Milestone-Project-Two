@@ -22,15 +22,29 @@ function timer() {
         spawnEnemies();
     }
     /* Game over if time runs out */
-    if (mins == 0 && seconds == 00) {
+    if (mins == 0 && seconds == 0) {
         waves++;
         /* Check waves complete and change diff depending on which one */
         if (waves == 3) {
             gameOver();
             showDialog();
         } else {
-            $(".timer h2").text("1:00");
-            spawnRate -= 3;
+
+            if(timerSec < 10){
+                $(".timer h2").text(timerMin + ":" + timerSec + "0"); 
+            }else{
+                $(".timer h2").text(timerMin + ":" + timerSec);
+            }
+
+            /* check if spawn decrease is higher than spawn rate, if so cap it */
+            if(spawnRateDec > spawnRate){
+                spawnRateDec = 1; //minimum
+            }
+
+            if(spawnRate > 1){
+                spawnRate -= spawnRateDec;
+            }
+
             showWave("Wave " + (waves + 1), true);
         }
     } else {

@@ -66,13 +66,13 @@ button#mapTatooine{
     padding-left: 5%;
 }
 
-#pauseMenu button, #controlDialog button{
+#pauseMenu button, #controlDialog button, #optionsDialog button{
     color: #fff;
     background-color: rgba(0,0,0, 0.8);
     border-radius: 8%;
 }
 
-#pauseMenu button:hover, #controlDialog button:hover{
+#pauseMenu button:hover, #controlDialog button:hover, #optionsDialog button:hover{
     color: #DF8C00;
 }
 
@@ -156,4 +156,11 @@ button#try{
 
 .ui-dialog-titlebar-close {
     visibility: hidden;
+}
+
+/* Options Dialog*/
+#closeOptions{
+    position: absolute;
+    left: 40%;
+    bottom: 0%;
 }
