@@ -139,6 +139,10 @@ button#try, button#startMenuEnd{
     display: block;
 }
 
+button#startMenuEnd{
+    font-variant: small-caps;
+}
+
 button#try{
     margin: 16% 5% 5% 5%;
 }

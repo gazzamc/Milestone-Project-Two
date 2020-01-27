@@ -80,14 +80,14 @@ body{
     display: none;
 }
 
-.bulletCount{
-
+.bullets, .score, .combo{
+    position: relative;
+    margin: 1% 0% 0 5%;
+    display: inline-block;
+    font-weight: 600;
+    width: 5%;
 }
 
-.score{
-
-}
-
-.combo{
-
+.score, .combo{
+    margin: 1% 0% 0 3%;
 }
