@@ -137,7 +137,7 @@ body{
 /* Start Dialog */
 button#start{
     position: absolute;
-    bottom: 8%;
+    bottom: 4%;
     left: 40%;
     font-size: 2em;
     font-variant: small-caps;
@@ -145,14 +145,10 @@ button#start{
 
 button#controls{
     position: absolute;
-    bottom: 2%;
-    left: 41%;
+    bottom: 0%;
+    left: 43%;
     margin:0;
     font-size: 90%;
-}
-
-button#start:hover{
-    color: green;
 }
 
 button#try{
@@ -170,19 +166,25 @@ h3.map{
 
 button#mapTatooine{
     position: absolute;
-    top: 54%;
-    left: 3%;
+    top: 53%;
+    left: 2%;
 }
 
 #pauseMenu button{
     margin: 1%;
 }
 
-#charDiv{
+#charDiv, #mapDiv{
     height: 20vh;
     width: 29vw;
     background-color: rgba(0,0,0, 0.5);
+    box-shadow: inset 1px 1px 4px rgba(0,0,0, 0.7);
+    border-radius: 1%;
+}
 
+#mapDiv{
+    position: absolute;
+    bottom: 14%;
 }
 
 /* Global dialog styles */

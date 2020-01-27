@@ -12,7 +12,7 @@ function showDialog(type) {
             $("#pauseMenu .hidden").append('<div id="charDiv"></div>');
             $("#pauseMenu .hidden").append('<h3 class="map">Pick Map:</h3>');
             $("#pauseMenu .hidden").append('<button id="mapTatooine">Tatooine</button>');
-            $("#pauseMenu .hidden").append('<div id="bgDiv"></div>');
+            $("#pauseMenu .hidden").append('<div id="mapDiv"></div>');
             $("#pauseMenu .hidden").append('<button id="start">Start</button>');
             $("#pauseMenu .hidden").append('<button id="controls">Controls</button>');
             $("#pauseMenu .hidden").append('<div class="introCheck"><label><input type="checkbox" id="introPlay"> Skip Intro</label></div>');
@@ -41,10 +41,10 @@ function showDialog(type) {
             });
 
             $("#pauseMenu").dialog({
-                title: "Start Game - Star Wars",
+                title: "Star Wars",
                 resizable: false,
                 minWidth: 600,
-                minHeight: 700
+                minHeight: 750
             })
 
             $("#start").click(function () {

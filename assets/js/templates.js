@@ -73,7 +73,7 @@ function changeBackground(map, startMenu) {
             $("#selectedMap").remove();
             $("head").append('<link id="selectedMap" rel="stylesheet" href="assets/css/' + map + '.css">');
 
-            $("#pauseMenu .hidden").append(cloneTemplate($("#tatooineTemp")));
+            $("#pauseMenu .hidden #mapDiv").append(cloneTemplate($("#tatooineTemp")));
             $("#pauseMenu .hidden .background").addClass("tatooineStart");
             $("#pauseMenu .hidden .background").removeClass("background");
         }
