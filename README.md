@@ -35,7 +35,7 @@ You can try the live version of the game [Here](https://gazzamc.github.io/Milest
     - I used **JQuery** to manipulate the DOM as well dynamically add/remove elements.
 
 - [JQueryUI](https://jqueryui.com/)
-    - I used **JQuery** to manipulate the DOM as well dynamically add/remove elements.
+    - I used **JQueryUI** for the dialogs.
 
 - [Javascript](https://www.javascript.com/)
     - I used a **Javascript** for functions, loops, intervals and many other things.
