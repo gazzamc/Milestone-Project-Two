@@ -201,13 +201,13 @@ button#mapTatooine{
     padding-left: 5%;
 }
 
-#pauseMenu button{
+#pauseMenu button, #controlDialog button{
     color: #fff;
     background-color: rgba(0,0,0, 0.8);
     border-radius: 8%;
 }
 
-#pauseMenu button:hover{
+#pauseMenu button:hover, #controlDialog button:hover{
     color: #DF8C00;
 }
 

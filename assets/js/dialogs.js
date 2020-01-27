@@ -158,7 +158,6 @@ function showDialog(type) {
 
 function controlDialog(){
     $("#pauseMenu").after('<div id="controlDialog"><div class="hidden"></div></div>');
-    $("#controlDialog .hidden").append('<button id="closeControls">Close</button>');
     $("#controlDialog .hidden").append('<p><span class="title">Move:</span> <span class="key">A</span> / <span class="key">D</span></p>');
     $("#controlDialog .hidden").append('<p><span class="title">Shoot:</span> <span class="key">Space</span></p>');
     $("#controlDialog .hidden").append('<p><span class="title">Jump:</span> <span class="key">E</span></p>');
@@ -166,6 +165,7 @@ function controlDialog(){
     $("#controlDialog .hidden").append('<p><span class="title">Reload:</span> <span class="key">R</span></p>');
     $("#controlDialog .hidden").append('<p><span class="title">Pause:</span> <span class="key">P</span></p>');
     $("#controlDialog .hidden").append('<p><span class="title">Aim:</span>Mouse / TrackPad</p>');
+    $("#controlDialog .hidden").append('<button id="closeControls">Close</button>');
 
     $("html").css("cursor", "pointer");
     $("#controlDialog .hidden").css("display", "block");
@@ -174,7 +174,7 @@ function controlDialog(){
         title: "Controls",
         resizable: false,
         minWidth: 400,
-        minHeight: 360
+        minHeight: 400
     });
 
     $("#closeControls").click(function () {
