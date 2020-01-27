@@ -75,6 +75,7 @@ function showDialog(type) {
             $("#pauseMenu .hidden").append('<button id="continue">Continue</button>');
             $("#pauseMenu .hidden").append('<button id="restart">Restart</button>');
             $("#pauseMenu .hidden").append('<button id="controlsPause">Controls</button>');
+            $("#pauseMenu .hidden").append('<button id="startMenu">Start Menu</button>');
 
             $("#pauseMenu").dialog({
                 title: "Game Paused",
@@ -92,6 +93,10 @@ function showDialog(type) {
                 controlDialog();
             });
 
+            $("#startMenu").click(function () {
+                backToMenu();
+            });
+
             $("#restart").click(function () {
                 /* Reset boolean variables */
                 isGamePaused = false;
@@ -99,8 +104,8 @@ function showDialog(type) {
 
                 initGame(false);
 
-                $("#pauseMenu").dialog("destroy");
                 $("#pauseMenu .hidden").children().remove();
+                $("#pauseMenu").dialog("destroy");
                 $("#pauseMenu .hidden").css("display", "none");
                 isDialogOpen = false;
             });
@@ -114,12 +119,13 @@ function showDialog(type) {
 
             $("#pauseMenu .hidden").children().remove();
 
-            $("#pauseMenu .hidden").append('<h3 class="char">Stats:</h3>');
+            $("#pauseMenu .hidden").append('<h3>Statistics:</h3>');
             $("#pauseMenu .hidden").append('<p>Score: ' + score + '</p>');
             $("#pauseMenu .hidden").append('<p>Enemies: ' + enemies + '</p>');
             $("#pauseMenu .hidden").append('<p>Highest Combo: ' + highestCombo + '</p>');
             $("#pauseMenu .hidden").append('<p>Waves Completed: ' + waves + '</p>');
             $("#pauseMenu .hidden").append('<button id="try">Try Again</button>');
+            $("#pauseMenu .hidden").append('<button id="startMenuEnd">Start Menu</button>');
             $("html").css("cursor", "pointer");
             $("#pauseMenu .hidden").css("display", "block");
 
@@ -141,6 +147,10 @@ function showDialog(type) {
                 $("#pauseMenu .hidden").children().remove();
                 $("#pauseMenu .hidden").css("display", "none");
                 isDialogOpen = false;
+            });
+
+            $("#startMenu").click(function () {
+                backToMenu();
             });
         }
     }

@@ -1,6 +1,6 @@
 function startGame(type) {
 
-    if (type == "restart") {
+    if (type == "restart" || type == "backToMenu") {
         /* Reset global variables */
         enemies = 0;
         bullets = 30;
@@ -37,11 +37,13 @@ function startGame(type) {
         changeCharacter("chewie");
     }
 
-    /* Start/Restart intervals */
-    time = setInterval(timer, 1000);
-    checkFriendlyFire = setInterval(friendlyFire, 1);
-    healthSpawn = setInterval(spawnHealth, healthSpawnRate);
+    if (type != "backToMenu"){
 
+        /* Start/Restart intervals */
+        time = setInterval(timer, 1000);
+        checkFriendlyFire = setInterval(friendlyFire, 1);
+        healthSpawn = setInterval(spawnHealth, healthSpawnRate);
+    }
 }
 
 function pauseGame() {
@@ -227,7 +229,31 @@ function initGame(setPlayerChoice = true){
     showWave("Wave " + (waves + 1), true);
     startGame(startType);
     spawnEnemies();
-    
+
     $(".playerUi").css("display", "block");
     $("html").css("cursor", "none");
+}
+
+function backToMenu(){
+    /* Reset everything and stop intervals */
+    startGame("backToMenu");
+
+    /* Remove char/map */
+    if(character == "chewie"){
+        $(".chewie").remove();
+    }else{
+        $(".han").remove();
+    }
+
+    $(".background").remove();
+    $(".playerUi").css("display", "none");
+
+    $("#pauseMenu .hidden").children().remove();
+
+    /* Remove animation from wave if still running */
+    $(".announce").removeClass("announceMove");
+
+    isDialogOpen = false;
+    isGamePaused = false;
+    showDialog("start");
 }
