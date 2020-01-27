@@ -31,12 +31,6 @@ function startGame(type) {
         $(".horizon").css("left", "");
     }
 
-    /* if no map selected add default- tatooine */
-    if ($(".background").length == 0 && $("." + character).length == 0) {
-        changeBackground("tatooine");
-        changeCharacter("chewie");
-    }
-
     if (type != "backToMenu"){
 
         /* Start/Restart intervals */
@@ -74,24 +68,6 @@ function pauseGame() {
             clearInterval(interval);
             enemyFireArr[enemyFireArr.indexOf(interval)] = "cleared";
         });
-
-
-        /* Display pause menu */
-        /*         $("#pauseMenu").dialog();
-                $(document).on('click','.ui-dialog-titlebar-close',function(){
-                    pauseGame();
-                });
-        
-                $("#mapChange").click(function(){
-                    changeBackground("tatooine");
-                });
-        
-                $("#charChange").click(function(){
-                    changeCharacter("chewie");
-                });
-        
-                $("html").css("cursor", "pointer");
-                $(".hidden").css("display", "block"); */
 
         showDialog("pause");
 

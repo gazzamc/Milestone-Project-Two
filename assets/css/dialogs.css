@@ -1,0 +1,155 @@
+/* dialog styles */
+/* Start Dialog */
+button#start{
+    position: absolute;
+    bottom: 4%;
+    left: 40%;
+    font-size: 2em;
+    font-variant: small-caps;
+}
+
+button#controls{
+    position: absolute;
+    bottom: 0%;
+    left: 43%;
+    margin:0;
+    font-size: 90%;
+}
+
+button#try{
+    position: absolute;
+    bottom: 10%;
+    left: 40%;
+    font-size: 1em;
+    font-variant: small-caps;
+}
+
+h3.map{
+    position: absolute;
+    top: 45%;
+}
+
+button#mapTatooine{
+    position: absolute;
+    top: 53%;
+    left: 2%;
+}
+
+#pauseMenu button{
+    margin: 1%;
+}
+
+#charDiv, #mapDiv{
+    height: 20vh;
+    width: 29vw;
+    background-color: rgba(0,0,0, 0.5);
+    box-shadow: inset 1px 1px 4px rgba(0,0,0, 0.7);
+    border-radius: 1%;
+}
+
+#mapDiv{
+    position: absolute;
+    bottom: 14%;
+}
+
+/* Global dialog styles */
+
+.ui-widget-header{
+    background-color: rgba(0,0,0, 0.9);
+    border: 1px solid rgba(224,140,0, 0.9);
+    color: #DF8C00;
+}
+
+.ui-dialog .ui-dialog-title{
+    margin:0;
+    text-align: center;
+    padding-left: 5%;
+}
+
+#pauseMenu button, #controlDialog button{
+    color: #fff;
+    background-color: rgba(0,0,0, 0.8);
+    border-radius: 8%;
+}
+
+#pauseMenu button:hover, #controlDialog button:hover{
+    color: #DF8C00;
+}
+
+.ui-widget-content{
+    background-color: #FFFFDE;
+    box-shadow: 1px 1px 10px rgba(0,0,0, 0.5);
+}
+
+#ui-id-1, #ui-id-2{
+    font-size: 1.5em;
+    font-family: 'Pathway Gothic One', sans-serif;
+}
+
+/* Controls dialog */
+
+#closeControls{
+    position: absolute;
+    bottom: 3%;
+    left: 43%;
+}
+
+#controlDialog p {
+    padding-left: 25%;
+    margin-top: 5%;
+}
+
+span.key{
+    background-color: beige;
+    border-radius: 10%;
+    padding: 1% 2% 1% 2%;
+    margin: 2%;
+    border: 1px solid black;
+    font-weight: bolder;
+}
+
+span.title{
+    margin: 0 10% 0 0;
+    font-weight: bolder;
+}
+
+.introCheck{
+    position: absolute;
+    bottom: 5%;
+    left: 10%;
+}
+
+/* Pause Menu Dialog */
+
+button#controlsPause, button#continue, button#restart, button#startMenu{
+    position: relative;
+    width: 40%;
+    left: 25%;
+    margin: 5%;
+    display: block;
+}
+
+/* Game Over Dialog */
+
+button#try, button#startMenuEnd{
+    position: relative;
+    width: 40%;
+    left: 25%;
+    margin: 5%;
+    display: block;
+}
+
+button#try{
+    margin: 16% 5% 5% 5%;
+}
+
+#pauseMenu .hidden p {
+    margin-left: 30%;
+}
+
+
+/* Remove x button from dialog */
+
+.ui-dialog-titlebar-close {
+    visibility: hidden;
+}

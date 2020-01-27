@@ -25,7 +25,7 @@ function changeCharacter(char, startMenu) {
 
             /* Remove CSS from head and replace it */
             $("#selectedChar").remove();
-            $("head").append('<link id="selectedChar" rel="stylesheet" href="assets/css/' + char + '.css">');
+            $("head").append('<link id="selectedChar" rel="stylesheet" href="assets/css/characters/' + char + '.css">');
 
             /* Add preview of character to start menu */
             $("#pauseMenu .hidden #charDiv").append(cloneTemplate($("#chewieTemp")));
@@ -40,7 +40,7 @@ function changeCharacter(char, startMenu) {
 
             /* Remove CSS from head and replace it */
             $("#selectedChar").remove();
-            $("head").append('<link id="selectedChar" rel="stylesheet" href="assets/css/' + char + '.css">');
+            $("head").append('<link id="selectedChar" rel="stylesheet" href="assets/css/characters/' + char + '.css">');
 
             /* Add preview of character to start menu */
             $("#pauseMenu .hidden #charDiv").append(cloneTemplate($("#hanTemp")));
@@ -62,6 +62,7 @@ function changeCharacter(char, startMenu) {
 
 function changeBackground(map, startMenu) {
     let clone;
+    let template;
 
     if (startMenu) {
         if (map == "tatooine") {
@@ -71,7 +72,7 @@ function changeBackground(map, startMenu) {
 
             /* Remove CSS from head and replace it */
             $("#selectedMap").remove();
-            $("head").append('<link id="selectedMap" rel="stylesheet" href="assets/css/' + map + '.css">');
+            $("head").append('<link id="selectedMap" rel="stylesheet" href="assets/css/maps/' + map + '.css">');
 
             $("#pauseMenu .hidden #mapDiv").append(cloneTemplate($("#tatooineTemp")));
             $("#pauseMenu .hidden .background").addClass("tatooineStart");
@@ -80,10 +81,11 @@ function changeBackground(map, startMenu) {
     } else {
 
         if (map == "tatooine") {
-            let template = $("#tatooineTemp").html();
+            template = $("#tatooineTemp").html();
             clone = template;
         } else {
-            /* han */
+            template = $("#tatooineTemp").html();
+            clone = template;
         }
 
         $("#trooperTemp").before(clone);

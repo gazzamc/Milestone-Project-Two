@@ -49,6 +49,14 @@ function showDialog(type) {
 
             $("#start").click(function () {
 
+                /* Select Map/Char if none selected */
+                if(character == null){
+                    changeCharacter("chewie", true);
+                }
+                if(map == null){
+                    changeBackground("tatooine", true);
+                }
+
                 /* Roll credits */
                 if(!$("input:checked").length){
                     introCredits();
@@ -149,7 +157,7 @@ function showDialog(type) {
                 isDialogOpen = false;
             });
 
-            $("#startMenu").click(function () {
+            $("#startMenuEnd").click(function () {
                 backToMenu();
             });
         }
