@@ -1,6 +1,18 @@
-# Star Wars Side-Scrolling Shooter
+# Star Wars: Side-Scrolling Shooter
 Interactive Frontend Development Project - Code Institute
 
+This is a simple browser game where you play as either Han or Chewie. You must survive 3 waves of enemies. 
+The enemies spawn more frequently as you complete waves. Health drops every 30 seconds but is RNG based so it
+could be 0 or 100%.
+
+### Controls ###
+- Move: A / D
+- Shoot: Space
+- Jump: E
+- Crouch: Q
+- Pause: P
+- Reload: R
+- Aim: Mouse/Trackpad
 
 ## Demo
 You can try the live version of the game [Here](https://gazzamc.github.io/Milestone-Project-Two/)
@@ -21,15 +33,36 @@ You can try the live version of the game [Here](https://gazzamc.github.io/Milest
 
 ## Features
 
+- The player can choose betweem two characters, Han or Chewie.
+- The enemies spawn based on the time, the difficulty increases the longer you survive.
+- Players can choose which map/background they want from the start menu.
+- Players can pause and reset the game using the pause menu as well return to the start menu.
+- You can view the controls via the pause menu or start screen.
+- You can skip the intro credits using the checkbox in the start screen.
+- Players can move, shoot and dodge when controlling the character.
+- Every 30 seconds health spawns based on the users position.
+- The enemies aim randomly(within a range) which makes it more challenging when trying to figure out where to move.
+- The UI keeps track of your Bullets/Score and Combos.
+- The game over dialog gives the player their stats for that session. Enemies spawned, waves completed, highests combo and final score.
+- If the player is out of ammo and tries to shoot a message will pop up to say they're out of ammo.
+
 ### Features left to Implement
+
+- I wanted to add different types of enemies that would deal different amounds of damage and make the player use the animations a bit more.
+- I wanted to add a boss fight between rounds.
+- I was thinking of adding a life system, so 3 lives which would be represented in the UI and you would just reset if you died until the lives were gone.
+- It would have been nice to have different perks for the two different characters.
+- I would like to implement an option to adjust soem of the variables in the start menu, such as spawn rate of health/enemies.
+- I wanted to implement a leaderboard that would show up on the game over screen [If completed all waves]. 
+This would show the top 20 scores with a username.
 
 ## Technologies Used
 
 - [HTML5](https://en.wikipedia.org/wiki/HTML5)
-    - I used **HTML5** to layout the basic structure of the site.
+    - I used **HTML5** to layout the basic structure of the game.
 
 - [CSS3](https://en.wikipedia.org/wiki/Cascading_Style_Sheets)
-    - I used **CSS3** to add custom styles and positioning to the HTML elements.
+    - I used **CSS3** to add custom styles, positioning of the HTML elements and animations.
 
 - [JQuery](https://jquery.com)
     - I used **JQuery** to manipulate the DOM as well dynamically add/remove elements.
