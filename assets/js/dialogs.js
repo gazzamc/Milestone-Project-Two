@@ -171,7 +171,7 @@ function showDialog(type) {
 
 function controlDialog(){
 
-    /* Check if options is open already */
+    /* Check if controls is open already */
     if($("#controlDialog").length == 0){
 
         $("#pauseMenu").after('<div id="controlDialog"><div class="hidden"></div></div>');
@@ -237,6 +237,7 @@ function optionsDialog(){
         $("#optionsDialog .hidden").append('Decrease by: <input type="text" id="enSpawnDec" placeholder="'+ spawnRateDec +'"></form> second(s) per wave.</form><br>');
         $("#optionsDialog .hidden").append('<h4>Health Spawn Rate:</h4>');
         $("#optionsDialog .hidden").append('Health Spawn: <input type="text" id="healthSpawn" placeholder="'+ healthSpawnRate +'"></form> ms.</form><br>');
+        $("#optionsDialog .hidden").append('<button id="saveOptions">Save</button>');
         $("#optionsDialog .hidden").append('<button id="closeOptions">Close</button>');
 
         $("html").css("cursor", "pointer");
@@ -246,10 +247,10 @@ function optionsDialog(){
             title: "Options",
             resizable: false,
             minWidth: 500,
-            minHeight: 400
+            minHeight: 450
         });
 
-        $("#closeOptions").click(function () {
+        $("#saveOptions").click(function () {
 
             let  min = parseInt($("#waveMin").val());
             let  secs =  parseInt($("#waveSec").val());
@@ -260,6 +261,9 @@ function optionsDialog(){
 
             if(!isNaN(min) && !isNaN(secs) && !isNaN(rate) && !isNaN(rateDec) && !isNaN(hSpawnRate)){
 
+                /* Clear last warning */
+                $("#warning").remove();
+                
                 if(secs < 0 || secs > 59 || min < 0 || min > 59){
                     $("#optionsDialog .hidden").append('<p id="warning">Seconds/Mins must be between 0 and 59.</p>');
                 } else if(hSpawnRate < 1000){
@@ -288,7 +292,15 @@ function optionsDialog(){
                     $("#optionsDialog .hidden").append('<p id="warning">Please fill all fields with only numbers.</p>');
                 }
             }
+            
         });
+
+        $("#closeOptions").click(function () {
+            $("#optionsDialog .hidden").children().remove();
+            $("#optionsDialog").remove();
+            $("#optionsDialog").dialog("destroy");
+        });
+
     } else{
         $("#optionsDialog").dialog( "moveToTop" );
     }

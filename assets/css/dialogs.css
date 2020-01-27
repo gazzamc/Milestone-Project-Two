@@ -1,19 +1,20 @@
 /* dialog styles */
 /* Start Dialog */
-button#start{
+button#start, button#controls, button#options{
     position: absolute;
+    left: 30%;
     bottom: 4%;
-    left: 40%;
-    font-size: 2em;
+    font-size: 1.5em;
     font-variant: small-caps;
+    display: inline-block;
 }
 
 button#controls{
-    position: absolute;
-    bottom: 0%;
-    left: 43%;
-    margin:0;
-    font-size: 90%;
+    left: 46%;
+}
+
+button#options{
+    left: 70%;
 }
 
 button#try{
@@ -161,6 +162,12 @@ button#try{
 /* Options Dialog*/
 #closeOptions{
     position: absolute;
-    left: 40%;
-    bottom: 0%;
+    left: 35%;
+    bottom: 1%;
+}
+
+#saveOptions{
+    position: absolute;
+    left: 48%;
+    bottom: 1%;
 }
