@@ -141,10 +141,11 @@ Then open index.html in your browser of choice.
 ## Credits
 
 ### Content
-- The stormtrooper was created using codepen. The source can be found [here](https://codepen.io/gazzamc/pen/wvBprvQ)
+- The Stormtrooper was created using codepen. The source can be found [here](https://codepen.io/gazzamc/pen/wvBprvQ)
 - Chewie was created using codepen. The source can be found [here](https://codepen.io/gazzamc/pen/gObMePp)
 - Han was created using codepen. The source can be found [here](https://codepen.io/gazzamc/pen/zYxbqaB)
-- The tatooine background was created using codepen. The source can be found [here](https://codepen.io/gazzamc/pen/JjoLyag)
+- The Tatooine background was created using codepen. The source can be found [here](https://codepen.io/gazzamc/pen/JjoLyag)
+- The Endor background was created using codepen. The source can be found [here](https://codepen.io/gazzamc/pen/qBEwQvo)
 
 ### Media
 - No images were used in this project, everything was created using HTML/CSS3.
