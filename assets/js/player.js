@@ -21,15 +21,14 @@ function spawnHealth() {
         /* find player position */
         let playerPos = $("." + character).offset();
 
+        $("#tatooineTemp").after('<div class="healthTopUp"><div class="horizontal"></div><div class="vertical"></div></div>');
         if ((playerPos.left + 600) < innerWidth) {
-            $(".combo").after('<div class="healthTopUp"><div class="horizontal"></div><div class="vertical"></div></div>');
             $(".healthTopUp").css("left", playerPos.left + 600);
         } else {
-            $(".combo").after('<div class="healthTopUp"><div class="horizontal"></div><div class="vertical"></div></div>');
             $(".healthTopUp").css("left", playerPos.left - 600);
         }
 
-        /* adjust health position if almost of screen */
+        /* adjust health position if almost off screen */
         if ($(".healthTopUp").offset().left + $(".healthTopUp").outerWidth() > innerWidth) {
             $(".healthTopUp").css(($(".healthTopUp").offset().left) - 100);
         }

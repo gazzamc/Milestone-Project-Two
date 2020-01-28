@@ -127,6 +127,7 @@ function showDialog(type) {
             $("#pauseMenu .hidden").css("display", "block");
 
         } else {
+            let endScreenTitle;
             isKeyHandlerActive = false;
             isDialogOpen = true;
 
@@ -142,8 +143,14 @@ function showDialog(type) {
             $("html").css("cursor", "pointer");
             $("#pauseMenu .hidden").css("display", "block");
 
+            if(waves == 3){
+                endScreenTitle = "You Survived!"
+            } else{
+                endScreenTitle = "Game Over!"
+            }
+
             $("#pauseMenu").dialog({
-                title: "Game Over",
+                title: endScreenTitle,
                 resizable: false,
                 minWidth: 400,
                 minHeight: 400
