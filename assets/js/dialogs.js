@@ -12,6 +12,7 @@ function showDialog(type) {
             $("#pauseMenu .hidden").append('<div id="charDiv"></div>');
             $("#pauseMenu .hidden").append('<h3 class="map">Pick Map:</h3>');
             $("#pauseMenu .hidden").append('<button id="mapTatooine">Tatooine</button>');
+            $("#pauseMenu .hidden").append('<button id="mapEndor">Endor</button>');
             $("#pauseMenu .hidden").append('<div id="mapDiv"></div>');
             $("#pauseMenu .hidden").append('<button id="start">Start</button>');
             $("#pauseMenu .hidden").append('<button id="controls">Controls</button>');
@@ -37,6 +38,11 @@ function showDialog(type) {
                 changeBackground("tatooine", true);
             });
 
+            $("#mapEndor").click(function () {
+                map = "endor";
+                changeBackground("endor", true);
+            });
+
             $("#controls").click(function () {
                 controlDialog();
             });
@@ -53,12 +59,13 @@ function showDialog(type) {
             })
 
             $("#start").click(function () {
-
                 /* Select Map/Char if none selected */
                 if(character == null){
+                    character = "chewie";
                     changeCharacter("chewie", true);
                 }
                 if(map == null){
+                    map = "tatooine";
                     changeBackground("tatooine", true);
                 }
 

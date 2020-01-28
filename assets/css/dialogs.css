@@ -30,10 +30,26 @@ h3.map{
     top: 45%;
 }
 
-button#mapTatooine{
+button#mapTatooine, button#mapEndor{
     position: absolute;
     top: 53%;
     left: 2%;
+    display: inline-block;
+}
+
+button#mapEndor{
+    left: 16%;
+}
+
+button#charChewie, button#charHan{
+    position: absolute;
+    top: 9%;
+    left: 2%;
+    display: inline-block;
+}
+
+button#charHan{
+    left: 15%;
 }
 
 #pauseMenu button{
@@ -48,9 +64,19 @@ button#mapTatooine{
     border-radius: 1%;
 }
 
+#charDiv{
+    position: relative;
+    margin-top: 10%;
+}
+
 #mapDiv{
     position: absolute;
     bottom: 14%;
+}
+
+.char{
+    position: relative;
+    margin-top: 2%;
 }
 
 /* Global dialog styles */

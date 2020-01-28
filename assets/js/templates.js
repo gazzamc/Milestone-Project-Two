@@ -29,6 +29,7 @@ function changeCharacter(char, startMenu) {
 
             /* Add preview of character to start menu */
             $("#pauseMenu .hidden #charDiv").append(cloneTemplate($("#chewieTemp")));
+            $(".health").remove();
             $("#pauseMenu .hidden .chewie").addClass("chewieStart");
             $("#pauseMenu .hidden .chewie").removeClass("chewie");
         } else if (char == "han" && $("#pauseMenu .hidden .hanStart").length == 0){
@@ -44,6 +45,7 @@ function changeCharacter(char, startMenu) {
 
             /* Add preview of character to start menu */
             $("#pauseMenu .hidden #charDiv").append(cloneTemplate($("#hanTemp")));
+            $(".health").remove();
             $("#pauseMenu .hidden .han").addClass("hanStart");
             $("#pauseMenu .hidden .han").removeClass("han"); 
         }
@@ -66,8 +68,8 @@ function changeBackground(map, startMenu) {
 
     if (startMenu) {
         if (map == "tatooine") {
-            if ($(".backgroundStart").length != 0) {
-                $("#pauseMenu .hidden .backgroundStart").remove();
+            if ($(".endorStart").length != 0) {
+                $("#pauseMenu .hidden .endorStart").remove();
             }
 
             /* Remove CSS from head and replace it */
@@ -77,14 +79,27 @@ function changeBackground(map, startMenu) {
             $("#pauseMenu .hidden #mapDiv").append(cloneTemplate($("#tatooineTemp")));
             $("#pauseMenu .hidden .background").addClass("tatooineStart");
             $("#pauseMenu .hidden .background").removeClass("background");
-        }
-    } else {
+        } else{
 
-        if (map == "tatooine") {
-            template = $("#tatooineTemp").html();
+            if ($(".tatooineStart").length != 0) {
+                $("#pauseMenu .hidden .tatooineStart").remove();
+            }
+
+            /* Remove CSS from head and replace it */
+            $("#selectedMap").remove();
+            $("head").append('<link id="selectedMap" rel="stylesheet" href="assets/css/maps/' + map + '.css">');
+
+            $("#pauseMenu .hidden #mapDiv").append(cloneTemplate($("#endorTemp")));
+            $("#pauseMenu .hidden .background").addClass("endorStart");
+            $("#pauseMenu .hidden .background").removeClass("background");
+        }
+    } else{
+
+        if (map == "tatooine") {          
+            template = $("#tatooineTemp").html();           
             clone = template;
-        } else {
-            template = $("#tatooineTemp").html();
+        } else{     
+            template = $("#endorTemp").html();    
             clone = template;
         }
 

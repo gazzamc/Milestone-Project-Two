@@ -185,7 +185,6 @@ function clearBulletArray(type, enemyId) {
 /* Call all functions to start game and set character/map */
 function initGame(setPlayerChoice = true){
     let startType;
-
     if(setPlayerChoice){
 
         /* set character/map */
@@ -196,12 +195,11 @@ function initGame(setPlayerChoice = true){
             changeCharacter("chewie");
         }
 
-        if(map == "tattoine"){
+        if(map == "tatooine"){
             changeBackground("tatooine");
         }else{
-            /* placeholder - set default map if none selected */
-            map = "tattoine";
-            changeBackground("tatooine");
+            map = "endor";
+            changeBackground("endor");
         }
     }else{
         startType = "restart";
