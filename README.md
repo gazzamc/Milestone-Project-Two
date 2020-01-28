@@ -47,7 +47,7 @@ So to counteract this I created the options dialog in the start screen. This all
 
 The enemies are pretty basic, they move towards the player until they either die or hit said player. 
 The only redeeming feature is that their aim is randomized within a certin range, 
-so they can be pretty accurate occasianlly. This adds some versility to the gameplay.
+so they can be pretty accurate occasionally. This adds some versatility to the gameplay.
 
 I wanted the navigation to be as simple as possible. Three clicks and your into the game (Or One if you dont mind the default options).
 In the game the pause menu is straight forward. It allows the user to restart, check controls and return to the start screen.
@@ -67,7 +67,7 @@ Once the player dies/beats all waves the "Game Over" dialog is shown with statis
 #### Skeleton
 
 #### Surface
-- I wanted to keep the colours close to the Star Wars theme, so I went with a combination of gold/yellow, white/cream and black. 
+I wanted to keep the colours close to the Star Wars theme, so I went with a combination of gold/yellow, white/cream and black. 
 Using rgba() (opacity) in the CSS I experimented with the different shades of these colours. I think the end result is consistent
 and gives the Star Wars feel.
 
