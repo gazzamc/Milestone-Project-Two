@@ -23,23 +23,30 @@ function showDialog(type) {
             $("#pauseMenu .hidden").css("display", "block");
 
             $("#charChewie").click(function () {
-                /* set character variable */
                 character = "chewie";
+                $("#charHan").removeClass("buttonActive");
+                $(this).addClass("buttonActive");
                 changeCharacter("chewie", true);
             });
 
             $("#charHan").click(function () {
                 character = "han";
+                $("#charChewie").removeClass("buttonActive");
+                $(this).addClass("buttonActive");
                 changeCharacter("han", true);
             });
 
             $("#mapTatooine").click(function () {
                 map = "tatooine";
+                $("#mapEndor").removeClass("buttonActive");
+                $(this).addClass("buttonActive");
                 changeBackground("tatooine", true);
             });
 
             $("#mapEndor").click(function () {
                 map = "endor";
+                $("#mapTatooine").removeClass("buttonActive");
+                $(this).addClass("buttonActive");
                 changeBackground("endor", true);
             });
 

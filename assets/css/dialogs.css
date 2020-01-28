@@ -113,6 +113,10 @@ button#charHan{
     font-family: 'Pathway Gothic One', sans-serif;
 }
 
+#pauseMenu .buttonActive{
+    color: #DF8C00;
+}
+
 /* Controls dialog */
 
 #closeControls{
