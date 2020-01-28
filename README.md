@@ -20,16 +20,56 @@ You can try the live version of the game [Here](https://gazzamc.github.io/Milest
 ## UX
 
 #### User Stories
+- As a player, I expect to be able to choose my character.
+
+- As a player, I expect to be able to pause the game.
+
+- As a player, I expect to be able to change the difficulty.
+
+- As a player, I expect to be able to return to the start screen.
+
+- As a player, I expect to be able to restart the game without leaving it.
+
+- As a player, I expect access to the layout of the controls.
+
+- As a player, I expect to be able to skip the intro credits.
 
 #### Strategy
+I wanted to create a simple game that was both fun and challenging. 
+I also wanted it to be random enough so that every session wasn't exactly the same.
 
 #### Scope
+I wanted the user to have the choice in which character to play as well as the map/background. 
+While the maps don't provide anything new other than change of scenary, I still feel it's a nice option to have. 
+As I was developing the game I found that there was no right default for some of variables that set the difficulty. 
+One setting could be too challenging for some people and not for others. 
+So to counteract this I created the options dialog in the start screen. This allows the player to tailor the difficulty to their liking. 
+
+The enemies are pretty basic, they move towards the player until they either die or hit said player. 
+The only redeeming feature is that their aim is randomized within a certin range, 
+so they can be pretty accurate occasianlly. This adds some versility to the gameplay.
+
+I wanted the navigation to be as simple as possible. Three clicks and your into the game (Or One if you dont mind the default options).
+In the game the pause menu is straight forward. It allows the user to restart, check controls and return to the start screen.
 
 #### Structure
+As it's a game, I went with a start menu when first visiting the website. 
+This menu/Dialog along with the other dialogs (Pause, Game Over Screen) are created using jQuery and is dynamically added to the index.html, 
+as you select the character/map these also get added to the index.html (both css/html). 
+I wanted to keep the index.html as minimal as possible, It only holds the players UI, 
+default CSS files, scripts and templates for the different game elements. 
+
+Once in the game the enemies are spawned with jQuery using the template, 
+the horizon moves when the player moves, using jQuery to adjust the inline position. 
+Bullets are also spawned using this method and are removed if it comes into contact with the enemy/player or goes out of bounds. 
+Once the player dies/beats all waves the "Game Over" dialog is shown with statistics of that session and buttons to either retry, return to start screen.
 
 #### Skeleton
 
 #### Surface
+- I wanted to keep the colours close to the Star Wars theme, so I went with a combination of gold/yellow, white/cream and black. 
+Using rgba() (opacity) in the CSS I experimented with the different shades of these colours. I think the end result is consistent
+and gives the Star Wars feel.
 
 ## Features
 
