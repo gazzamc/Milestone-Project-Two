@@ -41,19 +41,19 @@ You can try the live version of the game [Here](https://gazzamc.github.io/Milest
 - You can skip the intro credits using the checkbox in the start screen.
 - Players can move, shoot and dodge when controlling the character.
 - Every 30 seconds health spawns based on the users position.
-- The enemies aim randomly(within a range) which makes it more challenging when trying to figure out where to move.
+- The enemies aim randomly (within a range), which makes it more challenging when trying to figure out where to move.
 - The UI keeps track of your Bullets/Score and Combos.
-- The game over dialog gives the player their stats for that session. Enemies spawned, waves completed, highests combo and final score.
-- If the player is out of ammo and tries to shoot a message will pop up to say they're out of ammo.
-- The players has an option to adjust some of the variables in the start menu, such as spawn rate of health/enemies.
+- The "Game Over" dialog gives the player their stats for that session. Enemies spawned, waves completed, highests combo and final score.
+- If the player is out of ammo and tries to shoot, a message will pop up to say they're out of ammo.
+- The player has the option to adjust some of the variables in the start menu, such as spawn rate of health/enemies.
 
 ### Features left to Implement
 
 - I wanted to add different types of enemies that would deal different amounts of damage and make the player use the animations a bit more.
 - I wanted to add a boss fight between rounds.
-- I was thinking of adding a life system, so 3 lives which would be represented in the UI and you would just reset if you died until the lives were gone.
+- I was thinking of adding a life system, the player would have 3 lives which would be represented in the UI. The game would reset if you died until the lives were gone.
 - It would have been nice to have different perks for the two different characters.
-- I wanted to implement a leaderboard that would show up on the game over screen [If completed all waves]. 
+- I wanted to implement a leaderboard that would show up on the "Game Over" screen [If completed all waves]. 
 This would show the top 20 scores with a username.
 
 ## Technologies Used
@@ -65,13 +65,13 @@ This would show the top 20 scores with a username.
     - I used **CSS3** to add custom styles, positioning of the HTML elements and animations.
 
 - [JQuery](https://jquery.com)
-    - I used **JQuery** to manipulate the DOM as well dynamically add/remove elements.
+    - I used **JQuery** to manipulate the DOM and dynamically add/remove elements.
 
 - [JQueryUI](https://jqueryui.com/)
     - I used **JQueryUI** for the dialogs.
 
 - [Javascript](https://www.javascript.com/)
-    - I used a **Javascript** for functions, loops, intervals and many other things.
+    - I used **Javascript** for functions, loops, intervals and many other things.
 
 
 ## Testing
@@ -101,18 +101,18 @@ Then open index.html in your browser of choice.
 ## Credits
 
 ### Content
-- The stormtrooper was created by me using codepen. The source can be found [here](https://codepen.io/gazzamc/pen/wvBprvQ)
-- Chewie was created by me using codepen. The source can be found [here](https://codepen.io/gazzamc/pen/gObMePp)
-- Han was created by me using codepen. The source can be found [here](https://codepen.io/gazzamc/pen/zYxbqaB)
-- The tatooine background was created by me using codepen. The source can be found [here](https://codepen.io/gazzamc/pen/JjoLyag)
+- The stormtrooper was created using codepen. The source can be found [here](https://codepen.io/gazzamc/pen/wvBprvQ)
+- Chewie was created using codepen. The source can be found [here](https://codepen.io/gazzamc/pen/gObMePp)
+- Han was created using codepen. The source can be found [here](https://codepen.io/gazzamc/pen/zYxbqaB)
+- The tatooine background was created using codepen. The source can be found [here](https://codepen.io/gazzamc/pen/JjoLyag)
 
 ### Media
 - No images were used in this project, everything was created using HTML/CSS3.
 
 ### Acknowledgements
 
-- In order to keep both my Javascript/jQuery tidy and not overuse HTML in them. I used the template element. 
-This allowed me to clone the different characters, maps with ease and made the game a bit more dynamic. 
+- In order to keep both Javascript/jQuery tidy and not overuse HTML. I used the template element. 
+This allowed me to clone different characters, maps with ease and made the game a bit more dynamic. 
 I found this in Mozilla Documents [here](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template).
 
 - In order to clone the templates which were in the document fragments I used this example [here](https://stackoverflow.com/questions/15930706/html-template-tag-and-jquery).
@@ -132,10 +132,10 @@ In order to do this I used a series of split(),join() methods following the exam
 
 - When pausing the game I needed a way to stop the CSS3 animations, I was able to do so with this example [here](https://www.quackit.com/css/css3/properties/css_animation-play-state.cfm).
 
-- When pausing I wanted to prevent the user from moving/shooting so i used this example on Stack Overflow [here](https://stackoverflow.com/questions/36454853/start-stop-keypress-event-jquery).
+- When pausing I wanted to prevent the user from moving/shooting so I used this example on Stack Overflow [here](https://stackoverflow.com/questions/36454853/start-stop-keypress-event-jquery).
 
-- Due to the way I had the enemies spawn and fire bullets using an interval i needed to use a unique identify for the id (I used the angle of the arm).
-Since i couldnt reference this later i needed a way to find the enemy bullets in order to remove them. 
+- Due to the way I had the enemies spawn and fire bullets using an interval. I needed to use a unique identifier for the id (I used the angle of the arm).
+Since i couldnt reference this later I needed a way to find the enemy bullets in order to remove them. 
 I used this example to find a partial match for an id using jQuery [here](https://stackoverflow.com/questions/32891807/jquery-wildcard-selector-starts-w-string-and-ends-w-variable).
 
-- In order to do several things i needed to know when a CSS3 animation finished. I was able to do so using this example [here](https://stackoverflow.com/questions/49580666/check-if-an-css-animation-is-completed-with-jquery-or-js)
+- In order to do several things I needed to know when a CSS3 animation finished. I was able to do so using this example [here](https://stackoverflow.com/questions/49580666/check-if-an-css-animation-is-completed-with-jquery-or-js)
