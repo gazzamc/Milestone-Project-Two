@@ -9,6 +9,7 @@ function startGame(type) {
         highestCombo = 0;
         waves = 0;
         spawnRate = 10;
+        isKeyHandlerActive= true;
 
         /* Call gameOver function to remove intervals/spawned enemies */
         gameOver();
