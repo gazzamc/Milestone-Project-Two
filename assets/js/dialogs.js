@@ -264,17 +264,21 @@ function optionsDialog(){
     /* Check if options is open already */
     if($("#optionsDialog").length == 0){
 
+        let timeMin = $(".timer h2").text().split(":")[0];
+        let timeSec = $(".timer h2").text().split(":")[1];
+
         $("#pauseMenu").after('<div id="optionsDialog"><div class="hidden"></div></div>');
         $("#optionsDialog .hidden").append('<h4>Wave Time:</h4>');
-        $("#optionsDialog .hidden").append('<form>Min: <input type="text" id="waveMin" placeholder="'+ $(".timer h2").text().split(":")[0] +'">');
-        $("#optionsDialog .hidden").append('Sec: <input type="text" id="waveSec" placeholder="'+ $(".timer h2").text().split(":")[1] +'">');
+        $("#optionsDialog .hidden").append('<form>Min: <input type="text" id="waveMin" placeholder="'+ timeMin +'" value="'+ timeMin + '">');
+        $("#optionsDialog .hidden").append('Sec: <input type="text" id="waveSec" placeholder="'+ timeSec +'" value="'+ timeSec + '">');
         $("#optionsDialog .hidden").append('<h4>Enemy Spawn Rate:</h4>');
-        $("#optionsDialog .hidden").append('Stormtrooper every: <input type="text" id="enSpawn" placeholder="'+ spawnRate + '"></form> second(s)<br>');
-        $("#optionsDialog .hidden").append('Decrease by: <input type="text" id="enSpawnDec" placeholder="'+ spawnRateDec +'"></form> second(s) per wave.</form><br>');
+        $("#optionsDialog .hidden").append('Stormtrooper every: <input type="text" id="enSpawn" placeholder="'+ spawnRate + '" value="'+ spawnRate + '"></form> second(s)<br>');
+        $("#optionsDialog .hidden").append('Decrease by: <input type="text" id="enSpawnDec" placeholder="'+ spawnRateDec +'" value="'+ spawnRateDec + '"></form> second(s) per wave.</form><br>');
         $("#optionsDialog .hidden").append('<h4>Health Spawn Rate:</h4>');
-        $("#optionsDialog .hidden").append('Health Spawn: <input type="text" id="healthSpawn" placeholder="'+ healthSpawnRate +'"></form> ms.</form><br>');
+        $("#optionsDialog .hidden").append('Health Spawn: <input type="text" id="healthSpawn" placeholder="'+ healthSpawnRate +'" value="'+ healthSpawnRate + '"></form> ms.</form><br>');
         $("#optionsDialog .hidden").append('<button id="saveOptions">Save</button>');
         $("#optionsDialog .hidden").append('<button id="closeOptions">Close</button>');
+        $("#optionsDialog .hidden").append('<button id="defaultOptions">Default</button>');
 
         $("html").css("cursor", "pointer");
         $("#optionsDialog .hidden").css("display", "block");
@@ -335,6 +339,38 @@ function optionsDialog(){
             $("#optionsDialog .hidden").children().remove();
             $("#optionsDialog").remove();
             $("#optionsDialog").dialog("destroy");
+        });
+
+        $("#defaultOptions").click(function () {
+
+            timerMin = 1;
+            timerSec = 0;
+            spawnRate =  10;
+            spawnRateDec =  3;
+            healthSpawnRate =  30000;
+
+            $("#waveMin").attr({
+                placeholder: timerMin,
+                value: timerMin,
+            });
+            $("#waveSec").attr({
+                placeholder: timerSec,
+                value: timerSec,
+            });
+            $("#enSpawn").attr({
+                placeholder: spawnRate,
+                value: spawnRate,
+            });
+            $("#enSpawnDec").attr({
+                placeholder: spawnRateDec,
+                value: spawnRateDec,
+            });
+            $("#healthSpawn").attr({
+                placeholder: healthSpawnRate,
+                value: healthSpawnRate,
+            });
+
+            $(".timer h2").text(timerMin + ":" + timerSec);
         });
 
     } else{
