@@ -6,6 +6,8 @@ $(document).keypress(function (event) {
         /* Check if we are not on start/end screens */
         if($("#start").length == 0 && $("#try").length == 0){
             pauseGame();
+        } else{
+            $("#pauseMenu").dialog( "open" );
         }
     }
 

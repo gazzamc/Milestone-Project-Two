@@ -19,6 +19,9 @@ function showDialog(type) {
             $("#pauseMenu .hidden").append('<button id="options">Options</button>');
             $("#pauseMenu .hidden").append('<div class="introCheck"><label><input type="checkbox" id="introPlay"> Skip Intro</label></div>');
 
+            /* Add hidden instruction */
+            $("body").after('<h2 id="hiddenInstruction">Press "P" to open start screen</h2>');
+
             $("html").css("cursor", "pointer");
             $("#pauseMenu .hidden").css("display", "block");
 
@@ -107,6 +110,7 @@ function showDialog(type) {
                 $("#pauseMenu").dialog("destroy");
                 $("#pauseMenu .hidden").children().remove();
                 $("#pauseMenu .hidden").css("display", "none");
+                $("#hiddenInstruction").remove();
                 isDialogOpen = false;
             });
 

@@ -208,3 +208,10 @@ button#try{
     bottom: 1%;
 }
 
+#hiddenInstruction{
+    position: absolute;
+    left: 40%;
+    top: 40%;
+    color: #fff;
+}
+
