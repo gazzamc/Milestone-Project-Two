@@ -128,7 +128,7 @@ This allowed the player to move the arm up and down and the bullet would fire at
 Unfortunetly, when the player moved so did the bullet. 
 To fix this I needed to spawn the bullet outside of the player div and move it to the position of the barrel using jQuery. 
 The next issue I ran into was the animation, 
-since I used CCS3 to animate the bullet I could not change the angle (top parameter witin the CSS class) of the bullet when moving the arm, 
+since I used CSS3 to animate the bullet I could not change the angle (top parameter witin the CSS class) of the bullet when moving the arm, 
 it just went horizontally off the screen.
 
 In order to fix this I needed to change the animation to a jQuery animation. 

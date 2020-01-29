@@ -353,26 +353,11 @@ function optionsDialog(){
             spawnRateDec =  3;
             healthSpawnRate =  30000;
 
-            $("#waveMin").attr({
-                placeholder: timerMin,
-                value: timerMin,
-            });
-            $("#waveSec").attr({
-                placeholder: timerSec,
-                value: timerSec,
-            });
-            $("#enSpawn").attr({
-                placeholder: spawnRate,
-                value: spawnRate,
-            });
-            $("#enSpawnDec").attr({
-                placeholder: spawnRateDec,
-                value: spawnRateDec,
-            });
-            $("#healthSpawn").attr({
-                placeholder: healthSpawnRate,
-                value: healthSpawnRate,
-            });
+            $("#waveMin").val(timerMin);
+            $("#waveSec").val(timerSec);
+            $("#enSpawn").val(spawnRate);
+            $("#enSpawnDec").val(spawnRateDec);
+            $("#healthSpawn").val(healthSpawnRate);
 
             $(".timer h2").text(timerMin + ":" + timerSec);
         });
