@@ -66,6 +66,21 @@ function showDialog(type) {
             })
 
             $("#start").click(function () {
+
+                /* Close any open dialogs */
+                if($("#controlDialog").length == 1 || $("#optionsDialog").length == 1){
+                    let dialogWindow;
+                    if($("#controlDialog").length == 1){
+                        dialogWindow = "controlDialog";
+                    }else{
+                        dialogWindow = "optionsDialog";
+                    }
+
+                    $("#"+ dialogWindow + ".hidden").children().remove();
+                    $("#"+ dialogWindow).remove();
+                    $("#"+ dialogWindow).dialog("destroy");
+                }
+
                 /* Select Map/Char if none selected */
                 if(character == null){
                     character = "chewie";

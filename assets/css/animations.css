@@ -21,7 +21,7 @@
         left: -20vw;
     }
     to{
-        left: 45vw;
+        left: 40vw;
     }
 }
 
@@ -34,10 +34,10 @@
 
 @keyframes waveText{
     from{
-        left: 45vw;
+        left: 40vw;
     }
     to{
-        left: 45vw;
+        left: 40vw;
     }
 }
 
