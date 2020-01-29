@@ -115,9 +115,48 @@ This would show the top 20 scores with a username.
 
 
 ## Testing
+This game isn't intended for mobiles devices, or devices without a mouse/keyboard. 
+So these were not considered when actively testing.
+
+I tested the game in Chrome, Firefox and Edge. As I was developing the game I would use console.log() 
+throughout the code to verify the code was running as intended. I would write a piece of code then debug, 
+once it was running as intended I would move forward. Once I had a piece of code completed and tested,
+I would then try and refactor it so it was easier to read/understand and more efficient.
+
+In my first attempt of spawning the bullets I would append the bullet div within the blaster. 
+This allowed the player to move the arm up and down and the bullet would fire at the pointed angle. 
+Unfortunetly, when the player moved so did the bullet. 
+To fix this I needed to spawn the bullet outside of the player div and move it to the position of the barrel using jQuery. 
+The next issue I ran into was the animation, 
+since I used CCS3 to animate the bullet I could not change the angle (top parameter witin the CSS class) of the bullet when moving the arm, 
+it just went horizontally off the screen.
+
+In order to fix this I needed to change the animation to a jQuery animation. 
+This allowed me to dynamically change the angle(climb) of the bullet. 
+I then added some if statements to determine the trajectory based on the players arm and adjusted the bullet angle. 
+It's not a perfect solution, but it no longer moves with the player and I was able to re-use this method for the enemy troopers.
+
+ 
+#### Known Bugs:
+- Text-shadow doesnt show on announce/wave text on Edge Browser.
+
+- Shooting enemies as soon as they spawn doesnt deal damage. 
+I'm sure its due to the outOfBounds function clearing the bullet before the hit is detected. 
+This seems to be an occasianal bug as it can deal damage the odd time. 
+I can probably fix this by extending the innerWidth in the if statement, 
+but I think it prevents people from spawn killing enemies before they appear on screen.
+
+- Sometimes the hit detection can lag behind. Since the interval time is the lowest in can be at 1ms I can probably rule that out, 
+I think it may be a limitation of the collision detection(if statement) or even just the way I use the divs as hit boxes. 
+For now it's acceptable and adds a bit of a timing challenge. It isn't perfect but close enough.
+
+- The bullet angle isn't correct on some shots for both the enemy and player. 
+I'm using an if statement to determine the angle of the bullet based on the angle of the player/enemies arm. 
+It can be improved but since I spent a good few days on it at this point I think it's acceptable at the moment and certainly 
+isn't as off as it was before I implemented this check.
 
 ## Deployment
-The website was deployed/hosted on GitHub pages, the following is the process in which i took to deploy it.
+The website was deployed/hosted on GitHub pages, the following is the process in which I took to deploy it.
 
 #### GitHub Pages
 
@@ -176,7 +215,7 @@ In order to do this I used a series of split(),join() methods following the exam
 - When pausing I wanted to prevent the user from moving/shooting so I used this example on Stack Overflow [here](https://stackoverflow.com/questions/36454853/start-stop-keypress-event-jquery).
 
 - Due to the way I had the enemies spawn and fire bullets using an interval. I needed to use a unique identifier for the id (I used the angle of the arm).
-Since i couldnt reference this later I needed a way to find the enemy bullets in order to remove them. 
+Since I couldnt reference this later I needed a way to find the enemy bullets in order to remove them. 
 I used this example to find a partial match for an id using jQuery [here](https://stackoverflow.com/questions/32891807/jquery-wildcard-selector-starts-w-string-and-ends-w-variable).
 
 - In order to do several things I needed to know when a CSS3 animation finished. I was able to do so using this example [here](https://stackoverflow.com/questions/49580666/check-if-an-css-animation-is-completed-with-jquery-or-js)
