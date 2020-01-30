@@ -15,23 +15,29 @@ could be 0 or 100%.
 - Aim: Mouse/Trackpad
 
 ## Demo
-You can try the live version of the game [Here](https://gazzamc.github.io/Milestone-Project-Two/)
+You can try the live version of the game [Here](https://gazzamc.github.io/Milestone-Project-Two/)<br><br>
+<img src="https://github.com/gazzamc/Milestone-Project-Two/raw/master/assets/images/gameplayCap.gif" alt="Gameplay Preview">
 
 ## UX
 
 #### User Stories
 - As a player, I expect to be able to choose my character.
-<br/>As a player, I expect to be able to choose my map.
+<br/>As a player, I expect to be able to choose my map.<br><br>
+<img src="https://github.com/gazzamc/Milestone-Project-Two/raw/master/assets/images/charSelCap.gif" alt="Char/Map Select Preview" width="30%">
 
 - As a player, I expect to be able to pause the game.
 <br/>As a player, I expect to be able to return to the start screen.
-<br/>As a player, I expect to be able to restart the game without leaving it.
+<br/>As a player, I expect to be able to restart the game without leaving it.<br><br>
+<img src="https://github.com/gazzamc/Milestone-Project-Two/raw/master/assets/images/pauseMenuCap.gif" alt="Pause Preview" width="70%">
 
-- As a player, I expect to be able to change the difficulty.
+- As a player, I expect to be able to change the difficulty.<br><br>
+<img src="https://github.com/gazzamc/Milestone-Project-Two/raw/master/assets/images/diffChangeCap.gif" alt="Difficulty Preview" width="50%">
 
-- As a player, I expect access to the layout of the controls.
+- As a player, I expect access to the layout of the controls.<br><br>
+<img src="https://github.com/gazzamc/Milestone-Project-Two/raw/master/assets/images/controlCap.gif" alt="Controls Preview" width="50%">
 
-- As a player, I expect to be able to skip the intro credits.
+- As a player, I expect to be able to skip the intro credits.<br><br>
+<img src="https://github.com/gazzamc/Milestone-Project-Two/raw/master/assets/images/skipIntroCap.gif" alt="Skip Intro Preview" width="70%">
 
 #### Strategy
 I wanted to create a simple game that was both fun and challenging. 
