@@ -363,6 +363,6 @@ function optionsDialog(){
         });
 
     } else{
-        $("#optionsDialog").dialog( "moveToTop" );
+        $("#optionsDialog").dialog("moveToTop");
     }
 }

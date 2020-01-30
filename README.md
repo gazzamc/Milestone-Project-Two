@@ -21,14 +21,13 @@ You can try the live version of the game [Here](https://gazzamc.github.io/Milest
 
 #### User Stories
 - As a player, I expect to be able to choose my character.
+<br/>As a player, I expect to be able to choose my map.
 
 - As a player, I expect to be able to pause the game.
+<br/>As a player, I expect to be able to return to the start screen.
+<br/>As a player, I expect to be able to restart the game without leaving it.
 
 - As a player, I expect to be able to change the difficulty.
-
-- As a player, I expect to be able to return to the start screen.
-
-- As a player, I expect to be able to restart the game without leaving it.
 
 - As a player, I expect access to the layout of the controls.
 
