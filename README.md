@@ -1,4 +1,11 @@
 # Star Wars: Side-Scrolling Shooter
+
+## Demo
+You can try the live version of the game [Here](https://gazzamc.github.io/Milestone-Project-Two/)<br><br>
+<p align="center">
+<img src="https://github.com/gazzamc/Milestone-Project-Two/raw/master/assets/images/gameplayCap.gif" alt="Gameplay Preview">
+</p>
+
 Interactive Frontend Development Project - Code Institute
 
 This is a simple browser game where you play as either Han or Chewie. You must survive 3 waves of enemies. 
@@ -13,12 +20,6 @@ could be 0 or 100%.
 - Pause: P
 - Reload: R
 - Aim: Mouse/Trackpad
-
-## Demo
-You can try the live version of the game [Here](https://gazzamc.github.io/Milestone-Project-Two/)<br><br>
-<p align="center">
-<img src="https://github.com/gazzamc/Milestone-Project-Two/raw/master/assets/images/gameplayCap.gif" alt="Gameplay Preview">
-</p>
 
 ## UX
 
