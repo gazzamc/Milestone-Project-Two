@@ -29,20 +29,24 @@ could be 0 or 100%.
 <p align="center">
 <img src="https://github.com/gazzamc/Milestone-Project-Two/raw/master/assets/images/charSelCap.gif" alt="Char/Map Select Preview" width="30%">
 </p>
+
 - As a player, I expect to be able to pause the game.
 <br/>As a player, I expect to be able to return to the start screen.
 <br/>As a player, I expect to be able to restart the game without leaving it.<br><br>
 <p align="center">
 <img src="https://github.com/gazzamc/Milestone-Project-Two/raw/master/assets/images/pauseMenuCap.gif" alt="Pause Preview" width="70%">
 </p>
+
 - As a player, I expect to be able to change the difficulty.<br><br>
 <p align="center">
 <img src="https://github.com/gazzamc/Milestone-Project-Two/raw/master/assets/images/diffChangeCap.gif" alt="Difficulty Preview" width="50%">
 </p>
+
 - As a player, I expect access to the layout of the controls.<br><br>
 <p align="center">
 <img src="https://github.com/gazzamc/Milestone-Project-Two/raw/master/assets/images/controlCap.gif" alt="Controls Preview" width="50%">
 </p>
+
 - As a player, I expect to be able to skip the intro credits.<br><br>
 <p align="center">
     <img src="https://github.com/gazzamc/Milestone-Project-Two/raw/master/assets/images/skipIntroCap.gif" alt="Skip Intro Preview" width="70%">
