@@ -58,17 +58,17 @@ I also wanted it to be random enough so that every session wasn't exactly the sa
 
 #### Scope
 I wanted the user to have the choice in which character to play as well as the map/background. 
-While the maps don't provide anything new other than change of scenary, I still feel it's a nice option to have. 
+While the maps don't provide anything new other than change of scenery, I still feel it's a nice option to have. 
 As I was developing the game I found that there was no right default for some of variables that set the difficulty. 
 One setting could be too challenging for some people and not for others. 
-So to counteract this I created the options dialog in the start screen. This allows the player to tailor the difficulty to their liking. 
+So to counteract this, I created the options dialog in the start screen. This allows the player to tailor the difficulty to their liking. 
 
 The enemies are pretty basic, they move towards the player until they either die or hit said player. 
-The only redeeming feature is that their aim is randomized within a certin range, 
+The only redeeming feature is that their aim is randomized within a certain range, 
 so they can be pretty accurate occasionally. This adds some versatility to the gameplay.
 
-I wanted the navigation to be as simple as possible. Three clicks and your into the game (Or One if you dont mind the default options).
-In the game the pause menu is straight forward. It allows the user to restart, check controls and return to the start screen.
+I wanted the navigation to be as simple as possible. Three clicks and your into the game (Or one if you don't mind the default options).
+In the game the pause menu is straight forward, It allows the user to restart, check controls and return to the start screen.
 
 #### Structure
 As it's a game, I went with a start menu when first visiting the website. 
@@ -91,17 +91,17 @@ and gives the Star Wars feel.
 
 ## Features
 
-- The player can choose betweem two characters, Han or Chewie.
+- The player can choose between two characters, Han or Chewie.
 - The enemies spawn based on the time, the difficulty increases the longer you survive.
 - Players can choose which map/background they want from the start menu.
 - Players can pause and reset the game using the pause menu as well return to the start menu.
 - You can view the controls via the pause menu or start screen.
 - You can skip the intro credits using the checkbox in the start screen.
 - Players can move, shoot and dodge when controlling the character.
-- Every 30 seconds health spawns based on the users position.
+- Every 30 seconds health spawns based on the players position.
 - The enemies aim randomly (within a range), which makes it more challenging when trying to figure out where to move.
 - The UI keeps track of your Bullets/Score and Combos.
-- The "Game Over" dialog gives the player their stats for that session. Enemies spawned, waves completed, highests combo and final score.
+- The "Game Over" dialog gives the player their stats for that session. Enemies spawned, waves completed, highest combo and final score.
 - If the player is out of ammo and tries to shoot, a message will pop up to say they're out of ammo.
 - The player has the option to adjust some of the variables in the start menu, such as spawn rate of health/enemies.
 
@@ -143,10 +143,10 @@ I would then try and refactor it so it was easier to read/understand and more ef
 
 In my first attempt of spawning the bullets I would append the bullet div within the blaster. 
 This allowed the player to move the arm up and down and the bullet would fire at the pointed angle. 
-Unfortunetly, when the player moved so did the bullet. 
+Unfortunately, when the player moved so did the bullet. 
 To fix this I needed to spawn the bullet outside of the player div and move it to the position of the barrel using jQuery. 
 The next issue I ran into was the animation, 
-since I used CSS3 to animate the bullet I could not change the angle (top parameter witin the CSS class) of the bullet when moving the arm, 
+since I used CSS3 to animate the bullet I could not change the angle (top parameter within the CSS class) of the bullet when moving the arm, 
 it just went horizontally off the screen.
 
 In order to fix this I needed to change the animation to a jQuery animation. 
@@ -169,7 +169,7 @@ The button stays highlighted on your character selection.
 The button stays highlighted on your map selection.
 
 ##### Controls
-- Clicking the controls button brings up a seperate dialog and displays the controls for the game, 
+- Clicking the controls button brings up a separate dialog and displays the controls for the game, 
 clicking the close button closes the dialog.
 
 ##### Options
@@ -194,12 +194,12 @@ However if you leave a input box empty a message will show and not save/close th
 The player can only shoot one bullet at a time, this is intended. 
 The bullet gets deleted when in contact with the troopers or when it leaves the window view. This allows the player to shoot again.
 
-Enemys spawn based on the time (default 10 seconds), 
+Enemies spawn based on the time (default 10 seconds), 
 when completed waves this time decreases (default by 3 every wave). This increases the difficulty as you progress.
 
 The enemies change their aim and fire every 4 seconds (this cannot be changed in the options).
 ##### Controls
-- Pressing 'A' or 'D' will move you back and forth, it will also move the horizon behing the player.<br>When you reach the edge of the left side of the screen the character will no longer move. This is intended.
+- Pressing 'A' or 'D' will move you back and forth, it will also move the horizon behind the player.<br>When you reach the edge of the left side of the screen the character will no longer move. This is intended.
 - Pressing 'P' brings up the pause screen and pauses the gameplay.
 - Pressing 'Q' or 'E' allows the character to crouch or jump respectively. These cannot be pressed at the same time and the player cannot shoot while doing so. This is intended.
 - Pressing 'R' plays the reload animation. This prevents the player from shooting. But not moving.
@@ -251,11 +251,11 @@ functions that return values that aren't dynamically added (jQuery objects and t
 I opted not to use this as i could not come up with a viable way to test the jQuery code.
 
 ### Known Bugs:
-- Text-shadow doesnt show on announce/wave text on Edge Browser.
+- Text-shadow doesn't show on announce/wave text on Edge Browser.
 
-- Shooting enemies as soon as they spawn doesnt deal damage. 
+- Shooting enemies as soon as they spawn doesn't deal damage. 
 I'm sure its due to the outOfBounds function clearing the bullet before the hit is detected. 
-This seems to be an occasianal bug as it can deal damage the odd time. 
+This seems to be an occasional bug as it can deal damage the odd time. 
 I can probably fix this by extending the innerWidth in the if statement, 
 but I think it prevents people from spawn killing enemies before they appear on screen.
 
