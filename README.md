@@ -1,5 +1,28 @@
 # Star Wars: Side-Scrolling Shooter
 
+## Table Of Contents:
+- [Demo](#demo)<br>
+    * [Controls](#controls)<br>
+- [UX](#ux)<br>
+    * [User Stories](#user-stories)<br>
+    * [Strategy](#strategy)<br>
+    * [Scope](#scope)<br>
+    * [Structure](#tructure)<br>
+    * [Skeleton](#skeleton)<br>
+    * [Surface](#surface)<br>
+- [Features](#features)<br>
+- [Features left to Implement](#features-left-to-implement)<br>
+- [Technologies Used](#technologies-used)<br>
+- [Testing](#testing)<br>
+    * [Manual Testing](#manual-testing)<br>
+    * [Automated Testing](#automated-testing)<br>
+    * [Known Bugs](#known-bugs)<br>
+- [Deployment](#deployment)<br>
+- [Credits](#credits)<br>
+    * [Content](#content)<br>
+    * [Media](#media)<br>
+    * [Acknowledgements](#acknowledgements)<br>
+
 ## Demo
 You can try the live version of the game [Here](https://gazzamc.github.io/Milestone-Project-Two/)<br><br>
 <p align="center">
@@ -154,7 +177,7 @@ This allowed me to dynamically change the angle(climb) of the bullet.
 I then added some if statements to determine the trajectory based on the players arm and adjusted the bullet angle. 
 It's not a perfect solution, but it no longer moves with the player and I was able to re-use this method for the enemy troopers.
 
-### Manual Testing:
+### Manual Testing
 As well as testing the game while developing it, I did a series of manual testing to be sure that all 
 elements worked as intended and source bugs in order to fix them.
 
@@ -242,15 +265,15 @@ Otherwise the dialog title is "Game Over".
 ##### Start Menu
 - Clicking the start menu button will return you to the start screen.
 
-### Automated Testing:
+### Automated Testing
 I tried using Selenium IDE but it only worked in my dialogs. 
 The game would not pick up on any of the sent keys so testing gameplay with this tool was not possible.
 
 I was going to use Jasmine for testing the functions but I don't have many 
 functions that return values that aren't dynamically added (jQuery objects and their positions). 
-I opted not to use this as i could not come up with a viable way to test the jQuery code.
+I opted not to use this as I could not come up with a viable way to test the jQuery code.
 
-### Known Bugs:
+### Known Bugs
 - Text-shadow doesn't show on announce/wave text on Edge Browser.
 
 - Shooting enemies as soon as they spawn doesn't deal damage. 
