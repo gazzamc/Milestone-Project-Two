@@ -7,7 +7,7 @@
     * [User Stories](#user-stories)<br>
     * [Strategy](#strategy)<br>
     * [Scope](#scope)<br>
-    * [Structure](#tructure)<br>
+    * [Structure](#structure)<br>
     * [Skeleton](#skeleton)<br>
     * [Surface](#surface)<br>
 - [Features](#features)<br>
