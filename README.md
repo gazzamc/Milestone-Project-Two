@@ -149,8 +149,103 @@ This allowed me to dynamically change the angle(climb) of the bullet.
 I then added some if statements to determine the trajectory based on the players arm and adjusted the bullet angle. 
 It's not a perfect solution, but it no longer moves with the player and I was able to re-use this method for the enemy troopers.
 
- 
-#### Known Bugs:
+### Manual Testing:
+As well as testing the game while developing it, I did a series of manual testing to be sure that all 
+elements worked as intended and source bugs in order to fix them.
+
+#### Start Screen
+
+##### Character Selection
+- Clicking the corresponding button for each character displays a preview of said character in the preview box. 
+The button stays highlighted on your character selection.
+
+##### Map Selection
+- Clicking the corresponding button for each map displays a preview of said map in the preview box. 
+The button stays highlighted on your map selection.
+
+##### Controls
+- Clicking the controls button brings up a seperate dialog and displays the controls for the game, 
+clicking the close button closes the dialog.
+
+##### Options
+- Clicking the options button opens another dialog with the default settings already in the input boxes. 
+- If you enter anything other than a number a message will display at the bottom of the dialog telling you to enter a valid number. 
+- If you enter anything greater than 59 or less than 0 in the timer input boxes you will also get an error message. 
+- Entering a higher number in the "decreasing by" section than the Stormtrooper spawnrate will also give you a message stating that.
+- Entering anything less than 1000 in the health spawn input box will give you a message stating this.
+- Clicking the close button closes the dialog and does not save any changes.
+- Clicking the save button saves your current changes and closes the dialog. 
+However if you leave a input box empty a message will show and not save/close the dialog.
+- Clicking the default button resets all values to default. You will need to click save to apply them.
+
+##### Skip Intro
+- Checking the skip intro checkbox will skip the opening crawl and go right into the gameplay.
+
+##### Start
+- Clicking the start button will start the game.
+- If you click the start button without selecting a map or character a default one will be selected for you.
+
+#### Gameplay
+The player can only shoot one bullet at a time, this is intended. 
+The bullet gets deleted when in contact with the troopers or when it leaves the window view. This allows the player to shoot again.
+
+Enemys spawn based on the time (default 10 seconds), 
+when completed waves this time decreases (default by 3 every wave). This increases the difficulty as you progress.
+
+The enemies change their aim and fire every 4 seconds (this cannot be changed in the options).
+##### Controls
+- Pressing 'A' or 'D' will move you back and forth, it will also move the horizon behing the player.<br>When you reach the edge of the left side of the screen the character will no longer move. This is intended.
+- Pressing 'P' brings up the pause screen and pauses the gameplay.
+- Pressing 'Q' or 'E' allows the character to crouch or jump respectively. These cannot be pressed at the same time and the player cannot shoot while doing so. This is intended.
+- Pressing 'R' plays the reload animation. This prevents the player from shooting. But not moving.
+- Pressing 'Space' allows the player to shoot the blaster.
+- Moving the mouse/trackpad moves the players arm and allows the player to aim the blaster.
+
+##### Collision
+- If the player walks into a stormtrooper, the trooper will die and the player will take 10 damage.
+- If the player gets hit in the head they will take 20 damage, and 10 damage when hit in the body.
+- If the player shoots the bullet out of view it will be deleted.
+- If the player hits the enemy in the head they will do 50 damage, and 10 damage if they hit them in the body.
+- If the player walks over the health spawn it will disappear and a random amount of health will be added.<br> 
+If the players health is already 100% the health spawn will stay until it can be consumed.
+
+##### Timer
+- When the timer resets, a wave announcement animation is played.
+- When the timer runs out after 3 waves the end screen dialog is shown.
+
+#### Pause Screen
+##### Continue
+- Clicking the continue button in the pause menu will close the pause dialog and continue the gameplay.
+
+##### Restart
+- Clicking the restart button will restart the game to Wave 1 and reset timer/variables.
+
+##### Controls
+- Clicking the controls button acts the same as in the start menu, 
+a dialog will open and show the games controls. Clicking close will close this dialog.
+
+##### Start Menu
+- Clicking the start menu button will return you to the start screen.
+
+#### End/Game Over Screen
+- If you survive the 3 waves the title of this screen changes to "You Survived" and shows your session statistics.
+Otherwise the dialog title is "Game Over".
+
+##### Try Again
+- Clicking this button will restart the game to Wave 1 and reset timer/variables.
+
+##### Start Menu
+- Clicking the start menu button will return you to the start screen.
+
+### Automated Testing:
+I tried using Selenium IDE but it only worked in my dialogs. 
+The game would not pick up on any of the sent keys so testing gameplay with this tool was not possible.
+
+I was going to use Jasmine for testing the functions but I don't have many 
+functions that return values that aren't dynamically added (jQuery objects and their positions). 
+I opted not to use this as i could not come up with a viable way to test the jQuery code.
+
+### Known Bugs:
 - Text-shadow doesnt show on announce/wave text on Edge Browser.
 
 - Shooting enemies as soon as they spawn doesnt deal damage. 
