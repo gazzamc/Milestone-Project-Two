@@ -106,6 +106,13 @@ Once the player dies/beats all waves the "Game Over" dialog is shown with statis
 
 #### Skeleton
 
+[Start Screen Wireframe](https://github.com/gazzamc/Milestone-Project-Two/blob/master/wireframes/startScreen.pdf)<br>
+[Gameplay Wireframe](https://github.com/gazzamc/Milestone-Project-Two/blob/master/wireframes/gameScreen.pdf)<br>
+[End Screen Wireframe](https://github.com/gazzamc/Milestone-Project-Two/blob/master/wireframes/endScreen.pdf)<br>
+[Controls Wireframe](https://github.com/gazzamc/Milestone-Project-Two/blob/master/wireframes/controlsScreen.pdf)<br>
+[Options Wireframe](https://github.com/gazzamc/Milestone-Project-Two/blob/master/wireframes/optionsScreen.pdf)<br>
+[Pause Wireframe](https://github.com/gazzamc/Milestone-Project-Two/blob/master/wireframes/pauseScreen.pdf)<br>
+
 #### Surface
 I wanted to keep the colours close to the Star Wars theme, so I went with a combination of gold/yellow, white/cream and black. 
 Using rgba() (opacity) in the CSS I experimented with the different shades of these colours. I think the end result is consistent
