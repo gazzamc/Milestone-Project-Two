@@ -111,6 +111,21 @@ function introCredits(){
     let clone = cloneTemplate($("#introText"));
     $("body").append(clone);
 
-     /* Add CSS */
-     $("head").append('<link id="introCSS" rel="stylesheet" href="assets/css/crawl.css">');
+    /* Replace placeholder text */
+    replaceCrawlText()
+
+    /* Add CSS */
+    $("head").append('<link id="introCSS" rel="stylesheet" href="assets/css/crawl.css">');
+}
+
+function replaceCrawlText(){
+    if(character == "chewie"){
+        $("#char").text("Chewie");
+        $("#charQuip").text("Show them why we let the wookie win!");
+    } else{
+        $("#char").text("Han");
+        $("#charQuip").text("Everyone says you shot first, lets see.");
+    }
+
+     $("#baseLoc").text(map);
 }
