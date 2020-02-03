@@ -302,8 +302,15 @@ function optionsDialog(){
             let  rateDec =  parseInt($("#enSpawnDec").val());
             let  hSpawnRate =  parseInt($("#healthSpawn").val());
 
+            console.log($("#waveMin").val().length);
+            console.log(min.toString().length);
 
-            if(!isNaN(min) && !isNaN(secs) && !isNaN(rate) && !isNaN(rateDec) && !isNaN(hSpawnRate)){
+            /* Check if input is a number and does not contain letters */
+            if((!isNaN(min) && min.toString().length == $("#waveMin").val().length) 
+                && (!isNaN(secs) && secs.toString().length == $("#waveSec").val().length)
+                && (!isNaN(rate) && rate.toString().length == $("#enSpawn").val().length)
+                && (!isNaN(rateDec) && rateDec.toString().length == $("#enSpawnDec").val().length)
+                && (!isNaN(hSpawnRate) && hSpawnRate.toString().length == $("#healthSpawn").val().length)){
 
                 /* Clear last warning */
                 $("#warning").remove();
