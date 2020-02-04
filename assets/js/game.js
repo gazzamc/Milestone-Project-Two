@@ -146,7 +146,7 @@ function gameOver() {
 
 /**
  * This clears or updates the score, 
- * depending on the string passes to it
+ * depending on the string passed to it
  * @function updateScore
  * @param {String} behaviour 
  */
