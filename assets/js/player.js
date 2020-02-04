@@ -1,3 +1,12 @@
+/**
+ * player.js
+ * Contains all the player specific functions
+ */
+
+ /**
+  * Plays the reload animation and resets bullet count
+  * @function reload
+  */
 function reload() {
     $(".cleftArm").addClass("reloadAnimation");
 
@@ -14,6 +23,10 @@ function reload() {
     });
 }
 
+/**
+ * Spawns health drops based on players position
+ * @function spawnHealth
+ */
 function spawnHealth() {
     /* prevent multiple spawns */
     if ($(".healthTopUp").length == 0) {

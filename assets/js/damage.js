@@ -1,3 +1,15 @@
+/**
+ * damage.js
+ * This handles the damage for both player and enemy
+ */
+
+/**
+ * Removes damage amount from health, 
+ * sets score and ends game if player reaches 0%.
+ * @function damage
+ * @param {int} damageAmount 
+ * @param {jQuery Object} target 
+ */
 function damage(damageAmount, target) {
     let currHealth = $(target).find(".health span.num").text();
     let currWidth = parseInt($(target).find(".health").css("width"));

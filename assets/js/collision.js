@@ -1,3 +1,17 @@
+/**
+ * collision.js
+ * This contains all functions corresponding to collision checks
+ */
+
+/**
+ * This is called when a bullet is fired by
+ * the player and is attached to the individual
+ * bullet until it's deleted.
+ * @function findCol
+ * @param {jQuery Object} bullet  eg. $(#1.bullet)
+ * @param {jQuery Object} enemy  eg. $(#1.stormtrooper)
+ */
+
 function findCol(bullet, enemy) {
     let bulletPos = bullet.offset();
     let isOut = outOfBounds(bulletPos);
@@ -26,6 +40,11 @@ function findCol(bullet, enemy) {
     }
 }
 
+/**
+ * Check to see if bullet is out of bounds.
+ * @function outOfBounds
+ * @param {jQuery Object} bulletPos 
+ */
 function outOfBounds(bulletPos) {
     let istrue = false;
 
@@ -36,8 +55,13 @@ function outOfBounds(bulletPos) {
 
     return istrue;
 }
-
 /* https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection */
+/**
+ * Checks to see if one object had hit another
+ * @function isHit
+ * @param {jQuery Object} target 
+ * @param {jQuery Object} target2 
+ */
 function isHit(target, target2) {
 
     /* check if targets still exist */
@@ -59,7 +83,13 @@ function isHit(target, target2) {
         }
     }
 }
-
+/**
+ * When the game is in play this is 
+ * set to an interval which calls every 1ms. This checks
+ * to see if the player had been hit by an enemy bullet,
+ * stormtrooper or health pickup.
+ * @function friendlyFire
+ */
 function friendlyFire() {
     let friendly = $("." + character);
     let currHealth = parseInt($("." + character + " .health .num").text());

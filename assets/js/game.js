@@ -1,3 +1,14 @@
+/**
+ * game.js
+ * Contains the main game functions
+ */
+
+/**
+ * Depending on the argument passed to the function, it
+ * starts, restarts or simply resets the global variables
+ * @function startGame
+ * @param {String} type 
+ */
 function startGame(type) {
 
     if (type == "restart" || type == "backToMenu") {
@@ -46,6 +57,11 @@ function startGame(type) {
     }
 }
 
+/**
+ * This either stops all intervals and calls pause dialog or
+ * starts all the intervals and closes pause dialog
+ * @function pauseGame
+ */
 function pauseGame() {
     isGamePaused = !isGamePaused;
     if (isGamePaused) {
@@ -101,6 +117,10 @@ function pauseGame() {
     }
 }
 
+/**
+ * This ends the game and shows the end screen
+ * @function gameOver
+ */
 function gameOver() {
     /* clear enemy intervals */
     clearBulletArray("enemy");
@@ -124,6 +144,12 @@ function gameOver() {
     clearInterval(healthSpawn);
 }
 
+/**
+ * This clears or updates the score, 
+ * depending on the string passes to it
+ * @function updateScore
+ * @param {String} behaviour 
+ */
 function updateScore(behaviour = "update") {
 
     if (behaviour == "clear") {
@@ -146,6 +172,12 @@ function updateScore(behaviour = "update") {
     }
 }
 
+/**
+ * This clears the bullet intervals when it gets removed.
+ * @function clearBulletArray
+ * @param {String} type 
+ * @param {int} enemyId 
+ */
 function clearBulletArray(type, enemyId) {
 
     if (type == "enemy") {
@@ -183,7 +215,12 @@ function clearBulletArray(type, enemyId) {
     }
 }
 
-/* Call all functions to start game and set character/map */
+/**
+ * This sets the map/character and calls 
+ * the necessary functions to start the game.
+ * @function initGame
+ * @param {Boolean} setPlayerChoice 
+ */
 function initGame(setPlayerChoice = true){
     let startType;
     if(setPlayerChoice){
@@ -214,6 +251,10 @@ function initGame(setPlayerChoice = true){
     $("html").css("cursor", "none");
 }
 
+/**
+ * Resets variables and returns player to start menu
+ * @function backToMenu
+ */
 function backToMenu(){
     /* Reset everything and stop intervals */
     startGame("backToMenu");

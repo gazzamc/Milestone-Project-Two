@@ -1,5 +1,18 @@
-function setBulletTrajectory(source, char) {
+/**
+ * fire.js
+ * Contains the functions that handle the firing of bullets
+ */
 
+/**
+ * This takes in the characters blaster and the character itself
+ * then it will spawn the bullet where the blaster is located
+ * and run the animation.
+ * @function setBulletTrajectory
+ * @param {jQuery Object} source //characters blaster
+ * @param {jQuery Object} char //character
+ */
+function setBulletTrajectory(source, char) {
+    /* gets the angle of blaster */
     let getAngle = source.attr("style");
 
     if (getAngle == null) {
@@ -99,6 +112,11 @@ function setBulletTrajectory(source, char) {
     }
 }
 
+/**
+ * Takes in the character and returns the blaster location
+ * @function findBlasterLoc
+ * @param {jQuery Object} char 
+ */
 function findBlasterLoc(char) {
     let blaster;
 

@@ -1,3 +1,12 @@
+/**
+ * enemy.js
+ * Contains all functions related to the enemy
+ */
+
+/**
+ * Spawns enemy and sets interval to call enemyfire every 4s
+ * @function spawnEnemies
+ */
 function spawnEnemies() {
 
     $("body").append(cloneTemplate($("#trooperTemp")));
@@ -12,6 +21,10 @@ function spawnEnemies() {
     });
 }
 
+/**
+ * Returns current enemies alive
+ * @function currEnemies
+ */
 function currEnemies() {
     let enemiesAlive = 0;
     $(".stormtrooper").each(function () {
@@ -21,6 +34,12 @@ function currEnemies() {
     return enemiesAlive;
 }
 
+/**
+ * Checks if enemy exists before calling
+ * setEnemyAim and setBulletTrajectory
+ * @function enemyFire
+ * @param {jQuery Object} enemy 
+ */
 function enemyFire(enemy) {
 
     /* Check if enemy still exists */
@@ -30,6 +49,11 @@ function enemyFire(enemy) {
     }
 }
 
+/**
+ * Randomly sets the enemies.
+ * @function setEnemyAim
+ * @param {jQuery Object} enemy 
+ */
 function setEnemyAim(enemy) {
     let enemyId = enemy.attr("id");
 
@@ -48,6 +72,11 @@ function setEnemyAim(enemy) {
     $("#" + enemyId + ".stormtrooper .arms.leftArm").css("transform", "rotate(" + randomNum + "deg)");
 }
 
+/**
+ * Returns the css class of enemies(or any object).
+ * @function findEnemyType
+ * @param {jQuery Object} enemy 
+ */
 function findEnemyType(enemy) {
     let getClasses = enemy.attr("class");
     let splitClasses = getClasses.split(" ");

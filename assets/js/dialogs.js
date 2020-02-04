@@ -1,3 +1,13 @@
+/**
+ * dialog.js
+ * contains all functions related to the dialogs and their behaviour
+ */
+
+/**
+ * This function handles the dialog for start, pause and end screens.
+ * @function showDialog
+ * @param {String} type 
+ */
 function showDialog(type) {
     /* check if another dialog is open */
     if (!isDialogOpen) {
@@ -213,6 +223,10 @@ function showDialog(type) {
     }
 }
 
+/**
+ * Handles the dialog for input controls
+ * @function controlDialog
+ */
 function controlDialog(){
 
     /* Check if controls is open already */
@@ -248,6 +262,12 @@ function controlDialog(){
     }
 }
 
+/**
+ * Activates wave/text announcements
+ * @function showWave
+ * @param {String} message 
+ * @param {Boolean} isWave 
+ */
 function showWave(message, isWave) {
     let animationType;
 
@@ -267,6 +287,10 @@ function showWave(message, isWave) {
     });
 }
 
+/**
+ * Handles the options dialog
+ * @function optionsDialog
+ */
 function optionsDialog(){
 
     /* Check if options is open already */

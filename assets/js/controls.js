@@ -1,3 +1,8 @@
+/**
+ * controls.js
+ * Handles User Input using jQuery
+ */
+
 /* Key Presses */
 $(document).keypress(function (event) {
     /* pause game */

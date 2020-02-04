@@ -1,3 +1,14 @@
+/**
+ * timer.ja
+ * contains the timer function
+ */
+
+ /**
+  * Controls the timer, 
+  * spawns enemies based on spawnrate and 
+  * calls gameOver when time is up
+  * @function timer
+  */
 function timer() {
     let curTime = $(".timer h2").text();
     let splitTime = curTime.split(":");

@@ -1,3 +1,13 @@
+/**
+ * Contains all functions related to the templates
+ */
+
+ /**
+  * Takes the HTML template from the document fragment
+  * and returns it.
+  * @function cloneTemplate
+  * @param {String} templateName 
+  */
 function cloneTemplate(templateName) {
 
     /* https://stackoverflow.com/questions/15930706/html-template-tag-and-jquery */
@@ -11,6 +21,13 @@ function cloneTemplate(templateName) {
     return clone;
 }
 
+/**
+ * Dynamically adds the character based on the players choice,
+ * Also adds a preview of character to startscreen if boolean is true.
+ * @function changeCharacter
+ * @param {String} char 
+ * @param {Boolean} startMenu 
+ */
 function changeCharacter(char, startMenu) {
     let clone;
     let template;
@@ -62,6 +79,13 @@ function changeCharacter(char, startMenu) {
     }
 }
 
+/**
+ * Dynamically adds the map based on the players choice,
+ * Also adds a preview of map to startscreen if boolean is true.
+ * @function changeBackground
+ * @param {String} map 
+ * @param {Boolean} startMenu 
+ */
 function changeBackground(map, startMenu) {
     let clone;
     let template;
@@ -107,6 +131,10 @@ function changeBackground(map, startMenu) {
     }
 }
 
+/**
+ * Adds crawl clone/css to index.html
+ * @function introCredits
+ */
 function introCredits(){
     let clone = cloneTemplate($("#introText"));
     $("body").append(clone);
@@ -118,6 +146,10 @@ function introCredits(){
     $("head").append('<link id="introCSS" rel="stylesheet" href="assets/css/crawl.css">');
 }
 
+/**
+ * Replaces the crawl text based on player choice
+ * @function replaceCrawlText
+ */
 function replaceCrawlText(){
     if(character == "chewie"){
         $("#char").text("Chewie");
