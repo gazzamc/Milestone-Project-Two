@@ -1,9 +1,9 @@
 .endorStart{
-  position: absolute;
-  left: -120%;
-  top: -20%;
-  bottom: 30%;
-  transform: scale(0.1);
+    position: relative;
+    left: 5%;
+    margin-top: -30%;
+    width: 50%;
+    transform: scale(0.1);
 }
 
 .background {
@@ -118,4 +118,18 @@
 
 .timer{
     color: #fff;
+}
+
+/* Media Queries */
+
+@media only screen and (max-width: 768px) {
+
+}
+
+@media only screen and (min-width: 992px) {
+
+}
+
+@media only screen and (min-width: 1200px) {
+
 }

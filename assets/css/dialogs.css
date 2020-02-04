@@ -57,27 +57,42 @@ button#charHan{
 }
 
 #charDiv, #mapDiv{
-    height: 20vh;
-    width: 29vw;
+    height: 25%;
+    width: 80%;
     background-color: rgba(0,0,0, 0.5);
     box-shadow: inset 1px 1px 4px rgba(0,0,0, 0.7);
     border-radius: 1%;
     overflow: hidden;
+    left: 9%;
 }
 
 #charDiv{
-    position: relative;
-    margin-top: 10%;
+    position: absolute;
+    top: 14%;
 }
 
 #mapDiv{
     position: absolute;
-    bottom: 14%;
+    bottom: 16%;
 }
 
 .char{
     position: relative;
     margin-top: 2%;
+}
+
+.ui-dialog{
+    height: 90%; 
+    width: 600px; 
+    top: 5%; 
+    left: 35vw;
+}
+
+.ui-dialog-content{
+    width: auto; 
+    min-height: 0px; 
+    max-height: none; 
+    height: 93%;
 }
 
 /* Global dialog styles */
@@ -216,3 +231,35 @@ button#try{
     color: #fff;
 }
 
+/* Media Queries */
+
+@media only screen and (max-width: 768px) {
+
+    /* Start Dialog*/
+    .ui-dialog{
+        left: 10vw;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    
+    /* Start Dialog*/
+    .ui-dialog{
+        left: 20vw;
+    }
+
+    .ui-dialog-content{
+        height: 95%;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+     /* Start Dialog*/
+    .ui-dialog{
+        left: 35%;
+    }
+
+    .ui-dialog-content{
+        height: 93%;
+    }
+}

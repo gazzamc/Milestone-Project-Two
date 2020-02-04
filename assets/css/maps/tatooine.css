@@ -1,9 +1,8 @@
 .tatooineStart{
-  position: absolute;
-  left: -120%;
-  top: -33%;
-  bottom: 30%;
-  transform: scale(0.1);
+    position: relative;
+    left: -15%;
+    margin-top: -35%;
+    transform: scale(0.1);
 }
 
 .background {

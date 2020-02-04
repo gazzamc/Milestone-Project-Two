@@ -1,14 +1,14 @@
 .chewieStart {
-  position: absolute;
-  left: 30%;
-  top: 5%;
-  transform: scale(0.3);
+    position: absolute;
+    left: 30%;
+    top: 5%;
+    transform: scale(0.3);
 }
 
 .chewie {
   position: absolute;
   left: 5vw;
-  bottom: 18vh;
+  bottom: 20%;
   transform: scale(0.8);
 }
 
@@ -277,4 +277,15 @@
   height: 7px;
   border-radius: 23%;
   border-bottom: 1px solid rgba(0, 0, 0, 0.6);
+}
+
+/* Media Queries */
+
+@media only screen and (min-width: 1200px) {
+    .chewie {
+    position: absolute;
+    left: 5vw;
+    bottom: 18%;
+    transform: scale(0.8);
+    }
 }
