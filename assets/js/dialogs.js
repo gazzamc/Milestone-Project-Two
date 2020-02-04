@@ -61,18 +61,6 @@ function showDialog(type) {
                 optionsDialog();
             });
 
-            /* Set size based on widow width */
-            let windowSize = document.clientHeight;
-            let windowHeight;
-
-            console.log(windowSize);
-
-            if(window.innerheight <= 1366){
-                windowHeight = 500;
-            } else{
-                windowHeight = 750;
-            }
-
             $("#pauseMenu").dialog({
                 title: "Star Wars",
                 resizable: false,
@@ -80,6 +68,7 @@ function showDialog(type) {
                 height: 750
             })
 
+            /* Need to remove inline style in order to use css breakpoints */
             $(".ui-dialog").removeAttr("style");
             $(".ui-dialog-content").removeAttr("style");
 
