@@ -163,7 +163,9 @@ This would show the top 20 scores with a username.
 
 ## Testing
 This game isn't intended for mobiles devices, or devices without a mouse/keyboard. 
-So these were not considered when actively testing.
+So these were not considered when actively testing. I added media queries where needed in order to keep the gameplayable in certain resolutions.
+If the alignment of the player and the troopers were off the player wont take damage from the trooper and the trooper will pass by. 
+Media Queries were also used for the UI.
 
 I tested the game in Chrome, Firefox and Edge. As I was developing the game I would use console.log() 
 throughout the code to verify the code was running as intended. I would write a piece of code then debug, 
