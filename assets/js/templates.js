@@ -67,7 +67,7 @@ function changeBackground(map, startMenu) {
     let template;
 
     if (startMenu) {
-        if (map == "tatooine") {
+        if (map == "tatooine" && $("#pauseMenu .hidden .tatooineStart").length == 0) {
             if ($(".endorStart").length != 0) {
                 $("#pauseMenu .hidden .endorStart").remove();
             }
@@ -79,7 +79,7 @@ function changeBackground(map, startMenu) {
             $("#pauseMenu .hidden #mapDiv").append(cloneTemplate($("#tatooineTemp")));
             $("#pauseMenu .hidden .background").addClass("tatooineStart");
             $("#pauseMenu .hidden .background").removeClass("background");
-        } else{
+        } else if(map == "endor" && $("#pauseMenu .hidden .endorStart").length == 0){
 
             if ($(".tatooineStart").length != 0) {
                 $("#pauseMenu .hidden .tatooineStart").remove();
