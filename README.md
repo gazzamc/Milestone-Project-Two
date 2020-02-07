@@ -304,9 +304,9 @@ The website was deployed/hosted on GitHub pages, the following is the process in
 
 #### GitHub Pages
 
-1. On the repo page of the project go to "Settings" tab.
+1. On the repo page of the project go to **"Settings"** tab.
 2. Scroll down to GitHub pages.
-3. Select "Master Branch" under the source dropdown.
+3. Select **"Master Branch"** under the source dropdown.
 4. A link to the deployed site should show up under the GitHub Pages section.
 
 The master branch should be the root folder with the index.html present for the deployment to work correctly. 
