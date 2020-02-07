@@ -6,6 +6,7 @@
 html{
      overflow: hidden;
      cursor: none;
+     height: 100%;
 }
  body{
      margin:0;
@@ -13,6 +14,7 @@ html{
      background-color: black;
      font-family: 'Pathway Gothic One', sans-serif;
      font-weight: 600;
+     overflow: hidden;
 }
 /* Hide pause menu contents */
  .hidden {

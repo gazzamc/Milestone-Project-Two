@@ -5,14 +5,14 @@
 
  .chewieStart {
      position: absolute;
-     left: 30%;
+     left: 35%;
      top: 5%;
      transform: scale(0.3);
 }
  .chewie {
      position: absolute;
+     bottom: 30%;
      left: 5vw;
-     bottom: 23vh;
      transform: scale(0.8);
 }
  .chewie .health{
@@ -248,11 +248,19 @@
      border-bottom: 1px solid rgba(0, 0, 0, 0.6);
 }
 /* Media Queries */
- @media only screen and (min-width: 1900px) {
+ @media only screen and (min-height: 640px) {
     .chewie {
-        position: absolute;
-        left: 5vw;
-        bottom: 18vh;
-        transform: scale(0.8);
+        bottom: 23%;
+    }
+}
+
+ @media only screen and (min-height: 900px) {
+    .chewie {
+        bottom: 18%;
+    }
+}
+ @media only screen and (min-height: 1200px) {
+    .chewie {
+        bottom: 15%;
     }
 }
