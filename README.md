@@ -32,16 +32,16 @@ You can try the live version of the game [Here](https://gazzamc.github.io/Milest
 
 This is a simple browser game where you play as either Han or Chewie. You must survive 3 waves of enemies. 
 The enemies spawn more frequently as you complete waves. Health drops every 30 seconds but is RNG based so it
-could be 0 or 100%.
+could be *0* or *100%*.
 
 ### Controls ###
-- Move: A / D
-- Shoot: Space
-- Jump: E
-- Crouch: Q
-- Pause: P
-- Reload: R
-- Aim: Mouse/Trackpad
+- Move: **A** / **D**
+- Shoot: **Space**
+- Jump: **E**
+- Crouch: **Q**
+- Pause: **P**
+- Reload: **R**
+- Aim: **Mouse/Trackpad**
 
 ## UX
 
@@ -102,7 +102,7 @@ default CSS files, scripts and templates for the different game elements.
 Once in the game the enemies are spawned with jQuery using the template, 
 the horizon moves when the player moves, using jQuery to adjust the inline position. 
 Bullets are also spawned using this method and are removed if it comes into contact with the enemy/player or goes out of bounds. 
-Once the player dies/beats all waves the "Game Over" dialog is shown with statistics of that session and buttons to either retry, return to start screen.
+Once the player dies/beats all waves the *"Game Over"* dialog is shown with statistics of that session and buttons to either retry, return to start screen.
 
 #### Skeleton
 
@@ -115,7 +115,7 @@ Once the player dies/beats all waves the "Game Over" dialog is shown with statis
 
 #### Surface
 I wanted to keep the colours close to the Star Wars theme, so I went with a combination of gold/yellow, white/cream and black. 
-Using rgba() (opacity) in the CSS I experimented with the different shades of these colours. I think the end result is consistent
+Using ``rgba()`` (opacity) in the CSS I experimented with the different shades of these colours. I think the end result is consistent
 and gives the Star Wars feel.
 
 ## Features
@@ -130,7 +130,7 @@ and gives the Star Wars feel.
 - Every 30 seconds health spawns based on the players position.
 - The enemies aim randomly (within a range), which makes it more challenging when trying to figure out where to move.
 - The UI keeps track of your Bullets/Score and Combos.
-- The "Game Over" dialog gives the player their stats for that session. Enemies spawned, waves completed, highest combo and final score.
+- The *"Game Over"* dialog gives the player their stats for that session. Enemies spawned, waves completed, highest combo and final score.
 - If the player is out of ammo and tries to shoot, a message will pop up to say they're out of ammo.
 - The player has the option to adjust some of the variables in the start menu, such as spawn rate of health/enemies.
 
@@ -140,7 +140,7 @@ and gives the Star Wars feel.
 - I wanted to add a boss fight between rounds.
 - I was thinking of adding a life system, the player would have 3 lives which would be represented in the UI. The game would reset if you died until the lives were gone.
 - It would have been nice to have different perks for the two different characters.
-- I wanted to implement a leaderboard that would show up on the "Game Over" screen [If completed all waves]. 
+- I wanted to implement a leaderboard that would show up on the *"Game Over"* screen [If completed all waves]. 
 This would show the top 20 scores with a username.
 
 ## Technologies Used
@@ -167,7 +167,7 @@ So these were not considered when actively testing. I added media queries where 
 If the alignment of the player and the troopers were off the player wont take damage from the trooper and the trooper will pass by. 
 Media Queries were also used for the UI.
 
-I tested the game in Chrome, Firefox and Edge. As I was developing the game I would use console.log() 
+I tested the game in Chrome, Firefox and Edge. As I was developing the game I would use ``console.log()``
 throughout the code to verify the code was running as intended. I would write a piece of code then debug, 
 once it was running as intended I would move forward. Once I had a piece of code completed and tested,
 I would then try and refactor it so it was easier to read/understand and more efficient.
@@ -206,9 +206,9 @@ clicking the close button closes the dialog.
 ##### Options
 - Clicking the options button opens another dialog with the default settings already in the input boxes. 
 - If you enter anything other than a number a message will display at the bottom of the dialog telling you to enter a valid number. 
-- If you enter anything greater than 59 or less than 0 in the timer input boxes you will also get an error message. 
-- Entering a higher number in the "decreasing by" section than the Stormtrooper spawnrate will also give you a message stating that.
-- Entering anything less than 1000 in the health spawn input box will give you a message stating this.
+- If you enter anything greater than *59* or less than *0* in the timer input boxes you will also get an error message. 
+- Entering a higher number in the *"decreasing by"* section than the Stormtrooper spawnrate will also give you a message stating that.
+- Entering anything less than *1000* in the health spawn input box will give you a message stating this.
 - Clicking the close button closes the dialog and does not save any changes.
 - Clicking the save button saves your current changes and closes the dialog. 
 However if you leave a input box empty a message will show and not save/close the dialog.
@@ -230,12 +230,12 @@ when completed waves this time decreases (default by 3 every wave). This increas
 
 The enemies change their aim and fire every 4 seconds (this cannot be changed in the options).
 ##### Controls
-- Pressing 'A' or 'D' will move you back and forth, it will also move the horizon behind the player.<br>When you reach the edge of the left side of the screen the character will no longer move. This is intended.
-- Pressing 'P' brings up the pause screen and pauses the gameplay.
-- Pressing 'Q' or 'E' allows the character to crouch or jump respectively. These cannot be pressed at the same time and the player cannot shoot while doing so. This is intended.
-- Pressing 'R' plays the reload animation. This prevents the player from shooting. But not moving.
-- Pressing 'Space' allows the player to shoot the blaster.
-- Moving the mouse/trackpad moves the players arm and allows the player to aim the blaster.
+- Pressing **'A'** or **'D'** will move you back and forth, it will also move the horizon behind the player.<br>When you reach the edge of the left side of the screen the character will no longer move. This is intended.
+- Pressing **'P'** brings up the pause screen and pauses the gameplay.
+- Pressing **'Q'** or **'E'** allows the character to crouch or jump respectively. These cannot be pressed at the same time and the player cannot shoot while doing so. This is intended.
+- Pressing **'R'** plays the reload animation. This prevents the player from shooting. But not moving.
+- Pressing **'Space'** allows the player to shoot the blaster.
+- Moving the **mouse/trackpad** moves the players arm and allows the player to aim the blaster.
 
 ##### Collision
 - If the player walks into a stormtrooper, the trooper will die and the player will take 10 damage.
@@ -264,8 +264,8 @@ a dialog will open and show the games controls. Clicking close will close this d
 - Clicking the start menu button will return you to the start screen.
 
 #### End/Game Over Screen
-- If you survive the 3 waves the title of this screen changes to "You Survived" and shows your session statistics.
-Otherwise the dialog title is "Game Over".
+- If you survive the 3 waves the title of this screen changes to *"You Survived"* and shows your session statistics.
+Otherwise the dialog title is *"Game Over"*.
 
 ##### Try Again
 - Clicking this button will restart the game to Wave 1 and reset timer/variables.
@@ -345,14 +345,14 @@ I found this in Mozilla Documents [here](https://developer.mozilla.org/en-US/doc
 
 - In order to get the arm movement to follow the mouse I followed this example on [Stack Overflow](https://stackoverflow.com/questions/22977862/calculating-angle-in-degrees-of-mouse-movement).
 
-- In order to change the health value/width I needed to use the find() method on the jQuery object that was passed into my function. 
+- In order to change the health value/width I needed to use the ```find()``` method on the jQuery object that was passed into my function. 
 I found the example on Stack Overflow [here](https://stackoverflow.com/questions/25740616/unrecognized-expression-object-object-when-using).
 
-- To add a bit of randomness to the enemies attacks/ health drops I generated a random number using the Math.Random() method. 
+- To add a bit of randomness to the enemies attacks/ health drops I generated a random number using the ```Math.Random()``` method. 
 I found the example on Stack Overflow [here](https://stackoverflow.com/questions/13455042/random-number-between-negative-and-positive-value?lq=1)
 
 - Due to the way I was retrieving the angle of the arm (grabbing the inline style) I needed to parse the digit of the degree from the style format. 
-In order to do this I used a series of split(),join() methods following the example on Stack Overflow [here](https://stackoverflow.com/questions/650022/how-do-i-split-a-string-with-multiple-separators-in-javascript).
+In order to do this I used a series of ```split()```, ```join()``` methods following the example on Stack Overflow [here](https://stackoverflow.com/questions/650022/how-do-i-split-a-string-with-multiple-separators-in-javascript).
 
 - When pausing the game I needed a way to stop the CSS3 animations, I was able to do so with this example [here](https://www.quackit.com/css/css3/properties/css_animation-play-state.cfm).
 
