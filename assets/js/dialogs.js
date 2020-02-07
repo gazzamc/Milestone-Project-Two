@@ -76,7 +76,7 @@ function showDialog(type) {
                 resizable: false,
                 width: 600,
                 height: 750
-            })
+            });
 
             /* Need to remove inline style in order to use css breakpoints */
             $(".ui-dialog").removeAttr("style");
@@ -142,7 +142,7 @@ function showDialog(type) {
                 resizable: false,
                 minWidth: 100,
                 minHeight: 200
-            })
+            });
 
             $("#continue").click(function () {
                 pauseGame();
@@ -191,9 +191,9 @@ function showDialog(type) {
             $("#pauseMenu .hidden").css("display", "block");
 
             if(waves == 3){
-                endScreenTitle = "You Survived!"
+                endScreenTitle = "You Survived!";
             } else{
-                endScreenTitle = "Game Over!"
+                endScreenTitle = "Game Over!";
             }
 
             $("#pauseMenu").dialog({
@@ -334,11 +334,11 @@ function optionsDialog(){
             console.log(min.toString().length);
 
             /* Check if input is a number and does not contain letters */
-            if((!isNaN(min) && min.toString().length == $("#waveMin").val().length) 
-                && (!isNaN(secs) && secs.toString().length == $("#waveSec").val().length)
-                && (!isNaN(rate) && rate.toString().length == $("#enSpawn").val().length)
-                && (!isNaN(rateDec) && rateDec.toString().length == $("#enSpawnDec").val().length)
-                && (!isNaN(hSpawnRate) && hSpawnRate.toString().length == $("#healthSpawn").val().length)){
+            if((!isNaN(min) && min.toString().length == $("#waveMin").val().length) && 
+               (!isNaN(secs) && secs.toString().length == $("#waveSec").val().length) && 
+               (!isNaN(rate) && rate.toString().length == $("#enSpawn").val().length) && 
+               (!isNaN(rateDec) && rateDec.toString().length == $("#enSpawnDec").val().length) && 
+               (!isNaN(hSpawnRate) && hSpawnRate.toString().length == $("#healthSpawn").val().length)){
 
                 /* Clear last warning */
                 $("#warning").remove();

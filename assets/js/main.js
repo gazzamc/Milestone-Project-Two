@@ -26,7 +26,7 @@ var waves = 0;
 var character;
 var map;
 var timerMin = 1;
-var timerSec = 00;
+var timerSec = 0;
 
 $(document).ready(function () {
     showDialog("start");

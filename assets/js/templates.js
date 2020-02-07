@@ -140,7 +140,7 @@ function introCredits(){
     $("body").append(clone);
 
     /* Replace placeholder text */
-    replaceCrawlText()
+    replaceCrawlText();
 
     /* Add CSS */
     $("head").append('<link id="introCSS" rel="stylesheet" href="assets/css/crawl.css">');

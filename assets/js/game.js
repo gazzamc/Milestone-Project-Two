@@ -157,7 +157,7 @@ function updateScore(behaviour = "update") {
         /* Remove Combo and add to score */
         score += combo;
 
-        if (combo > highestCombo) { highestCombo = combo };
+        if (combo > highestCombo) { highestCombo = combo; }
         combo = 0;
         $(".combo").text("Combo: x" + combo);
         $(".score").text("Score: " + score);
