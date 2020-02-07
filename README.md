@@ -299,6 +299,10 @@ I'm using an if statement to determine the angle of the bullet based on the angl
 It can be improved but since I spent a good few days on it at this point I think it's acceptable at the moment and certainly 
 isn't as off as it was before I implemented this check.
 
+- Player (mainly chewie) can spawn lower than expected on lower resolution screens. 
+This can be game breaking as it will bypass the ```isHit()``` check if the player is lower than the troopers. 
+I've added media queries to try and fix this, it was only tested on a limited amount of devices but it seems to be working in chrome dev tools.
+
 ## Deployment
 The website was deployed/hosted on GitHub pages, the following is the process in which I took to deploy it.
 
