@@ -330,9 +330,6 @@ function optionsDialog(){
             let  rateDec =  parseInt($("#enSpawnDec").val());
             let  hSpawnRate =  parseInt($("#healthSpawn").val());
 
-            console.log($("#waveMin").val().length);
-            console.log(min.toString().length);
-
             /* Check if input is a number and does not contain letters */
             if((!isNaN(min) && min.toString().length == $("#waveMin").val().length) && 
                (!isNaN(secs) && secs.toString().length == $("#waveSec").val().length) && 

@@ -12,7 +12,7 @@
  .chewie {
      position: absolute;
      left: 5vw;
-     bottom: 20%;
+     bottom: 23vh;
      transform: scale(0.8);
 }
  .chewie .health{
@@ -248,11 +248,11 @@
      border-bottom: 1px solid rgba(0, 0, 0, 0.6);
 }
 /* Media Queries */
- @media only screen and (min-width: 1200px) {
-     .chewie {
-         position: absolute;
-         left: 5vw;
-         bottom: 18%;
-         transform: scale(0.8);
+ @media only screen and (min-width: 1900px) {
+    .chewie {
+        position: absolute;
+        left: 5vw;
+        bottom: 18vh;
+        transform: scale(0.8);
     }
 }
