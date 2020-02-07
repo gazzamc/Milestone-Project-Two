@@ -1,219 +1,198 @@
-.stormtrooper{
-  position: absolute;
-  transform: scale(-0.9, 0.9);
-  bottom: 0%;
-  left: 70vw;
-}
+/* 
+    stormtrooper.css 
+    This contains all the style classes for the stormtroopers 
+*/
 
-.health{
-    position: absolute;
-    top:-20px;
-    right: 25%;
-    width: 60%;
-    height: 5px;
-    background-color: red;
-    transform: scale(-1, 1);
+ .stormtrooper{
+     position: absolute;
+     transform: scale(-0.9, 0.9);
+     bottom: 0;
+     left: 70vw;
 }
-
-.health span.num{
-    position: absolute;
-    left: 30%;
-    margin: 5%;
-    bottom: 40%;
+ .health{
+     position: absolute;
+     top:-20px;
+     right: 25%;
+     width: 60%;
+     height: 5px;
+     background-color: red;
+     transform: scale(-1, 1);
 }
-
-.injured{
-    background-color: #ffcccc;
+ .health .num{
+     position: absolute;
+     left: 30%;
+     margin: 5%;
+     bottom: 40%;
 }
-
-.head, .body{
-  position: relative;
-  width: 150px;
-  height: 130px;
-  background-color: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 30%;
-  box-shadow: -3px 1px rgba(0,0,0, 0.2);
+ .injured{
+     background-color: #ffcccc;
 }
-
-.body{
-  height: 150px;
+ .head, .body{
+     position: relative;
+     width: 150px;
+     height: 130px;
+     background-color: #fff;
+     border: 1px solid rgba(0, 0, 0, 0.1);
+     border-radius: 30%;
+     box-shadow: -3px 1px rgba(0,0,0, 0.2);
 }
-
-.brow{
-  position: absolute;
-  top: 30%;
-  height: 10%;
-  width: 100%;
-  background-color: #000;
+ .body{
+     height: 150px;
 }
-
-.visor{
-  position: relative;
-  margin: 0 4% 0 4%;
-  top: 35%;
-  width: 90%;
-  height: 20%;
-  background-color: #000;
-  border-radius: 15%;
-  opacity: 90%;
+ .brow{
+     position: absolute;
+     top: 30%;
+     height: 10%;
+     width: 100%;
+     background-color: #000;
 }
-
-.visDiv{
-  position: relative;
-  background-color: #fff;
-  width: 30%;
-  height: 70%;
-  left: 35%;
-  top: 50%;
-  border-radius: 30%;
+ .visor{
+     position: relative;
+     margin: 0 4% 0 4%;
+     top: 35%;
+     width: 90%;
+     height: 20%;
+     background-color: #000;
+     border-radius: 15%;
+     opacity: 0.9;
 }
-
-.mouth{
-  position: relative;
-  height: 30%;
-  top: 35%;
-  border-top: 3px solid #fff;
-  border-radius: 20%;
+ .visDiv{
+     position: relative;
+     background-color: #fff;
+     width: 30%;
+     height: 70%;
+     left: 35%;
+     top: 50%;
+     border-radius: 30%;
 }
-
-.mouthLeft, .mouthRight{
-  position: relative;
-  top: 60%;
-  width: 50%;
-  height: 10%;
-  background-color: #000;
-  transform: rotate(35deg);
-  border-radius: 50%;
-  opacity: 40%;
+ .mouth{
+     position: relative;
+     height: 30%;
+     top: 35%;
+     border-top: 3px solid #fff;
+     border-radius: 20%;
 }
-
-.mouthRight{
-  top: 48%;
-  left: 50%;
-  transform: rotate(-35deg);
+ .mouthLeft, .mouthRight{
+     position: relative;
+     top: 60%;
+     width: 50%;
+     height: 10%;
+     background-color: #000;
+     transform: rotate(35deg);
+     border-radius: 50%;
+     opacity: 0.4;
 }
-
-.mouthCenter{
-  position: relative;
-  top: 35%;
-  left: 35%;
-  width: 30%;
-  height: 13%;
-  background-color: #000;
-  opacity: 0.7;
-  border-radius: 50%;
+ .mouthRight{
+     top: 48%;
+     left: 50%;
+     transform: rotate(-35deg);
 }
-
-.mouthVent{
-  position: relative;
-  height: 50%;
-  width: 24%;
-  background-color: #000;
-  border-radius: 50%;
-  transform: scale(0.8);
+ .mouthCenter{
+     position: relative;
+     top: 35%;
+     left: 35%;
+     width: 30%;
+     height: 13%;
+     background-color: #000;
+     opacity: 0.7;
+     border-radius: 50%;
 }
-
-.ventLeft{
-  top: 55%;
-  left: 20%;
-  box-shadow: -1px 2px rgba(0,0,0, 0.4);
+ .mouthVent{
+     position: relative;
+     height: 50%;
+     width: 24%;
+     background-color: #000;
+     border-radius: 50%;
+     transform: scale(0.8);
 }
-
-.ventRight{
-  top: 5%;
-  left: 55%;
-  box-shadow: 1px 2px rgba(0,0,0, 0.4);
+ .ventLeft{
+     top: 55%;
+     left: 20%;
+     box-shadow: -1px 2px rgba(0,0,0, 0.4);
 }
-
-.arms{
-  position: absolute;
-  width: 120px;
-  height: 35px;
-  background-color: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 30%;
+ .ventRight{
+     top: 5%;
+     left: 55%;
+     box-shadow: 1px 2px rgba(0,0,0, 0.4);
 }
-
-.leftArm{
-  top: 55%;
-  left: 70%;
-  z-index: -1;
+ .arms{
+     position: absolute;
+     width: 120px;
+     height: 35px;
+     background-color: #fff;
+     border: 1px solid rgba(0, 0, 0, 0.1);
+     border-radius: 30%;
 }
-
-.rightArm{
-  top: 55%;
-  left: 5%;
-  border-left: 5px solid #000;
+ .leftArm{
+     top: 55%;
+     left: 70%;
+     z-index: -1;
 }
-
-.blaster{
-  position: relative;
-  top: 16%;
-  left: 10%;
-  transform: scale(1);
+ .rightArm{
+     top: 55%;
+     left: 5%;
+     border-left: 5px solid #000;
 }
-
-.blasterCol{
-  background-color: #1a1a1a;
+ .blaster{
+     position: relative;
+     top: 16%;
+     left: 10%;
+     transform: scale(1);
 }
-
-.blasterStock{
-  position: absolute;
-  margin-top: 6%;
-  left: 39%;
-  width: 60px;
-  height: 20px;
-  border-radius: 20% 0% 0% 20%;
-  box-shadow: 1px -4px inset rgba(0,0,0, 0.1);
-  z-index: 10;
+ .blasterCol{
+     background-color: #1a1a1a;
 }
-
-.blasterStockButt{
-  position: absolute;
-  margin-top: -4%;
-  left: 20%;
-  width: 30px;
-  height: 50px;
-  border-radius: 20% 0% 0% 20%;
+ .blasterStock{
+     position: absolute;
+     margin-top: 6%;
+     left: 39%;
+     width: 60px;
+     height: 20px;
+     border-radius: 20% 0 0 20%;
+     box-shadow: inset 1px -4px rgba(0,0,0,0.1);
+     z-index: 10;
 }
-
-.blasterMag{
-  position: absolute;
-  margin-top: 16%;
-  left: 78%;
-  width: 20px;
-  height: 35px;
-  transform: rotate(20deg);
-  box-shadow: -1px -1px inset rgba(0,0,0, 0.1)
+ .blasterStockButt{
+     position: absolute;
+     margin-top: -4%;
+     left: 20%;
+     width: 30px;
+     height: 50px;
+     border-radius: 20% 0 0 20%;
 }
-
-.blasterBody{
-  position: absolute;
-  left: 74%;
-  width: 50px;
-  height: 40px;
-  border-radius: 12%;
+ .blasterMag{
+     position: absolute;
+     margin-top: 16%;
+     left: 78%;
+     width: 20px;
+     height: 35px;
+     transform: rotate(20deg);
+     box-shadow: inset -1px -1px rgba(0,0,0,0.1);
 }
-
-.blasterBarrel{
-  position: absolute;
-  margin-top: 0%;
-  left: 75%;
-  width: 150px;
-  height: 15px;
-  box-shadow: -1px -3px inset rgba(0,0,0, 0.1);
-  border-radius: 10%;
-  z-index: -1;
+ .blasterBody{
+     position: absolute;
+     left: 74%;
+     width: 50px;
+     height: 40px;
+     border-radius: 12%;
 }
-
-.blasterScope{
-  position: absolute;
-  margin-top: -10%;
-  left: 80%;
-  width: 60px;
-  height: 15px;
-  border-radius: 15%;
-  box-shadow: 0px 3px rgba(0,0,0, 0.2);
-  z-index: 11;
+ .blasterBarrel{
+     position: absolute;
+     margin-top: 0;
+     left: 75%;
+     width: 150px;
+     height: 15px;
+     box-shadow: inset -1px -3px rgba(0,0,0,0.1);
+     border-radius: 10%;
+     z-index: -1;
+}
+ .blasterScope{
+     position: absolute;
+     margin-top: -10%;
+     left: 80%;
+     width: 60px;
+     height: 15px;
+     border-radius: 15%;
+     box-shadow: 0 3px rgba(0,0,0, 0.2);
+     z-index: 11;
 }

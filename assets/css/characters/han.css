@@ -1,303 +1,275 @@
-.hanStart {
-  position: absolute;
-  left: 30%;
-  top: 5%;
-  transform: scale(0.3);
-}
+/* 
+    han.css 
+    This contains all the style classes for character han 
+*/
 
-.han {
-  position: absolute;
-  left: 5vw;
-  bottom: 18vh;
-  transform: scale(0.8);
+ .hanStart {
+     position: absolute;
+     left: 30%;
+     top: 5%;
+     transform: scale(0.3);
 }
-
-.han .health{
-    position: absolute;
-    margin: 5% 0 0 0;
-    left: 25%;
-    width: 50%;
-    height: 5px;
-    background-color: green;
-    transform: scale(1, 1); 
+ .han {
+     position: absolute;
+     left: 5vw;
+     bottom: 18vh;
+     transform: scale(0.8);
 }
-
-.han .health span.num{
-    position: absolute;
-    left: 35%;
-    margin: 5%;
-    bottom: 40%;
+ .han .health{
+     position: absolute;
+     margin: 5% 0 0 0;
+     left: 25%;
+     width: 50%;
+     height: 5px;
+     background-color: green;
+     transform: scale(1, 1);
 }
-
+ .han .health .num{
+     position: absolute;
+     left: 35%;
+     margin: 5%;
+     bottom: 40%;
+}
 /* Head/Face*/
-
-.chead {
-  position: absolute;
-  width: 170px;
-  height: 170px;
-  left: 7%;
-  background-color: #331a00;
-  border-radius: 36%;
+ .chead {
+     position: absolute;
+     width: 170px;
+     height: 170px;
+     left: 7%;
+     background-color: #331a00;
+     border-radius: 36%;
 }
-
-.cbody {
-  position: absolute;
-  width: 200px;
-  height: 170px;
-  background-color: #000;
-  border-radius: 36%;
+ .cbody {
+     position: absolute;
+     width: 200px;
+     height: 170px;
+     background-color: #000;
+     border-radius: 36%;
 }
-
-.cface {
-  position: relative;
-  top: 52px;
-  left:-11%;
-  margin: 0 20px 0 20px;
-  height: 70%;
-  width: 100%;
-  border-radius: 40%;
-  background-color:rgba(255,206,178, 1);
-  /* box-shadow: 1px -1px rgba(128, 66, 0, 1); */
+ .cface {
+     position: relative;
+     top: 52px;
+     left:-11%;
+     margin: 0 20px 0 20px;
+     height: 70%;
+     width: 100%;
+     border-radius: 40%;
+     background-color:rgba(255,206,178, 1);
 }
-
-.ceyes {
-  padding: 0;
-  margin: 0;
-  position: relative;
-  top: 20px;
-  left: 65px;
+ .ceyes {
+     padding: 0;
+     margin: 0;
+     position: relative;
+     top: 20px;
+     left: 65px;
 }
-
-.ceye {
-  background-color: white;
-  left: -15px;
-  width: 15px;
-  height: 10px;
-  border-radius: 50%;
-  padding: 5px;
-  margin: 5px 14px 5px 5px;
+ .ceye {
+     background-color: white;
+     left: -15px;
+     width: 15px;
+     height: 10px;
+     border-radius: 50%;
+     padding: 5px;
+     margin: 5px 14px 5px 5px;
 }
-
-.cpupil {
-  position: relative;
-  background-color: black;
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
+ .cpupil {
+     position: relative;
+     background-color: black;
+     width: 16px;
+     height: 16px;
+     border-radius: 50%;
 }
-
-.cleft {
-  position: relative;
-  float: left;
+ .cleft {
+     position: relative;
+     float: left;
 }
-
-.cright {
-  position: relative;
-  float: left;
+ .cright {
+     position: relative;
+     float: left;
 }
-
-.nose{
-  position: relative;
-  top: 45px;
-  left: 81px;
-  width: 17px;
-  height: 23px;
-  border-radius:30%;
-  background-image: linear-gradient(90deg, rgba(255,194,183,1) 0%, rgba(255,206,178,1) 48%, rgba(255,219,172,1) 100%);
-   /*/box-shadow: -3px 3px 5px rgba(0,0,0, 0.2); */
+ .nose{
+     position: relative;
+     top: 45px;
+     left: 81px;
+     width: 17px;
+     height: 23px;
+     border-radius:30%;
+     background-image: linear-gradient(90deg, rgba(255,194,183,1) 0%, rgba(255,206,178,1) 48%, rgba(255,219,172,1) 100%);
+    /*/
+    box-shadow: -3px 3px 5px rgba(0,0,0, 0.2);
+     */
 }
-
-.noseTip{
-  position: relative;
-  top: 10px;
-  width: 18px;
-  height: 14px;
-  left:0px;
-  border-radius:40%;
-  background-color: rgba(215, 77, 77, 0.4);
-  box-shadow: -2px 1px 5px rgba(0,0,0, 0.0);
+ .noseTip{
+     position: relative;
+     top: 10px;
+     width: 18px;
+     height: 14px;
+     left:0;
+     border-radius:40%;
+     background-color: rgba(215, 77, 77, 0.4);
+     box-shadow: -2px 1px 5px rgba(0,0,0, 0.0);
 }
-
-.cmouth{
-  position: absolute;
-  bottom: 30px;
-  left: 67px;
-  width: 40px;
-  height: 5px;
-  background-color: black;
-  border-radius: 40%;
-  overflow: hidden;
-  box-shadow: -5px 5px 10px rgba(0,0,0, 0.5);
+ .cmouth{
+     position: absolute;
+     bottom: 30px;
+     left: 67px;
+     width: 40px;
+     height: 5px;
+     background-color: black;
+     border-radius: 40%;
+     overflow: hidden;
+     box-shadow: -5px 5px 10px rgba(0,0,0, 0.5);
 }
-
-.smirk{
-  position: absolute;
-  background-color: rgba(255,0,0, 0);
-  top: 74px;
-  width: 15px;
-  height: 20px;
-  left: 34%;
-  border-left: 2px solid rgba(0,0,0, 0.2);
-  border-radius: 80%;
-  transform: rotate(39deg);
-  box-shadow: -4px -2px 7px rgba(0,0,0, 0.1);
+ .smirk{
+     position: absolute;
+     background-color: rgba(255,0,0, 0);
+     top: 74px;
+     width: 15px;
+     height: 20px;
+     left: 34%;
+     border-left: 2px solid rgba(0,0,0, 0.2);
+     border-radius: 80%;
+     transform: rotate(39deg);
+     box-shadow: -4px -2px 7px rgba(0,0,0, 0.1);
 }
-
-.hair{
-  position: absolute;
+ .hair{
+     position: absolute;
 }
-
-.leftFringe, .rightFringe {
-  width: 85px;
-  height: 30px;
-  border-radius: 20px;
-  background-color: #000;
-  box-shadow: 1px 1px 20px black;
-  opacity: 0.5;
+ .leftFringe, .rightFringe {
+     width: 85px;
+     height: 30px;
+     border-radius: 20px;
+     background-color: #000;
+     box-shadow: 1px 1px 20px black;
+     opacity: 0.5;
 }
-.leftFringe {
-  position: relative;
-  left: 20px;
-  top: 33px;
-  transform: rotate(-30deg);
+ .leftFringe {
+     position: relative;
+     left: 20px;
+     top: 33px;
+     transform: rotate(-30deg);
 }
-.rightFringe {
-  position: relative;
-  left: 85px;
-  top: 5px;
-  transform: rotate(30deg);
+ .rightFringe {
+     position: relative;
+     left: 85px;
+     top: 5px;
+     transform: rotate(30deg);
 }
-
 /* Body */
-
-.cbody {
-  top: 170px;
-  height: 180px;
-  background-color: rgba(30,30,30, 1);
+ .cbody {
+     top: 170px;
+     height: 180px;
+     background-color: rgba(30,30,30, 1);
 }
-
-.cJacket {
-  position: relative;
-  left: 35%;
-  background-color: rgb(247, 231, 206);
-  height: 100%;
-  width: 32%;
-  border-radius: 5%;
+ .cJacket {
+     position: relative;
+     left: 35%;
+     background-color: rgb(247, 231, 206);
+     height: 100%;
+     width: 32%;
+     border-radius: 5%;
 }
-
-.belt {
-  position: relative;
-  top: -25%;
-  left: -2%;
-  background-color: black;
-  width: 100%;
-  height: 22%;
-  transform: rotate(-5deg);
-  border-radius: 10px;
+ .belt {
+     position: relative;
+     top: -25%;
+     left: -2%;
+     background-color: black;
+     width: 100%;
+     height: 22%;
+     transform: rotate(-5deg);
+     border-radius: 10px;
 }
-
-.ammo, .ammo2, .ammo3{
-  position: absolute;
-  left: 30%;
-  width: 20px;
-  height: 40px;
-  border-radius: 10px;
-  background-color: grey;
+ .ammo, .ammo2, .ammo3{
+     position: absolute;
+     left: 30%;
+     width: 20px;
+     height: 40px;
+     border-radius: 10px;
+     background-color: grey;
 }
-
-.ammo2 {
-  position: absolute;
-  left: 53%;
+ .ammo2 {
+     position: absolute;
+     left: 53%;
 }
-
-.ammo3 {
-  position: absolute;
-  left: 76%;
+ .ammo3 {
+     position: absolute;
+     left: 76%;
 }
-
-.pouch {
-  position: absolute;
-  background-color: #663300;
-  left: 3%;
-  top: -10%;
-  width: 34px;
-  height: 54px;
-  border-radius: 10px;
-  display: inline-block;
+ .pouch {
+     position: absolute;
+     background-color: #663300;
+     left: 3%;
+     top: -10%;
+     width: 34px;
+     height: 54px;
+     border-radius: 10px;
+     display: inline-block;
 }
-
-.carms {
-  height: 50px;
-  width: 200px;
-  background-color: rgb(247, 231, 206);
-  border: 1px solid rgba(0,0,0, 0.5);
+ .carms {
+     height: 50px;
+     width: 200px;
+     background-color: rgb(247, 231, 206);
+     border: 1px solid rgba(0,0,0, 0.5);
 }
-
-.crightArm {
-  position: relative;
-  margin: 13% 0 0 0;
-  left: 55%;
-  z-index: -1;
+ .crightArm {
+     position: relative;
+     margin: 13% 0 0 0;
+     left: 55%;
+     z-index: -1;
 }
-
-.cleftArm {
-  position: relative;
-  margin: 0;
-  left: -45%;
-  z-index: -1;
-  transform: rotate(-60deg);
+ .cleftArm {
+     position: relative;
+     margin: 0;
+     left: -45%;
+     z-index: -1;
+     transform: rotate(-60deg);
 }
-
-.cbody.carms.crightArm {
-  transform: rotate(0deg)
+ .cbody.carms.crightArm {
+     transform: rotate(0deg) 
 }
-
-.cblaster {
-  position: relative;
-  background-color: grey;
-  top: 11%;
-  left: 11%;
-  transform: scale(1);
+ .cblaster {
+     position: relative;
+     background-color: grey;
+     top: 11%;
+     left: 11%;
+     transform: scale(1);
 }
-.cblasterHandle {
-  position: absolute;
-  background-color: inherit;
-  margin: 6px 0 0 0;
-  left: 76%;
-  width: 25px;
-  height: 40px;
-  transform: skew(-25deg);
+ .cblasterHandle {
+     position: absolute;
+     background-color: inherit;
+     margin: 6px 0 0 0;
+     left: 76%;
+     width: 25px;
+     height: 40px;
+     transform: skew(-25deg);
 }
-
-.cblasterBody {
-  position: absolute;
-  background-color: inherit;
-  top: 10%;
-  left: 75%;
-  width: 60px;
-  height: 16px;
-  border-radius: 30%;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+ .cblasterBody {
+     position: absolute;
+     background-color: inherit;
+     top: 10%;
+     left: 75%;
+     width: 60px;
+     height: 16px;
+     border-radius: 30%;
+     border-bottom: 1px solid rgba(0, 0, 0, 0.3);
 }
-
-.cblasterBarrel {
-  position: absolute;
-  background-color: inherit;
-  margin: -1px 0 0 0;
-  left: 77%;
-  width: 90px;
-  height: 8px;
-  border-radius: 30%;
-  box-shadow: -1px 1px rgba(0,0,0, 0.2);
+ .cblasterBarrel {
+     position: absolute;
+     background-color: inherit;
+     margin: -1px 0 0 0;
+     left: 77%;
+     width: 90px;
+     height: 8px;
+     border-radius: 30%;
+     box-shadow: -1px 1px rgba(0,0,0, 0.2);
 }
-
-.cblasterScope {
-  position: absolute;
-  background-color: silver;
-  top: -9px;
-  left: 84%;
-  width: 40px;
-  height: 7px;
-  border-radius: 23%;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.6);
+ .cblasterScope {
+     position: absolute;
+     background-color: silver;
+     top: -9px;
+     left: 84%;
+     width: 40px;
+     height: 7px;
+     border-radius: 23%;
+     border-bottom: 1px solid rgba(0, 0, 0, 0.6);
 }

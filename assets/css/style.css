@@ -1,111 +1,100 @@
+/* 
+    style.css
+    This contains global css classes. 
+*/
+
 html{
-    overflow: hidden;
-    cursor: none;
+     overflow: hidden;
+     cursor: none;
 }
-
-body{
-    margin:0;
-    padding:0;
-    background-color: black;
-    font-family: 'Pathway Gothic One', sans-serif;
-    font-weight: 600;
+ body{
+     margin:0;
+     padding:0;
+     background-color: black;
+     font-family: 'Pathway Gothic One', sans-serif;
+     font-weight: 600;
 }
-
 /* Hide pause menu contents */
-
-.hidden {
-    display: none;
+ .hidden {
+     display: none;
 }
-
 /* Timer */
-
-.timer{
-    position: absolute;
-    text-align: center;
-    left: 44vw;
-    top: 3%;
-    color: #000;
+ .timer{
+     position: absolute;
+     text-align: center;
+     left: 44vw;
+     top: 3%;
+     color: #000;
 }
-
 /* Bullet Classes */
-
-.bullet {
-    position: absolute;
-    border-radius: 25%;
-    height: 4px;
-    width: 15px;
-    background-color: red;
-    z-index: -1;
+ .bullet {
+     position: absolute;
+     border-radius: 25%;
+     height: 4px;
+     width: 15px;
+     background-color: red;
+     z-index: -1;
 }
-
-.enBullet {
-    position: absolute;
-    border-radius: 25%;
-    height: 4px;
-    width: 15px;
-    background-color: green;
-    z-index: -1;
+ .enBullet {
+     position: absolute;
+     border-radius: 25%;
+     height: 4px;
+     width: 15px;
+     background-color: green;
+     z-index: -1;
 }
-
 /* Health pickup */
-
-.healthTopUp{
-    position: absolute;
-    bottom: 5vh;
-    left: 5vw;
-    width: 50px;
-    height: 35px;
-    background-color: rgba(255,255,255, 1);
-    border: 2px solid rgba(0, 0, 0, 0.6);
-    border-radius: 10%;
-    box-shadow: -5px 0px 5px rgba(0, 0, 0, 0.5);
+ .healthTopUp{
+     position: absolute;
+     bottom: 5vh;
+     left: 5vw;
+     width: 50px;
+     height: 35px;
+     background-color: rgba(255,255,255, 1);
+     border: 2px solid rgba(0, 0, 0, 0.6);
+     border-radius: 10%;
+     box-shadow: -5px 0px 5px rgba(0, 0, 0, 0.5);
 }
-
-.horizontal, .vertical{
-    position: absolute;
-    top: 17%;
-    left: 45%;
-    width: 10%;
-    height: 70%;
-    background-color: rgba(0, 255, 0, 1);
-    transform: rotate(90deg);
-    box-shadow: -1px 1px 20px rgba(0,0,0, 0.5);
+ .horizontal, .vertical{
+     position: absolute;
+     top: 17%;
+     left: 45%;
+     width: 10%;
+     height: 70%;
+     background-color: rgba(0, 255, 0, 1);
+     transform: rotate(90deg);
+     box-shadow: -1px 1px 20px rgba(0,0,0, 0.5);
 }
-
-.vertical{
-    transform: rotate(0deg);
+ .vertical{
+     transform: rotate(0deg);
 }
-
 /* player UI */
-
-.playerUi{
-    position: absolute;
-    top: 3%;
-    left: 4%;
-    width: 20%;
-    display: none;
-    background-color: rgba(204, 163, 0, 0.4);
-    border: 1px solid rgba(0,0,0, 0.7);
-    border-radius: 3%;
-    padding: 1% 0% 1% 1%;
-    box-shadow: 1px 1px 10px rgba(0,0,0,0.7), inset 1px 1px 5px rgba(0,0,0,0.7);
-    color: #fff;
-    font-size: 0.7em;
+ .playerUi{
+     position: absolute;
+     top: 3%;
+     left: 4%;
+     width: 20%;
+     display: none;
+     background-color: rgba(204, 163, 0, 0.4);
+     border: 1px solid rgba(0,0,0, 0.7);
+     border-radius: 3%;
+     padding: 1% 0% 1% 1%;
+     box-shadow: 1px 1px 10px rgba(0,0,0,0.7), inset 1px 1px 5px rgba(0,0,0,0.7);
+     color: #fff;
+     font-size: 0.7em;
 }
-
-.bullets, .score, .combo{
-    position: relative;
-    display: inline-block;
-    font-weight: 600;
-    width: 30%;
-    padding: 1% 0 1% 0;
-    box-shadow: 0px 5px 5px rgba(0,0,0,0.2), 0px -5px 5px rgba(0,0,0,0.2);
-    background-color: rgba(0,0,0, 0.7);
-    text-align: center;
-    color:#fff;
-    border-radius: 10%;
+ .bullets, .score, .combo{
+     position: relative;
+     display: inline-block;
+     font-weight: 600;
+     width: 30%;
+     padding: 1% 0 1% 0;
+     box-shadow: 0px 5px 5px rgba(0,0,0,0.2), 0px -5px 5px rgba(0,0,0,0.2);
+     background-color: rgba(0,0,0, 0.7);
+     text-align: center;
+     color:#fff;
+     border-radius: 10%;
 }
-
-.score, .combo{
-    margin: 1% 0% 0 3%;
+ .score, .combo{
+     margin: 1% 0% 0 3%;
 }

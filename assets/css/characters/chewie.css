@@ -1,291 +1,258 @@
-.chewieStart {
-    position: absolute;
-    left: 30%;
-    top: 5%;
-    transform: scale(0.3);
-}
+/* 
+    stormtrooper.css 
+    This contains all the style classes for character chewie 
+*/
 
-.chewie {
-  position: absolute;
-  left: 5vw;
-  bottom: 20%;
-  transform: scale(0.8);
+ .chewieStart {
+     position: absolute;
+     left: 30%;
+     top: 5%;
+     transform: scale(0.3);
 }
-
-.chewie .health{
-    position: absolute;
-    margin: 5% 0 0 0;
-    left: 25%;
-    width: 50%;
-    height: 5px;
-    background-color: green;
-    transform: scale(1, 1); 
+ .chewie {
+     position: absolute;
+     left: 5vw;
+     bottom: 20%;
+     transform: scale(0.8);
 }
-
-.chewie .health span.num{
-    position: absolute;
-    left: 35%;
-    margin: 5%;
-    bottom: 40%;
+ .chewie .health{
+     position: absolute;
+     margin: 5% 0 0 0;
+     left: 25%;
+     width: 50%;
+     height: 5px;
+     background-color: green;
+     transform: scale(1, 1);
 }
-
+ .chewie .health .num{
+     position: absolute;
+     left: 35%;
+     margin: 5%;
+     bottom: 40%;
+}
 /* Head/Face*/
-
-.chead, .cbody {
-  position: absolute;
-  width: 200px;
-  height: 170px;
-  background-color: #331a00;
-  border-radius: 36%;
+ .chead, .cbody {
+     position: absolute;
+     width: 200px;
+     height: 170px;
+     background-color: #331a00;
+     border-radius: 36%;
 }
-
-.cface {
-  position: relative;
-  top: 45px;
-  margin: 0 20px 0 20px;
-  height: 100px;
-  background-color: #804200;
-  border-radius: 50%;
-  background-image: 
-    linear-gradient(
-      to top,  
-      rgba(128, 66, 0, 0), 
-      rgba(51, 26, 0,1)
-    );
-  /* box-shadow: 1px -1px rgba(128, 66, 0, 1); */
+ .cface {
+     position: relative;
+     top: 45px;
+     margin: 0 20px 0 20px;
+     height: 100px;
+     background-color: #804200;
+     border-radius: 50%;
+     background-image: linear-gradient( to top, rgba(128, 66, 0, 0), rgba(51, 26, 0,1) );
+    /* box-shadow: 1px -1px rgba(128, 66, 0, 1);
+     */
 }
-
-.ceyes {
-  padding: 0;
-  margin: 0;
-  position: relative;
-  top: 20px;
-  left: 60px;
+ .ceyes {
+     padding: 0;
+     margin: 0;
+     position: relative;
+     top: 20px;
+     left: 60px;
 }
-
-.ceye {
-  background-color: white;
-  left: -15px;
-  width: 15px;
-  height: 10px;
-  border-radius: 50%;
-  padding: 5px;
-  margin: 5px 14px 5px 5px;
+ .ceye {
+     background-color: white;
+     left: -15px;
+     width: 15px;
+     height: 10px;
+     border-radius: 50%;
+     padding: 5px;
+     margin: 5px 14px 5px 5px;
 }
-
-.cpupil {
-  position: relative;
-  background-color: black;
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
+ .cpupil {
+     position: relative;
+     background-color: black;
+     width: 16px;
+     height: 16px;
+     border-radius: 50%;
 }
-
-.cleft {
-  position: relative;
-  float: left;
+ .cleft {
+     position: relative;
+     float: left;
 }
-
-.cright {
-  position: relative;
-  float: left;
+ .cright {
+     position: relative;
+     float: left;
 }
-
-.snout{
-  position: relative;
-  top: 42px;
-  left: 70px;
-  width: 30px;
-  height: 20px;
-  background-color: black;
-  border-radius: 60px;
-  background-image: linear-gradient(to right, rgba(100, 100, 100, 0.1), rgba(26, 26, 26, 0.2));
+ .snout{
+     position: relative;
+     top: 42px;
+     left: 70px;
+     width: 30px;
+     height: 20px;
+     background-color: black;
+     border-radius: 60px;
+     background-image: linear-gradient(to right, rgba(100, 100, 100, 0.1), rgba(26, 26, 26, 0.2));
 }
-
-.cmouth{
-  position: absolute;
-  bottom: 4px;
-  left: 53px;
-  width: 60px;
-  height: 30px;
-  background-color: black;
-  border-radius: 40%;
-  overflow: hidden;
-  box-shadow: 0px -5px 23px 3px #1a0d00;
+ .cmouth{
+     position: absolute;
+     bottom: 4px;
+     left: 53px;
+     width: 60px;
+     height: 30px;
+     background-color: black;
+     border-radius: 40%;
+     overflow: hidden;
+     box-shadow: 0 -5px 23px 3px #1a0d00;
 }
-
-.ctooth, .leftFang, .rightFang {
-  position: relative;
-  border-left: 40px solid transparent;
-  border-right: 40px solid transparent;
-  border-top: 60px solid white;
-  transform: scale(0.2);
+ .ctooth, .leftFang, .rightFang {
+     position: relative;
+     border-left: 40px solid transparent;
+     border-right: 40px solid transparent;
+     border-top: 60px solid white;
+     transform: scale(0.2);
 }
-
-.leftFang {
-  top: -25px;
-  left: -28px;
+ .leftFang {
+     top: -25px;
+     left: -28px;
 }
-
-.rightFang {
-  top: -85px;
-  left: 10px;
+ .rightFang {
+     top: -85px;
+     left: 10px;
 }
-.hair{
-  position: absolute;
+ .hair{
+     position: absolute;
 }
-
-.leftFringe, .rightFringe {
-  width: 85px;
-  height: 30px;
-  border-radius: 20px;
-  background-color: #1a0d00;
-  box-shadow: 1px 1px 10px black;
-  opacity: 0.6;
+ .leftFringe, .rightFringe {
+     width: 85px;
+     height: 30px;
+     border-radius: 20px;
+     background-color: #1a0d00;
+     box-shadow: 1px 1px 10px black;
+     opacity: 0.6;
 }
-.leftFringe {
-  position: relative;
-  left: 28px;
-  top: 35px;
-  transform: rotate(-30deg);
+ .leftFringe {
+     position: relative;
+     left: 28px;
+     top: 35px;
+     transform: rotate(-30deg);
 }
-.rightFringe {
-  position: relative;
-  left: 100px;
-  top: 8px;
-  transform: rotate(30deg);
+ .rightFringe {
+     position: relative;
+     left: 100px;
+     top: 8px;
+     transform: rotate(30deg);
 }
-
 /* Body */
-
-.cbody {
-  top: 170px;
-  height: 180px;
+ .cbody {
+     top: 170px;
+     height: 180px;
 }
-
-.cstrap {
-  position: relative;
-  top: 40%;
-  left: -2%;
-  background-color: black;
-  width: 105%;
-  height: 22%;
-  transform: rotate(-45deg);
-  border-radius: 10px;
+ .cstrap {
+     position: relative;
+     top: 40%;
+     left: -2%;
+     background-color: black;
+     width: 105%;
+     height: 22%;
+     transform: rotate(-45deg);
+     border-radius: 10px;
 }
-
-.ammo, .ammo2, .ammo3{
-  position: absolute;
-  left: 30%;
-  width: 20px;
-  height: 40px;
-  border-radius: 10px;
-  background-color: grey;
+ .ammo, .ammo2, .ammo3{
+     position: absolute;
+     left: 30%;
+     width: 20px;
+     height: 40px;
+     border-radius: 10px;
+     background-color: grey;
 }
-
-.ammo2 {
-  position: absolute;
-  left: 53%;
+ .ammo2 {
+     position: absolute;
+     left: 53%;
 }
-
-.ammo3 {
-  position: absolute;
-  left: 76%;
+ .ammo3 {
+     position: absolute;
+     left: 76%;
 }
-
-.pouch {
-  position: absolute;
-  background-color: #663300;
-  left: -3%;
-  top: -10%;
-  width: 54px;
-  height: 54px;
-  border-radius: 10px;
-  display: inline-block;
+ .pouch {
+     position: absolute;
+     background-color: #663300;
+     left: -3%;
+     top: -10%;
+     width: 54px;
+     height: 54px;
+     border-radius: 10px;
+     display: inline-block;
 }
-
-.carms {
-  height: 50px;
-  width: 200px;
+ .carms {
+     height: 50px;
+     width: 200px;
 }
-
-.crightArm {
-  position: relative;
-  margin: 13% 0 0 0;
-  left: 55%;
-  z-index: -1;
+ .crightArm {
+     position: relative;
+     margin: 13% 0 0 0;
+     left: 55%;
+     z-index: -1;
 }
-
-.cleftArm {
-  position: relative;
-  margin: 0;
-  left: -45%;
-  z-index: -1;
-  transform: rotate(-60deg);
-  border: 1px solid rgba(0,0,0, 0.5);
+ .cleftArm {
+     position: relative;
+     margin: 0;
+     left: -45%;
+     z-index: -1;
+     transform: rotate(-60deg);
+     border: 1px solid rgba(0,0,0, 0.5);
 }
-
-.cbody.carms.crightArm {
-  transform: rotate(0deg)
+ .cbody.carms.crightArm {
+     transform: rotate(0deg) 
 }
-
-.cblaster {
-  position: relative;
-  background-color: grey;
-  top: 11%;
-  left: 11%;
-  transform: scale(1);
+ .cblaster {
+     position: relative;
+     background-color: grey;
+     top: 11%;
+     left: 11%;
+     transform: scale(1);
 }
-.cblasterHandle {
-  position: absolute;
-  background-color: inherit;
-  margin: 6px 0 0 0;
-  left: 76%;
-  width: 25px;
-  height: 40px;
-  transform: skew(-25deg);
+ .cblasterHandle {
+     position: absolute;
+     background-color: inherit;
+     margin: 6px 0 0 0;
+     left: 76%;
+     width: 25px;
+     height: 40px;
+     transform: skew(-25deg);
 }
-
-.cblasterBody {
-  position: absolute;
-  background-color: inherit;
-  top: 10%;
-  left: 75%;
-  width: 60px;
-  height: 16px;
-  border-radius: 30%;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+ .cblasterBody {
+     position: absolute;
+     background-color: inherit;
+     top: 10%;
+     left: 75%;
+     width: 60px;
+     height: 16px;
+     border-radius: 30%;
+     border-bottom: 1px solid rgba(0, 0, 0, 0.3);
 }
-
-.cblasterBarrel {
-  position: absolute;
-  background-color: inherit;
-  margin: -1px 0 0 0;
-  left: 77%;
-  width: 90px;
-  height: 8px;
-  border-radius: 30%;
-  box-shadow: -1px 1px rgba(0,0,0, 0.2);
+ .cblasterBarrel {
+     position: absolute;
+     background-color: inherit;
+     margin: -1px 0 0 0;
+     left: 77%;
+     width: 90px;
+     height: 8px;
+     border-radius: 30%;
+     box-shadow: -1px 1px rgba(0,0,0, 0.2);
 }
-
-.cblasterScope {
-  position: absolute;
-  background-color: silver;
-  top: -9px;
-  left: 84%;
-  width: 40px;
-  height: 7px;
-  border-radius: 23%;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.6);
+ .cblasterScope {
+     position: absolute;
+     background-color: silver;
+     top: -9px;
+     left: 84%;
+     width: 40px;
+     height: 7px;
+     border-radius: 23%;
+     border-bottom: 1px solid rgba(0, 0, 0, 0.6);
 }
-
 /* Media Queries */
-
-@media only screen and (min-width: 1200px) {
-    .chewie {
-    position: absolute;
-    left: 5vw;
-    bottom: 18%;
-    transform: scale(0.8);
+ @media only screen and (min-width: 1200px) {
+     .chewie {
+         position: absolute;
+         left: 5vw;
+         bottom: 18%;
+         transform: scale(0.8);
     }
 }

@@ -1,100 +1,92 @@
+/*
+    animations.css
+    This contains all the player/enemy animations
+*/
+
 /* Annoucement Animations*/
-.announce{
-    position: absolute;
-    left: -40vw;
-    top: 40vh;
-    text-shadow: -3px 0 rgba(204, 163, 0), 0 3px rgba(204, 163, 0), 3px 0 rgba(204, 163, 0), 0 -3px rgba(204, 163, 0);
-    color: rgba(0,0,0, 5);
-    font-size: 5em;
-    font-weight: bolder;
-    white-space: nowrap;
+ .announce{
+     position: absolute;
+     left: -40vw;
+     top: 40vh;
+     text-shadow: -3px 0 rgba(204, 163, 0), 0 3px rgba(204, 163, 0), 3px 0 rgba(204, 163, 0), 0 -3px rgba(204, 163, 0);
+     color: rgba(0,0,0, 5);
+     font-size: 5em;
+     font-weight: bolder;
+     white-space: nowrap;
 }
-
-.announceMove{
-    animation-name: waveAnnounce;
-    animation-duration: 8s;
-    animation-timing-function: ease-in-out;
+ .announceMove{
+     animation-name: waveAnnounce;
+     animation-duration: 8s;
+     animation-timing-function: ease-in-out;
 }
-
-@keyframes waveAnnounce{
-    from{
-        left: -20vw;
+ @keyframes waveAnnounce{
+     from{
+         left: -20vw;
     }
-    to{
-        left: 40vw;
+     to{
+         left: 40vw;
     }
 }
-
-.announceText{
-    font-size: 2em;
-    animation-name: waveText;
-    animation-duration: 2s;
-    animation-timing-function: ease-in-out;
+ .announceText{
+     font-size: 2em;
+     animation-name: waveText;
+     animation-duration: 2s;
+     animation-timing-function: ease-in-out;
 }
-
-@keyframes waveText{
-    from{
-        left: 40vw;
+ @keyframes waveText{
+     from{
+         left: 40vw;
     }
-    to{
-        left: 40vw;
+     to{
+         left: 40vw;
     }
 }
-
-
 /* Animated Movements for Player/AI */
-.crouch {
-    animation-name: crouch;
-    animation-duration: 2s;
+ .crouch {
+     animation-name: crouch;
+     animation-duration: 2s;
 }
-
-@keyframes crouch {
-    from{
-        bottom: 20vh; 
+ @keyframes crouch {
+     from{
+         bottom: 20vh;
     }
-    to {
-        bottom: 0vh;
-    }
-}
-
-.jump {
-    animation-name: jump;
-    animation-duration: 2s;
-}
-
-@keyframes jump {
-    from{
-        bottom: 20vh; 
-    }
-    to {
-        bottom: 40vh;
+     to {
+         bottom: 0;
     }
 }
-
-.moveEnemy {
-    animation-name: moveEn;
-    animation-duration: 40s;
+ .jump {
+     animation-name: jump;
+     animation-duration: 2s;
 }
-
-@keyframes moveEn {
-    from{
-        left: 100vw; 
+ @keyframes jump {
+     from{
+         bottom: 20vh;
     }
-    to {
-        left: 0vw;
+     to {
+         bottom: 40vh;
     }
 }
-
-.reloadAnimation {
-    animation-name: reload;
-    animation-duration: 5s;
+ .moveEnemy {
+     animation-name: moveEn;
+     animation-duration: 40s;
 }
-
-@keyframes reload {
-    to {
-        margin: -15% 0 0 0;
-        left: 0%;
-        z-index: 1;
-        transform: rotate(-180deg);
+ @keyframes moveEn {
+     from{
+         left: 100vw;
+    }
+     to {
+         left: 0;
+    }
+}
+ .reloadAnimation {
+     animation-name: reload;
+     animation-duration: 5s;
+}
+ @keyframes reload {
+     to {
+         margin: -15% 0 0 0;
+         left: 0;
+         z-index: 1;
+         transform: rotate(-180deg);
     }
 }

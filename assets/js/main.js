@@ -1,3 +1,9 @@
+/**
+ * main.js
+ * Holds all the global variables and calls
+ * the start screen when document is ready
+ */
+
 /* Global Variables */
 var bullets = 30;
 var highestCombo = 0;
