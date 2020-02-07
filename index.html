@@ -2,291 +2,290 @@
 <html lang="en">
 
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Star Wars</title>
-	<script src="assets/libraries/js/jquery-3.4.1.min.js"></script>
-	<script src="assets/libraries/js/jquery-ui.min.js"></script>
-	<link rel="stylesheet" href="assets/libraries/css/jquery-ui.min.css">
-	<link rel="stylesheet" href="assets/css/style.css">
-	<link rel="stylesheet" href="assets/css/animations.css">
-	<link rel="stylesheet" href="assets/css/dialogs.css">
-	<link rel="stylesheet" href="assets/css/characters/stormtrooper.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Star Wars</title>
+    <script src="assets/libraries/js/jquery-3.4.1.min.js"></script>
+    <script src="assets/libraries/js/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="assets/libraries/css/jquery-ui.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <link rel="stylesheet" href="assets/css/dialogs.css">
+    <link rel="stylesheet" href="assets/css/characters/stormtrooper.css">
 </head>
 
 <body>
-	<!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template -->
-	<!-- Map Templates -->
-	<template id="tatooineTemp">
-		<div class="background">
-			<div class="sky">
-				<div class="moons">
-					<div class="topMoon"></div>
-					<div class="bottomMoon"></div>
-				</div>
-			</div>
-			<div class="horizon">
-				<div class="building">
-					<div class="outerFrame">
-						<div class="doorFrame">
-							<div class="door"></div>
-						</div>
-						<div class="arch"></div>
-						<div class="archWall"></div>
-						<div class="stairs"></div>
-					</div>
-				</div>
-				<div class="building second">
-					<div class="outerFrame">
-						<div class="doorFrame">
-							<div class="door"></div>
-						</div>
-						<div class="arch"></div>
-						<div class="archWall"></div>
-						<div class="stairs"></div>
-					</div>
-				</div>
-			</div>
-			<div class="foreground"></div>
-		</div>
-	</template>
-	<template id="endorTemp">
-		<div class="background">
-			<div class="sky">
-				<div class="moons">
-				</div>
-			</div>
-			<div class="horizon">
-				<div class="treeContainer">
-					<div class="bush">
-					</div>
-					<div class="bush2">
-					</div>
-					<div class="bush3">
-					</div>
-					<div class="treeTrunk">
-						<div class="treeShade"></div>
-					</div>
-				</div>
-				<div class="treeContainer2">
-					<div class="bush">
-					</div>
-					<div class="bush2">
-					</div>
-					<div class="bush3">
-					</div>
-					<div class="treeTrunk">
-						<div class="treeShade"></div>
-					</div>
-				</div>
-				<div class="treeContainer3">
-					<div class="bush">
-					</div>
-					<div class="bush2">
-					</div>
-					<div class="bush3">
-					</div>
-					<div class="treeTrunk">
-						<div class="treeShade"></div>
-					</div>
-				</div>
-				<div class="treeContainer4">
-					<div class="bush">
-					</div>
-					<div class="bush2">
-					</div>
-					<div class="bush3">
-					</div>
-					<div class="treeTrunk">
-						<div class="treeShade"></div>
-					</div>
-				</div>
-			</div>
-			<div class="foreground"></div>
-		</div>
-	</template>
-	<!-- Character Templates -->
-	<template id="chewieTemp">
-		<div class="chewie">
-			<div class="health">
-				<span class="num">100</span>
-			</div>
-			<div class="chead">
-				<div class="hair">
-					<div class="hair leftFringe">
-					</div>
-					<div class="hair rightFringe">
-					</div>
-				</div>
-				<div class="cface">
-					<div class="ceyes">
-						<div class="ceye cleft">
-							<div class="cpupil">
-							</div>
-						</div>
-						<div class="ceye cright">
-							<div class="cpupil">
-							</div>
-						</div>
-					</div>
-					<div class="snout">
-					</div>
-					<div class="cmouth">
-						<div class="ctooth leftFang"></div>
-						<div class="ctooth rightFang"></div>
-					</div>
-				</div>
-			</div>
-			<div class="chead cbody">
-				<div class="cstrap">
-					<div class="ammo"></div>
-					<div class="ammo2"></div>
-					<div class="ammo3"></div>
-					<div class="pouch"></div>
-				</div>
-			</div>
-			<div class="cbody carms crightArm">
-				<div class="cblaster">
-					<div class="cblasterHandle"></div>
-					<div class="cblasterBody"></div>
-					<div class="cblasterBarrel"></div>
-					<div class="cblasterScope"></div>
-					<div class="cblasterTrigger"></div>
-				</div>
-			</div>
-			<div class="cbody carms cleftArm">
-			</div>
-		</div>
-	</template>
-	<template id="hanTemp">
-		<div class="han">
-			<div class="health">
-				<span class="num">100</span>
-			</div>
-			<div class="chead">
-				<div class="hair">
-					<div class="hair leftFringe"></div>
-					<div class="hair rightFringe"></div>
-				</div>
-				<div class="cface">
-					<div class="ceyes">
-						<div class="ceye cleft">
-							<div class="cpupil"></div>
-						</div>
-						<div class="ceye cright">
-							<div class="cpupil"></div>
-						</div>
-					</div>
-					<div class="nose">
-						<div class="noseTip"></div>
-					</div>
-					<div class="cmouth"></div>
-					<div class="smirk"></div>
-				</div>
-			</div>
-			<div class="cbody">
-				<div class="cJacket"></div>
-				<div class="belt">
-					<div class="ammo"></div>
-					<div class="ammo2"></div>
-					<div class="ammo3"></div>
-					<div class="pouch"></div>
-				</div>
-			</div>
-			<div class="cbody carms crightArm">
-				<div class="cblaster">
-					<div class="cblasterHandle"></div>
-					<div class="cblasterBody"></div>
-					<div class="cblasterBarrel"></div>
-					<div class="cblasterScope"></div>
-					<div class="cblasterTrigger"></div>
-				</div>
-			</div>
-			<div class="cbody carms cleftArm"></div>
-		</div>
-	</template>
-	<template id="trooperTemp">
-		<div class="stormtrooper moveEnemy">
-			<div class="health">
-				<span class="num">100</span>
-			</div>
-			<div class="head">
-				<div class="brow"></div>
-				<div class="visor">
-					<div class="visDiv"></div>
-				</div>
-				<div class="mouth">
-					<div class="mouthLeft"></div>
-					<div class="mouthRight"></div>
-					<div class="mouthCenter"></div>
-					<div class="mouthVent ventLeft"></div>
-					<div class="mouthVent ventRight"></div>
-				</div>
-			</div>
-			<div class="body">
-				<div class="blaster">
-					<div class="blasterCol blasterScope"></div>
-					<div class="blasterCol blasterBarrel"></div>
-					<div class="blasterCol blasterStock"></div>
-					<div class="blasterCol blasterStockButt"></div>
-					<div class="blasterCol blasterBody"></div>
-					<div class="blasterCol blasterMag"></div>
-				</div>
-			</div>
-			<div id="arms">
-				<div class="arms leftArm">
-				</div>
-				<div class="arms rightArm">
-				</div>
-			</div>
-		</div>
-	</template>
-	<!-- Intro Crawl Template -->
-	<template id="introText">
-		<div id="introCrawl">
-			<!-- Code taking from https://css-tricks.com/snippets/css/star-wars-crawl-text -->
-			<div class="fade"></div>
-			<section class="star-wars">
-				<div class="crawl">
-					<div class="title">
-						<p>Star Wars</p>
-						<h1>Side Scrolling Shooter</h1>
-					</div>
-					<p>The evil Galactic Empire have detected a rebel base on <span id="baseLoc">placeholder</span>.</p>
-					<p>They have prepared an assualt and will be landing soon, 
-                    It it up you <span id="char">placeholder</span> to keep them busy long enough for the rebels to escape safely.</p>
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template -->
+    <!-- Map Templates -->
+    <template id="tatooineTemp">
+        <div class="background">
+            <div class="sky">
+                <div class="moons">
+                    <div class="topMoon"></div>
+                    <div class="bottomMoon"></div>
+                </div>
+            </div>
+            <div class="horizon">
+                <div class="building">
+                    <div class="outerFrame">
+                        <div class="doorFrame">
+                            <div class="door"></div>
+                        </div>
+                        <div class="arch"></div>
+                        <div class="archWall"></div>
+                        <div class="stairs"></div>
+                    </div>
+                </div>
+                <div class="building second">
+                    <div class="outerFrame">
+                        <div class="doorFrame">
+                            <div class="door"></div>
+                        </div>
+                        <div class="arch"></div>
+                        <div class="archWall"></div>
+                        <div class="stairs"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="foreground"></div>
+        </div>
+    </template>
+    <template id="endorTemp">
+        <div class="background">
+            <div class="sky">
+                <div class="moons">
+                </div>
+            </div>
+            <div class="horizon">
+                <div class="treeContainer">
+                    <div class="bush">
+                    </div>
+                    <div class="bush2">
+                    </div>
+                    <div class="bush3">
+                    </div>
+                    <div class="treeTrunk">
+                        <div class="treeShade"></div>
+                    </div>
+                </div>
+                <div class="treeContainer2">
+                    <div class="bush">
+                    </div>
+                    <div class="bush2">
+                    </div>
+                    <div class="bush3">
+                    </div>
+                    <div class="treeTrunk">
+                        <div class="treeShade"></div>
+                    </div>
+                </div>
+                <div class="treeContainer3">
+                    <div class="bush">
+                    </div>
+                    <div class="bush2">
+                    </div>
+                    <div class="bush3">
+                    </div>
+                    <div class="treeTrunk">
+                        <div class="treeShade"></div>
+                    </div>
+                </div>
+                <div class="treeContainer4">
+                    <div class="bush">
+                    </div>
+                    <div class="bush2">
+                    </div>
+                    <div class="bush3">
+                    </div>
+                    <div class="treeTrunk">
+                        <div class="treeShade"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="foreground"></div>
+        </div>
+    </template>
+    <!-- Character Templates -->
+    <template id="chewieTemp">
+        <div class="chewie">
+            <div class="health">
+                <span class="num">100</span>
+            </div>
+            <div class="chead">
+                <div class="hair">
+                    <div class="hair leftFringe">
+                    </div>
+                    <div class="hair rightFringe">
+                    </div>
+                </div>
+                <div class="cface">
+                    <div class="ceyes">
+                        <div class="ceye cleft">
+                            <div class="cpupil">
+                            </div>
+                        </div>
+                        <div class="ceye cright">
+                            <div class="cpupil">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="snout">
+                    </div>
+                    <div class="cmouth">
+                        <div class="ctooth leftFang"></div>
+                        <div class="ctooth rightFang"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="chead cbody">
+                <div class="cstrap">
+                    <div class="ammo"></div>
+                    <div class="ammo2"></div>
+                    <div class="ammo3"></div>
+                    <div class="pouch"></div>
+                </div>
+            </div>
+            <div class="cbody carms crightArm">
+                <div class="cblaster">
+                    <div class="cblasterHandle"></div>
+                    <div class="cblasterBody"></div>
+                    <div class="cblasterBarrel"></div>
+                    <div class="cblasterScope"></div>
+                    <div class="cblasterTrigger"></div>
+                </div>
+            </div>
+            <div class="cbody carms cleftArm">
+            </div>
+        </div>
+    </template>
+    <template id="hanTemp">
+        <div class="han">
+            <div class="health">
+                <span class="num">100</span>
+            </div>
+            <div class="chead">
+                <div class="hair">
+                    <div class="hair leftFringe"></div>
+                    <div class="hair rightFringe"></div>
+                </div>
+                <div class="cface">
+                    <div class="ceyes">
+                        <div class="ceye cleft">
+                            <div class="cpupil"></div>
+                        </div>
+                        <div class="ceye cright">
+                            <div class="cpupil"></div>
+                        </div>
+                    </div>
+                    <div class="nose">
+                        <div class="noseTip"></div>
+                    </div>
+                    <div class="cmouth"></div>
+                    <div class="smirk"></div>
+                </div>
+            </div>
+            <div class="cbody">
+                <div class="cJacket"></div>
+                <div class="belt">
+                    <div class="ammo"></div>
+                    <div class="ammo2"></div>
+                    <div class="ammo3"></div>
+                    <div class="pouch"></div>
+                </div>
+            </div>
+            <div class="cbody carms crightArm">
+                <div class="cblaster">
+                    <div class="cblasterHandle"></div>
+                    <div class="cblasterBody"></div>
+                    <div class="cblasterBarrel"></div>
+                    <div class="cblasterScope"></div>
+                    <div class="cblasterTrigger"></div>
+                </div>
+            </div>
+            <div class="cbody carms cleftArm"></div>
+        </div>
+    </template>
+    <template id="trooperTemp">
+        <div class="stormtrooper moveEnemy">
+            <div class="health">
+                <span class="num">100</span>
+            </div>
+            <div class="head">
+                <div class="brow"></div>
+                <div class="visor">
+                    <div class="visDiv"></div>
+                </div>
+                <div class="mouth">
+                    <div class="mouthLeft"></div>
+                    <div class="mouthRight"></div>
+                    <div class="mouthCenter"></div>
+                    <div class="mouthVent ventLeft"></div>
+                    <div class="mouthVent ventRight"></div>
+                </div>
+            </div>
+            <div class="body">
+                <div class="blaster">
+                    <div class="blasterCol blasterScope"></div>
+                    <div class="blasterCol blasterBarrel"></div>
+                    <div class="blasterCol blasterStock"></div>
+                    <div class="blasterCol blasterStockButt"></div>
+                    <div class="blasterCol blasterBody"></div>
+                    <div class="blasterCol blasterMag"></div>
+                </div>
+            </div>
+            <div id="arms">
+                <div class="arms leftArm">
+                </div>
+                <div class="arms rightArm">
+                </div>
+            </div>
+        </div>
+    </template>
+    <!-- Intro Crawl Template -->
+    <template id="introText">
+        <div id="introCrawl">
+            <!-- Code taking from https://css-tricks.com/snippets/css/star-wars-crawl-text -->
+            <div class="fade"></div>
+            <section class="star-wars">
+                <div class="crawl">
+                    <div class="title">
+                        <p>Star Wars</p>
+                        <h1>Side Scrolling Shooter</h1>
+                    </div>
+                    <p>The evil Galactic Empire have detected a rebel base on <span id="baseLoc">placeholder</span>.</p>
+                    <p>They have prepared an assualt and will be landing soon, It it up you <span id="char">placeholder</span> to keep them busy long enough for the rebels to escape safely.</p>
                     <p>Princess Leia and the rest of the rebel force are counting on you.</p>
-					<p id="charQuip">This should be replaced by a character line</p>
-				</div>
-			</section>
-		</div>
-	</template>
-	<div class="playerUi">
-		<div class="timer">
-			<h2>1:00</h2>
-		</div>
-		<div class="bullets">Ammo: <span class="bulletCount">30</span></div>
-		<div class="score">Score: 0</div>
-		<div class="combo">Combo: x0</div>
-		<div class="announce">Wave 1</div>
-	</div>
-	<div id="pauseMenu">
-		<div class="hidden">
-		</div>
-	</div>
-	<!-- Import scripts -->
-	<script src="assets/js/dialogs.js"></script>
-	<script src="assets/js/player.js"></script>
-	<script src="assets/js/timer.js"></script>
-	<script src="assets/js/templates.js"></script>
-	<script src="assets/js/fire.js"></script>
-	<script src="assets/js/game.js"></script>
-	<script src="assets/js/collision.js"></script>
-	<script src="assets/js/damage.js"></script>
-	<script src="assets/js/enemy.js"></script>
-	<script src="assets/js/main.js"></script>
-	<script src="assets/js/controls.js"></script>
+                    <p id="charQuip">This should be replaced by a character line</p>
+                </div>
+            </section>
+        </div>
+    </template>
+    <div class="playerUi">
+        <div class="timer">
+            <h2>1:00</h2>
+        </div>
+        <div class="bullets">Ammo: <span class="bulletCount">30</span></div>
+        <div class="score">Score: 0</div>
+        <div class="combo">Combo: x0</div>
+        <div class="announce">Wave 1</div>
+    </div>
+    <div id="pauseMenu">
+        <div class="hidden">
+        </div>
+    </div>
+    <!-- Import scripts -->
+    <script src="assets/js/dialogs.js"></script>
+    <script src="assets/js/player.js"></script>
+    <script src="assets/js/timer.js"></script>
+    <script src="assets/js/templates.js"></script>
+    <script src="assets/js/fire.js"></script>
+    <script src="assets/js/game.js"></script>
+    <script src="assets/js/collision.js"></script>
+    <script src="assets/js/damage.js"></script>
+    <script src="assets/js/enemy.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/controls.js"></script>
 </body>
 
 </html>
