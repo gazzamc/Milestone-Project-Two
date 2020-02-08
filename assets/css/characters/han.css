@@ -12,7 +12,7 @@
  .han {
      position: absolute;
      left: 5vw;
-     bottom: 30%;
+     bottom: 33%;
      transform: scale(0.8);
 }
  .han .health{
@@ -277,7 +277,7 @@
 /* Media Queries */
  @media only screen and (min-height: 640px) {
     .han {
-        bottom: 23%;
+        bottom: 24%;
     }
 }
  @media only screen and (min-height: 900px) {
@@ -287,6 +287,6 @@
 }
  @media only screen and (min-height: 1200px) {
     .han {
-        bottom: 15%;
+        bottom: 16%;
     }
 }

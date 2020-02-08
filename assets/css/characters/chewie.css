@@ -11,7 +11,7 @@
 }
  .chewie {
      position: absolute;
-     bottom: 30%;
+     bottom: 33%;
      left: 5vw;
      transform: scale(0.8);
 }
@@ -250,7 +250,7 @@
 /* Media Queries */
  @media only screen and (min-height: 640px) {
     .chewie {
-        bottom: 23%;
+        bottom: 24%;
     }
 }
 
@@ -259,8 +259,8 @@
         bottom: 18%;
     }
 }
- @media only screen and (min-height: 1200px) {
+ @media only screen and (min-height: 1280px){
     .chewie {
-        bottom: 15%;
+        bottom: 16%;
     }
 }

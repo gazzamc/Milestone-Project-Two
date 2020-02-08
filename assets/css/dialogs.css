@@ -146,7 +146,7 @@
  #controlsPause, #continue, #restart, #startMenu{
      position: relative;
      width: 40%;
-     left: 25%;
+     left: 28%;
      margin: 5%;
      display: block;
 }
