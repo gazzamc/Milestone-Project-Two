@@ -21,6 +21,7 @@ function startGame(type) {
         waves = 0;
         spawnRate = 10;
         isKeyHandlerActive= true;
+        isReadyToFire = true;
 
         /* Call gameOver function to remove intervals/spawned enemies */
         gameOver();
