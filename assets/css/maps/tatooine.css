@@ -8,6 +8,8 @@
      left: -15%;
      margin-top: -35%;
      transform: scale(0.1);
+     height: 100px;
+     width: 100px;
 }
  .background {
      position: absolute;
@@ -131,4 +133,17 @@
      height: 6%;
      box-shadow: -2px 6px 5px rgba(0,0,0, 0.6), inset 0 5px 1px rgba(0,0,0, 0.6);
      z-index: 3;
+}
+/* for the dialog */
+ @media only screen and (min-width: 1024px) {
+    .tatooineStart {
+         left: 28%;
+         top: 98%;
+    }
+}
+ @media only screen and (min-width: 1200px) {
+    .tatooineStart {
+         left: 20%;
+         top: 68%;
+    }
 }

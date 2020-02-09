@@ -20,13 +20,6 @@
  #options{
      left: 70%;
 }
- #try{
-     position: absolute;
-     bottom: 10%;
-     left: 40%;
-     font-size: 1em;
-     font-variant: small-caps;
-}
  .map{
      position: absolute;
      top: 45%;
@@ -85,6 +78,11 @@
      max-height: none;
      height: 93%;
 }
+ .introCheck{
+     position: absolute;
+     bottom: 5%;
+     left: 10%;
+}
 /* Global dialog styles */
  .ui-widget-header{
      background-color: rgba(0,0,0, 0.9);
@@ -137,11 +135,6 @@
      margin: 0 10% 0 0;
      font-weight: bolder;
 }
- .introCheck{
-     position: absolute;
-     bottom: 5%;
-     left: 10%;
-}
 /* Pause Menu Dialog */
  #controlsPause, #continue, #restart, #startMenu{
      position: relative;
@@ -150,19 +143,23 @@
      margin: 5%;
      display: block;
 }
+button#continue {
+     margin: 7% 0 0 1%;
+}
 /* Game Over Dialog */
  #try, #startMenuEnd{
      position: relative;
      width: 40%;
-     left: 25%;
+     left: 28%;
      margin: 5%;
      display: block;
 }
  #startMenuEnd{
      font-variant: small-caps;
 }
- #try{
-     margin: 16% 5% 5% 5%;
+ button#try{
+     margin: 20% 0 0 0;
+     left: 29%;
 }
  #pauseMenu .hidden p {
      margin-left: 30%;
@@ -207,6 +204,15 @@
     }
      .ui-dialog-content{
          height: 95%;
+    }
+    #charChewie, #charHan{
+         top: 8%;
+    }
+    #start, #controls,#options{
+         bottom: 6%;
+    }
+    .introCheck{
+         bottom: 7%;
     }
 }
  @media only screen and (min-width: 1200px) {

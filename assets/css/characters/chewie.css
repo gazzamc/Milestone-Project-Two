@@ -248,19 +248,33 @@
      border-bottom: 1px solid rgba(0, 0, 0, 0.6);
 }
 /* Media Queries */
- @media only screen and (min-height: 640px) {
+/* For the player model - using height*/
+ @media only screen and (min-height: 645px) {
     .chewie {
-        bottom: 24%;
+         bottom: 24%;
     }
 }
 
  @media only screen and (min-height: 900px) {
     .chewie {
-        bottom: 18%;
+         bottom: 18%;
     }
 }
  @media only screen and (min-height: 1280px){
     .chewie {
-        bottom: 16%;
+         bottom: 16%;
+    }
+}
+/* for the dialog - using width */
+ @media only screen and (min-width: 1024px) {
+    .chewieStart {
+         left: 28%;
+         top: -22%;
+    }
+}
+ @media only screen and (min-width: 1200px) {
+    .chewieStart {
+         left: 28%;
+         top: -10%;
     }
 }

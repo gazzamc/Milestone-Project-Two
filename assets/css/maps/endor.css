@@ -7,8 +7,9 @@
      position: relative;
      left: 5%;
      margin-top: -30%;
-     width: 50%;
      transform: scale(0.1);
+     height: 100px;
+     width: 100px;
 }
  .background {
      position: absolute;
@@ -107,4 +108,17 @@
 /* change timer colour as it's too dark by default */
  .timer{
      color: #fff;
+}
+/* for the dialog */
+ @media only screen and (min-width: 1024px) {
+    .endorStart {
+         left: 28%;
+         top: 98%;
+    }
+}
+ @media only screen and (min-width: 1200px) {
+    .endorStart {
+         left: 22%;
+         top: 68%;
+    }
 }

@@ -274,19 +274,33 @@
      border-bottom: 1px solid rgba(0, 0, 0, 0.6);
 }
 /* Media Queries */
-/* Media Queries */
- @media only screen and (min-height: 640px) {
+/* For the player model - using height*/
+ @media only screen and (min-height: 645px) {
     .han {
         bottom: 24%;
     }
 }
+
  @media only screen and (min-height: 900px) {
     .han {
         bottom: 18%;
     }
 }
- @media only screen and (min-height: 1200px) {
+ @media only screen and (min-height: 1280px){
     .han {
         bottom: 16%;
+    }
+}
+/* for the dialog - using width */
+ @media only screen and (min-width: 1024px) {
+    .hanStart {
+         left: 28%;
+         top: -22%;
+    }
+}
+ @media only screen and (min-width: 1200px) {
+    .hanStart {
+         left: 28%;
+         top: -10%;
     }
 }
