@@ -6,7 +6,7 @@
 /* Key Presses */
 $(document).keypress(function (event) {
     /* pause game */
-    if (event.which == 112) {
+    if (event.which == 112 || event.which == 80) {
 
         /* Check if we are not on start/end screens */
         if($("#start").length == 0 && $("#try").length == 0){
@@ -22,7 +22,7 @@ $(document).keypress(function (event) {
     }
 
     /* Move left or right with A/D keys  */
-    if (event.which == 100) {
+    if (event.which == 100 || event.which == 68) {
         let curPos = $("div." + character).css("left");
         let newPos = parseInt(curPos) + 5;
         $("div." + character).css("left", newPos);
@@ -31,7 +31,7 @@ $(document).keypress(function (event) {
         let newBgPos = parseInt(curBgPos) - 5;
         $("div.horizon").css("left", newBgPos);
     }
-    else if (event.which == 97) {
+    else if (event.which == 97 || event.which == 65) {
         let curPos = $("div." + character).css("left");
         let newPos = parseInt(curPos) - 5;
 
@@ -45,7 +45,7 @@ $(document).keypress(function (event) {
         }
     }
 
-    /* Fire, Reload and Crouch with space, R and C keys */
+    /* Fire, Reload and Crouch with space, R and Q keys */
     else if (event.which == 32) {
         /* Check if ready to fire and that there are enemies on screen */
         if (isReadyToFire && (currEnemies() > 0)) {
@@ -69,14 +69,14 @@ $(document).keypress(function (event) {
         }
     }
 
-    else if (event.which == 114) {
+    else if (event.which == 114 || event.which == 82) {
         if (bullets < 30) {
             isReadyToFire = false;
             reload();
         }
     }
 
-    else if (event.which == 113) {
+    else if (event.which == 113 || event.which == 81) {
         $("div." + character).addClass("crouch");
 
         $(document).keyup(function (event) {
@@ -84,7 +84,7 @@ $(document).keypress(function (event) {
 
         });
     }
-    else if (event.which == 101) {
+    else if (event.which == 101 || event.which == 69) {
         $("div." + character).addClass("jump");
 
         $(document).keyup(function (event) {
