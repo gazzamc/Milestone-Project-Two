@@ -94,7 +94,7 @@ In the game the pause menu is straight forward, It allows the user to restart, c
 
 #### Structure
 As it's a game, I went with a start menu when first visiting the website. 
-This menu/Dialog along with the other dialogs (Pause, Game Over Screen) are created using jQuery and is dynamically added to the index.html, 
+This menu/Dialog along with the other dialogs (Pause, Game Over Screen) are created using jQuery UI and is dynamically added to the index.html, 
 as you select the character/map these also get added to the index.html (both css/html). 
 I wanted to keep the index.html as minimal as possible, It only holds the players UI, 
 default CSS files, scripts and templates for the different game elements. 
@@ -123,7 +123,7 @@ and gives the Star Wars feel.
 - The player can choose between two characters, Han or Chewie.
 - The enemies spawn based on the time, the difficulty increases the longer you survive.
 - Players can choose which map/background they want from the start menu.
-- Players can pause and reset the game using the pause menu as well return to the start menu.
+- Players can pause and reset the game using the pause menu as well as return to the start menu.
 - You can view the controls via the pause menu or start screen.
 - You can skip the intro credits using the checkbox in the start screen.
 - Players can move, shoot and dodge when controlling the character.
@@ -163,7 +163,7 @@ This would show the top 20 scores with a username.
 
 ## Testing
 This game isn't intended for mobiles devices, or devices without a mouse/keyboard. 
-So these were not considered when actively testing. I added media queries where needed in order to keep the gameplayable in certain resolutions.
+So these were not considered when actively testing. I added media queries where needed in order to keep the game playable in certain resolutions.
 If the alignment of the player and the troopers were off the player wont take damage from the trooper and the trooper will pass by. 
 Media Queries were also used for the UI.
 
@@ -290,7 +290,7 @@ This seems to be an occasional bug as it can deal damage the odd time.
 I can probably fix this by extending the innerWidth in the if statement, 
 but I think it prevents people from spawn killing enemies before they appear on screen.
 
-- Sometimes the hit detection can lag behind. Since the interval time is the lowest in can be at 1ms I can probably rule that out, 
+- Sometimes the hit detection can lag behind. Since the interval time is low at 100ms I can probably rule that out (any lower may cause lag, use too much resources), 
 I think it may be a limitation of the collision detection(if statement) or even just the way I use the divs as hit boxes. 
 For now it's acceptable and adds a bit of a timing challenge. It isn't perfect but close enough.
 
