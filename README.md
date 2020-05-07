@@ -25,7 +25,7 @@ Interactive Frontend Development Project - Code Institute
     * [Acknowledgements](#acknowledgements)<br>
 
 ## Demo
-You can try the live version of the game [Here](https://gazzamc.github.io/Milestone-Project-Two/)<br><br>
+You can try the live version of the game [Here](https://gazzamc.github.io/Star-Wars-Side-Scrolling-Shooter/)<br><br>
 <p align="center">
 <img src="https://github.com/gazzamc/Milestone-Project-Two/raw/master/assets/images/gameplayCap.gif" alt="Gameplay Preview">
 </p>
